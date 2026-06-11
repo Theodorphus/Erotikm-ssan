@@ -16,13 +16,20 @@ export function Faq() {
       {FAQ_ITEMS.map((item, i) => {
         const isOpen = open === i
         return (
-          <li key={item.question}>
+          <li
+            key={item.question}
+            className={`border-l-2 transition-colors duration-300 ${
+              isOpen ? 'border-l-brand-pink bg-brand-pink/[0.04]' : 'border-l-transparent'
+            }`}
+          >
             <h3>
               <button
                 type="button"
                 onClick={() => setOpen(isOpen ? null : i)}
                 aria-expanded={isOpen}
-                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left font-semibold text-cream hover:text-brand-pink transition-colors"
+                className={`flex w-full items-center justify-between gap-4 px-6 py-5 text-left font-semibold transition-colors hover:text-brand-pink ${
+                  isOpen ? 'text-brand-pink-light' : 'text-cream'
+                }`}
               >
                 <span>{item.question}</span>
                 <ChevronDown
@@ -38,7 +45,13 @@ export function Faq() {
               style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
             >
               <div className="overflow-hidden">
-                <p className="px-6 pb-5 text-cream/70 leading-relaxed">{item.answer}</p>
+                <p
+                  className={`px-6 pb-5 text-cream/70 leading-relaxed transition-opacity duration-300 ${
+                    isOpen ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  {item.answer}
+                </p>
               </div>
             </div>
           </li>

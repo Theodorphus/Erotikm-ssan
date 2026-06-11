@@ -12,30 +12,40 @@ export default function HomePage() {
     <>
       {/* ── HERO med nedräknare + biljettknapp ─────────────────────── */}
       <section className="mesh-forest grain relative overflow-hidden text-cream">
-        {/* Hero-bild med mörk overlay för textläsbarhet */}
-        <Image
-          src="/images/hero.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
+        {/* Hero-bild: fade-in + slow zoom vid laddning, mjuk parallax vid scroll */}
+        <div className="hero-parallax absolute inset-x-0 -top-[18%] bottom-0" aria-hidden="true">
+          <Image
+            src="/images/hero.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="hero-zoom object-cover object-center"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 to-ink/85" aria-hidden="true" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 text-center">
-          <p className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.22em] text-brand-pink-light mb-6">
+          <p
+            className="reveal inline-flex items-center gap-2 text-sm uppercase tracking-[0.22em] text-brand-pink-light mb-6"
+            style={{ animationDelay: '0.15s' }}
+          >
             <CalendarDays size={16} /> {EVENT.dateText}
           </p>
-          <h1 className="font-display text-5xl sm:text-7xl font-extrabold leading-[1.05] mb-5">
+          <h1 className="wipe-in font-display text-5xl sm:text-7xl font-extrabold leading-[1.05] mb-5">
             {EVENT.name}
           </h1>
-          <p className="text-xl sm:text-2xl text-cream/85 font-light mb-3">{EVENT.tagline}</p>
-          <p className="text-cream/60 max-w-2xl mx-auto mb-10">
+          <p
+            className="reveal text-xl sm:text-2xl text-cream/85 font-light mb-3"
+            style={{ animationDelay: '0.45s' }}
+          >
+            {EVENT.tagline}
+          </p>
+          <p className="reveal text-cream/60 max-w-2xl mx-auto mb-10" style={{ animationDelay: '0.55s' }}>
             {EVENT.motto}. {EVENT.venue}, {EVENT.city}.
           </p>
 
-          <div className="flex justify-center mb-10">
+          <div className="reveal flex justify-center mb-10" style={{ animationDelay: '0.7s' }}>
             <Countdown target={EVENT.startDate} />
           </div>
 
@@ -44,13 +54,15 @@ export default function HomePage() {
               href={EVENT.links.tickets}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-brand-pink text-white font-semibold px-8 py-4 rounded-lg hover:bg-brand-pink-dark transition-colors shadow-lg shadow-brand-pink/25"
+              className="reveal inline-flex items-center justify-center gap-2 bg-brand-pink text-white font-semibold px-8 py-4 rounded-lg hover:bg-brand-pink-dark transition-colors shadow-lg shadow-brand-pink/25"
+              style={{ animationDelay: '0.85s' }}
             >
               <Ticket size={20} /> Köp biljetter
             </a>
             <Link
               href="/artister"
-              className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/15 text-cream font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors"
+              className="reveal inline-flex items-center justify-center gap-2 bg-white/5 border border-white/15 text-cream font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors"
+              style={{ animationDelay: '0.89s' }}
             >
               Se artisterna <ArrowRight size={18} />
             </Link>
@@ -73,21 +85,27 @@ export default function HomePage() {
           </Reveal>
 
           <div className="grid sm:grid-cols-3 gap-6">
-            <Highlight
-              icon={<Heart size={26} />}
-              title="Lust"
-              text="Upplev det senaste inom njutning och sensualitet, presenterat med värme och respekt."
-            />
-            <Highlight
-              icon={<Sparkles size={26} />}
-              title="Kunskap"
-              text="Föreläsningar och experter som inspirerar, informerar och utmanar tabun."
-            />
-            <Highlight
-              icon={<Users size={26} />}
-              title="Livsnjutning"
-              text="En öppen och välkomnande mötesplats för alla vuxna – oavsett vem du är."
-            />
+            {[
+              {
+                icon: <Heart size={26} />,
+                title: 'Lust',
+                text: 'Upplev det senaste inom njutning och sensualitet, presenterat med värme och respekt.',
+              },
+              {
+                icon: <Sparkles size={26} />,
+                title: 'Kunskap',
+                text: 'Föreläsningar och experter som inspirerar, informerar och utmanar tabun.',
+              },
+              {
+                icon: <Users size={26} />,
+                title: 'Livsnjutning',
+                text: 'En öppen och välkomnande mötesplats för alla vuxna – oavsett vem du är.',
+              },
+            ].map((h, i) => (
+              <Reveal key={h.title} delay={i * 120} className="h-full">
+                <Highlight icon={h.icon} title={h.title} text={h.text} />
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -148,6 +166,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <div className="glow-line" aria-hidden="true" />
+
       {/* ── PRAKTISK INFO + SOCIALA MEDIER (punkt 4) ──────────────── */}
       <section className="bg-ink py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-10">
@@ -193,7 +213,8 @@ export default function HomePage() {
       </section>
 
       {/* ── SAMARBETSPARTNERS ──────────────────────────────────────── */}
-      <section className="bg-ink border-y border-white/10 py-14 px-4 sm:px-6 lg:px-8">
+      <div className="glow-line" aria-hidden="true" />
+      <section className="bg-ink py-14 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto text-center">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.22em] text-cream/40 mb-7">
@@ -252,7 +273,7 @@ function Highlight({
   text: string
 }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-ink-mid p-7 text-center sm:text-left">
+    <div className="h-full rounded-2xl border border-white/10 bg-ink-mid p-7 text-center sm:text-left">
       <div className="h-12 w-12 rounded-xl bg-brand-pink/15 text-brand-pink flex items-center justify-center mb-5 mx-auto sm:mx-0">
         {icon}
       </div>
@@ -276,8 +297,8 @@ function LinkCard({
   external?: boolean
 }) {
   const inner = (
-    <div className="group h-full rounded-2xl border border-white/10 bg-ink-mid p-7 hover:border-brand-pink/50 hover:bg-surface-2 transition-all duration-300">
-      <div className="h-12 w-12 rounded-xl bg-brand-pink/15 text-brand-pink flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
+    <div className="card-lift group h-full rounded-2xl border border-white/10 bg-ink-mid p-7 hover:border-brand-pink/50 hover:bg-surface-2">
+      <div className="card-icon h-12 w-12 rounded-xl bg-brand-pink/15 text-brand-pink flex items-center justify-center mb-5">
         {icon}
       </div>
       <h3 className="font-display text-xl font-bold text-cream mb-2 flex items-center gap-2">

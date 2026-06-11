@@ -295,6 +295,95 @@ img {
   }
 }
 
+/* ── Cinematic hero-reveal ─────────────────────────────────────────── */
+
+/* Bakgrundsbild: fade-in + långsam zoom-ut vid sidladdning */
+@keyframes heroZoom {
+  from {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.hero-zoom {
+  animation: heroZoom 2.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+/* Rubrik: mask-reveal vänster → höger */
+@keyframes wipeIn {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.4;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+.wipe-in {
+  animation: wipeIn 1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+}
+
+/* Soft parallax på hero-bakgrunden vid scroll (CSS scroll-driven,
+   progressiv förbättring – ingen JS, ignoreras av äldre webbläsare) */
+@supports (animation-timeline: scroll()) {
+  .hero-parallax {
+    animation: heroParallax linear both;
+    animation-timeline: scroll();
+    animation-range: 0vh 120vh;
+  }
+  @keyframes heroParallax {
+    to {
+      transform: translateY(14%);
+    }
+  }
+}
+
+/* ── Countdown micro-interactions ──────────────────────────────────── */
+
+/* Tick: siffran glider in uppifrån när värdet byts (triggas via React key) */
+@keyframes tickIn {
+  from {
+    opacity: 0;
+    transform: translateY(-35%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.tick-in {
+  display: inline-block;
+  animation: tickIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Glödande sektionsavdelare ─────────────────────────────────────── */
+.glow-line {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(225, 29, 116, 0.6) 30%,
+    rgba(242, 92, 162, 0.8) 50%,
+    rgba(225, 29, 116, 0.6) 70%,
+    transparent
+  );
+}
+.glow-line::after {
+  content: '';
+  position: absolute;
+  inset: -6px 10%;
+  background: inherit;
+  filter: blur(10px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
 /* ── Premium scroll-/depth-animationer (lättviktigt, ingen lib) ───────── */
 
 /*
@@ -389,7 +478,9 @@ img {
 }
 .card-lift:hover {
   transform: translateY(-6px);
-  box-shadow: 0 24px 48px -20px rgba(14, 42, 26, 0.28);
+  box-shadow:
+    0 24px 48px -20px rgba(225, 29, 116, 0.35),
+    0 0 0 1px rgba(225, 29, 116, 0.25);
 }
 /* Ikon som "lyfter" tillsammans med kortet */
 .card-lift:hover .card-icon {
@@ -527,7 +618,11 @@ img {
   .float-icon,
   .spin-slow,
   .text-shimmer,
-  .marquee {
+  .marquee,
+  .hero-zoom,
+  .hero-parallax,
+  .wipe-in,
+  .tick-in {
     animation: none;
   }
   .card-lift,

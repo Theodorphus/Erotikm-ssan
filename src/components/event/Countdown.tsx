@@ -51,8 +51,11 @@ export function Countdown({ target }: { target: string }) {
           key={u.label}
           className="flex flex-col items-center justify-center rounded-2xl bg-white/5 backdrop-blur-sm border border-brand-pink/30 px-4 py-3 sm:px-6 sm:py-4 min-w-[68px] sm:min-w-[88px]"
         >
-          <span className="font-display text-3xl sm:text-5xl font-extrabold text-white tabular-nums leading-none">
-            {String(u.value).padStart(2, '0')}
+          <span className="font-display text-3xl sm:text-5xl font-extrabold text-white tabular-nums leading-none overflow-hidden">
+            {/* key={value} gör att spannet återskapas vid varje ändring → tick-animationen körs om */}
+            <span key={u.value} className="tick-in">
+              {String(u.value).padStart(2, '0')}
+            </span>
           </span>
           <span className="mt-1.5 text-[10px] sm:text-xs uppercase tracking-[0.18em] text-brand-pink-light">
             {u.label}
