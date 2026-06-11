@@ -64,6 +64,10 @@ h1, h2, h3, h4 {
   letter-spacing: -0.02em;
   font-weight: 700;
   line-height: 1.15;
+  /* Långa svenska sammansatta ord ("Personuppgiftsansvarig") får inte
+     spränga mobilbredden – avstava vid behov (html har lang="sv"). */
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 h1 {

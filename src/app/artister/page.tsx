@@ -27,7 +27,9 @@ export default function ArtisterPage() {
       <section className="bg-ink py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto space-y-8">
           {ARTISTS.map((artist, i) => (
-            <Reveal key={artist.slug} delay={i * 80}>
+            // Stagger-delayen loopar (i % 4) så kort långt ner i listan inte
+            // får sekundlånga fördröjningar när de scrollas in.
+            <Reveal key={artist.slug} delay={(i % 4) * 90}>
               <article
                 id={artist.slug}
                 className="grid sm:grid-cols-[220px_1fr] gap-6 sm:gap-8 items-center rounded-2xl border border-white/10 bg-surface p-6 sm:p-8"
@@ -45,11 +47,11 @@ export default function ArtisterPage() {
                     <Mic2 size={48} className="text-brand-pink/40" />
                   )}
                 </div>
-                <div>
+                <div className="min-w-0">
                   <span className="inline-block text-xs uppercase tracking-[0.18em] text-brand-pink font-semibold mb-2">
                     {artist.role}
                   </span>
-                  <h2 className="font-display text-2xl sm:text-3xl font-bold text-cream mb-3">
+                  <h2 className="font-display text-2xl sm:text-3xl font-bold text-cream mb-3 break-words">
                     {artist.name}
                   </h2>
                   <p className="text-cream/70 leading-relaxed">{artist.bio}</p>
