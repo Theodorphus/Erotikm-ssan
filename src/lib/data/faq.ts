@@ -6,9 +6,6 @@ import { EVENT } from './event'
  *
  * 👉 Lägg till / ta bort frågor genom att redigera listan nedan. Håll svaren
  *    korta och konkreta. Svaren får inte innehålla HTML (ren text).
- *
- * ❓ Vissa svar är preliminära tills Johan bekräftar (åldersgräns, öppettider,
- *    tillgänglighet m.m.).
  */
 export interface FaqItem {
   question: string
@@ -18,32 +15,31 @@ export interface FaqItem {
 export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'När och var äger Erotikmässan rum?',
-    answer: `Erotikmässan hålls ${EVENT.dateText} på ${EVENT.venue} i ${EVENT.city}. Exakta öppettider publiceras närmare mässan.`,
+    answer: `Erotikmässan hålls ${EVENT.dateText} på ${EVENT.venue} i ${EVENT.city}. Öppettider: ${EVENT.openingHours}.`,
   },
   {
     question: 'Var köper jag biljett?',
     answer:
-      'Förköp din biljett online via Billetto och slipp köa – men vi säljer alltid biljetter i dörren också. Fredagsbiljett 250 kr, lördagsbiljett 300 kr.',
+      'Förköp din biljett online via Billetto och slipp köa – men vi säljer alltid biljetter i dörren också. Det finns tre biljettyper: Early Bird 350 kr (begränsat antal), Standard 450 kr och Premium VIP 850 kr.',
   },
   {
     question: 'Finns det en åldersgräns?',
+    answer: `Ja, mässan är en vuxenmässa med ${EVENT.minAge}-årsgräns. Ta med giltig legitimation – den kan kontrolleras i entrén.`,
+  },
+  {
+    question: 'Vad ingår i VIP-biljetten?',
     answer:
-      'Ja, mässan är en vuxenmässa med 18-årsgräns. Ta med giltig legitimation – den kan kontrolleras i entrén.',
+      'Premium VIP ger dig allt i Standard plus välkomstglas bubbel, goodiebag, tillgång till VIP-avdelningen med egen servitris och ett inhägnat område intill stora scenen.',
   },
   {
     question: 'Vad kan jag uppleva på mässan?',
     answer:
-      'Scenshower och uppträdanden, ett trettiotal utställare med allt från erotiska produkter till mode, tatuering och piercing på plats, skönhetsvård, tävlingar och god mat och dryck.',
-  },
-  {
-    question: 'Kan jag komma med husbil eller husvagn?',
-    answer:
-      'Ja! Det finns gott om parkering och plats för husbilar och husvagnar i anslutning till mässområdet.',
+      'Heta scenshower och uppträdanden, ett trettiotal utställare med allt från erotiska produkter till mode, samt tatuering och piercing på plats. Det här är en erotik- och tattoomässa – tatuerare och studios finns på plats hela helgen.',
   },
   {
     question: 'Kan jag boka en av era artister till mitt eget event?',
     answer:
-      'Ja. Via vår samarbetspartner Swedishstripp kan du boka uppträdande artister till privata evenemang – nämn att du kommer från oss så får du 10 % rabatt. Se sidan "Boka artist av oss".',
+      'Ja. Gå till sidan "Boka artist av oss" och hör av dig via vårt Instagram-konto, så återkommer vi med tillgänglighet och pris.',
   },
   {
     question: 'Jag vill ställa ut eller jobba på mässan – hur gör jag?',

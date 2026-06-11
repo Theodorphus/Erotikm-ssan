@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { Mail, MapPin, CalendarDays, Phone } from 'lucide-react'
+import { Mail, MapPin, CalendarDays, Clock, Phone } from 'lucide-react'
 import { FacebookIcon, InstagramIcon, YouTubeIcon } from '@/components/ui/SocialIcons'
+import { AgeBadge } from '@/components/event/AgeBadge'
 import { FOOTER_LINKS } from '@/lib/data/navigation'
 import { EVENT } from '@/lib/data/event'
 
@@ -58,6 +59,10 @@ export function Footer() {
                 <span>{EVENT.dateText}</span>
               </div>
               <div className="flex items-center gap-2.5 text-sm text-cream/70">
+                <Clock size={16} className="text-brand-pink flex-shrink-0" />
+                <span>{EVENT.openingHours}</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-sm text-cream/70">
                 <MapPin size={16} className="text-brand-pink flex-shrink-0" />
                 <span>{EVENT.venue}, {EVENT.city}</span>
               </div>
@@ -74,9 +79,12 @@ export function Footer() {
 
         </div>
 
-        <div className="border-t border-cream/10 pt-6 flex flex-col sm:flex-row gap-3 justify-between items-center text-sm text-cream/50">
-          <p>&copy; {currentYear} {EVENT.name}. Alla rättigheter förbehållna.</p>
-          <Link href="/integritetspolicy" className="hover:text-brand-pink transition-colors">Integritetspolicy</Link>
+        <div className="border-t border-cream/10 pt-6 flex flex-col sm:flex-row gap-4 justify-between items-center text-sm text-cream/50">
+          <p>&copy; {currentYear} {EVENT.name} · {EVENT.brandName}. Alla rättigheter förbehållna.</p>
+          <div className="flex items-center gap-5">
+            <AgeBadge size="sm" />
+            <Link href="/integritetspolicy" className="hover:text-brand-pink transition-colors">Integritetspolicy</Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,10 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Ticket, Mic2, Store, MapPin, CalendarDays, ArrowRight, Sparkles, Heart, Users } from 'lucide-react'
+import { Ticket, Mic2, Store, MapPin, CalendarDays, Clock, ArrowRight, Sparkles, Flame, Star, Brush } from 'lucide-react'
 import { FacebookIcon, InstagramIcon, YouTubeIcon } from '@/components/ui/SocialIcons'
-import { EVENT, PARTNERS } from '@/lib/data/event'
+import { EVENT } from '@/lib/data/event'
 import { Countdown } from '@/components/event/Countdown'
 import { Faq } from '@/components/event/Faq'
+import { AgeBadge } from '@/components/event/AgeBadge'
 import { Reveal } from '@/components/ui/Reveal'
 
 export default function HomePage() {
@@ -43,9 +44,19 @@ export default function HomePage() {
           >
             {EVENT.tagline}
           </p>
-          <p className="reveal text-cream/60 max-w-2xl mx-auto mb-10" style={{ animationDelay: '0.55s' }}>
+          <p className="reveal text-cream/60 max-w-2xl mx-auto mb-6" style={{ animationDelay: '0.55s' }}>
             {EVENT.motto}. {EVENT.venue}, {EVENT.city}.
           </p>
+
+          <div
+            className="reveal flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-cream/70 mb-10"
+            style={{ animationDelay: '0.6s' }}
+          >
+            <span className="inline-flex items-center gap-2">
+              <Clock size={16} className="text-brand-pink" /> {EVENT.openingHours}
+            </span>
+            <AgeBadge size="sm" />
+          </div>
 
           <div className="reveal flex justify-center mb-10" style={{ animationDelay: '0.7s' }}>
             <Countdown target={EVENT.startDate} />
@@ -84,25 +95,25 @@ export default function HomePage() {
                 Vad väntar på mässan?
               </h2>
               <p className="text-cream/60 max-w-2xl mx-auto">
-                Två dagar fyllda av lust, kunskap och livsnjutning – under ett och samma tak.
+                Två kvällar fyllda av lust, spänning och livsnjutning – under ett och samma tak.
               </p>
             </div>
           </Reveal>
 
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                icon: <Heart size={26} />,
+                icon: <Flame size={26} />,
                 title: 'Lust',
                 text: 'Upplev det senaste inom njutning och sensualitet, presenterat med värme och respekt.',
               },
               {
                 icon: <Sparkles size={26} />,
-                title: 'Kunskap',
-                text: 'Föreläsningar och experter som inspirerar, informerar och utmanar tabun.',
+                title: 'Spänning',
+                text: 'Heta scenshower, uppträdanden och upplevelser som kittlar nyfikenheten.',
               },
               {
-                icon: <Users size={26} />,
+                icon: <Star size={26} />,
                 title: 'Livsnjutning',
                 text: 'En öppen och välkomnande mötesplats för alla vuxna – oavsett vem du är.',
               },
@@ -111,6 +122,23 @@ export default function HomePage() {
                 <Highlight icon={h.icon} title={h.title} text={h.text} />
               </Reveal>
             ))}
+
+            {EVENT.guestArtist.name && (
+              <Reveal delay={360} className="h-full">
+                <div className="card-sheen h-full rounded-2xl border border-brand-pink/50 bg-surface-pink p-7 text-center sm:text-left shadow-lg shadow-brand-pink/10">
+                  <div className="h-12 w-12 rounded-xl bg-brand-pink text-white flex items-center justify-center mb-5 mx-auto sm:mx-0">
+                    <Star size={26} />
+                  </div>
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-brand-pink-light font-semibold mb-1">
+                    Mässans gästartist
+                  </p>
+                  <h3 className="font-display text-xl font-bold text-cream mb-2">
+                    {EVENT.guestArtist.name}
+                  </h3>
+                  <p className="text-sm text-cream/70 leading-relaxed">{EVENT.guestArtist.text}</p>
+                </div>
+              </Reveal>
+            )}
           </div>
         </div>
       </section>
@@ -152,14 +180,13 @@ export default function HomePage() {
               href="/boka-artist"
               icon={<Mic2 size={26} />}
               title="Boka artist av oss"
-              text="Boka uppträdande till ditt eget event via Swedishstripp – 10 % rabatt när du nämner oss."
+              text="Vill du boka en av våra artister till ditt eget event? Hör av dig via Instagram."
             />
             <LinkCard
-              href={EVENT.links.instagram}
-              external
-              icon={<InstagramIcon size={26} />}
-              title="Hjälp oss hitta lokal"
-              text="Vill du se mässan i din stad? Tipsa oss om en lokal via sociala medier."
+              href="/utstallare"
+              icon={<Brush size={26} />}
+              title="Tatuering & piercing"
+              text="Erotic & Tattoo – möt tatuerare och studios som tatuerar och piercar på plats hela helgen."
             />
             <LinkCard
               href="/kontakt"
@@ -181,16 +208,22 @@ export default function HomePage() {
               <h3 className="font-display text-2xl font-bold text-cream mb-5">Praktiskt</h3>
               <ul className="space-y-4 text-cream/75">
                 <li className="flex items-center gap-3">
-                  <CalendarDays size={20} className="text-brand-pink" /> {EVENT.dateText}
+                  <CalendarDays size={20} className="text-brand-pink flex-shrink-0" /> {EVENT.dateText}
                 </li>
                 <li className="flex items-center gap-3">
-                  <MapPin size={20} className="text-brand-pink" /> {EVENT.venue}, {EVENT.city}
+                  <Clock size={20} className="text-brand-pink flex-shrink-0" /> {EVENT.openingHours}
                 </li>
                 <li className="flex items-center gap-3">
-                  <Ticket size={20} className="text-brand-pink" />
+                  <MapPin size={20} className="text-brand-pink flex-shrink-0" /> {EVENT.venue}, {EVENT.city}
+                </li>
+                <li className="flex items-center gap-3">
+                  <Ticket size={20} className="text-brand-pink flex-shrink-0" />
                   <a href={EVENT.links.tickets} target="_blank" rel="noopener noreferrer" className="hover:text-brand-pink">
                     Biljetter via Billetto
                   </a>
+                </li>
+                <li className="pt-1">
+                  <AgeBadge />
                 </li>
               </ul>
             </div>
@@ -217,30 +250,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SAMARBETSPARTNERS ──────────────────────────────────────── */}
       <div className="glow-line" aria-hidden="true" />
-      <section className="bg-ink py-14 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto text-center">
-          <Reveal>
-            <p className="text-xs uppercase tracking-[0.22em] text-cream/40 mb-7">
-              Våra samarbetspartners
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
-              {PARTNERS.map((p) => (
-                <a
-                  key={p.name}
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-display text-lg font-bold text-cream/50 hover:text-brand-pink transition-colors"
-                >
-                  {p.name}
-                </a>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
       {/* ── VANLIGA FRÅGOR ─────────────────────────────────────────── */}
       <section className="bg-surface py-20 px-4 sm:px-6 lg:px-8">

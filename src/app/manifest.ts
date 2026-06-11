@@ -9,7 +9,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'Erotikmässan',
     short_name: 'Erotikmässan',
     description:
-      'Erotikmässan 11–12 september 2026 i Ekebo, Munka-Ljungby. Originalet sedan 1996.',
+      'Erotikmässan 11–12 september 2026 i Globen, Stockholm. Originalet sedan 1996.',
     start_url: '/',
     display: 'standalone',
     background_color: '#0B0B0F',

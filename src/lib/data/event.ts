@@ -4,67 +4,62 @@
  *
  * 👉 ALLT SOM JOHAN KAN BEHÖVA ÄNDRA LIGGER HÄR – datum, biljettlänk,
  *    kontaktuppgifter och sociala medier. Inga andra filer behöver röras.
- *
- * Innehållet är hämtat från nuvarande www.erotikmassan.com (Fair Erotica).
  */
 export const EVENT = {
   name: 'Erotikmässan',
   shortName: 'Erotikmässan',
-  /** Varumärkesnamn som används internationellt/socialt. */
+  /** Varumärkesnamn (engelskt/socialt). Sajten heter Fair Erotica / Erotikmässan. */
   brandName: 'Fair Erotica',
-  tagline: 'Lust · Kunskap · Livsnjutning',
-  motto: 'Originalet – Sveriges första och största erotikmässa, sedan 1996',
+  tagline: 'Lust · Spänning · Livsnjutning',
+  motto: 'Originalet – Sveriges första och största erotik- & tattoomässa, sedan 1996',
 
   /** Mässans datum (ISO). Nedräknaren räknar mot startdatumet. */
-  startDate: '2026-09-11T10:00:00+02:00',
-  endDate: '2026-09-12T23:59:00+02:00',
+  startDate: '2026-09-11T18:00:00+02:00',
+  endDate: '2026-09-13T02:00:00+02:00',
   /** Människovänlig datumtext som visas i UI. */
   dateText: '11–12 september 2026',
 
+  /** Öppettider per dag. ❓ Preliminärt enligt Johan, kan uppdateras. */
+  openingHours: 'Fre & lör kl. 18–02',
+
+  /** Plats: masslokal 12 i Globen, Stockholm. */
+  venue: 'Globen, masslokal 12',
+  venueStreet: 'Globentorget 2',
+  venuePostalCode: '121 77',
+  city: 'Stockholm',
+
+  /** Åldersgräns. Visas tydligt på sajten. */
+  minAge: 18,
+
   /**
-   * Plats. Mässan har hållits i Ekebo sedan 2009 (senast våren 2026).
-   * ❓ Bekräfta att septembermässan också är i Ekebo + exakt adress.
+   * Årets gästartist – lyfts fram i en egen ruta på startsidan.
+   * 👉 Byt namn/text här inför varje mässa. Sätt name till '' för att dölja rutan.
+   * ❓ Fröken Snusk är preliminärt bokad.
    */
-  venue: 'Ekebo Nöjescenter',
-  venueStreet: 'Södra Ekebo 4083',
-  venuePostalCode: '266 91',
-  city: 'Munka-Ljungby',
+  guestArtist: {
+    name: 'Fröken Snusk',
+    text: 'Årets stora gästartist intar stora scenen. Håll utkik – mer släpps snart!',
+  },
 
   /** När biljetterna börjar säljas (ISO) – används i strukturerad data. */
   ticketsAvailableFrom: '2026-06-01T00:00:00+02:00',
 
-  /**
-   * Kontakt – mejl som frågeformuläret skickas till.
-   * ❓ Gamla sajten använder Erotikmassan@gmail.com – vill Johan ha kvar den
-   *    eller en adress på egna domänen (t.ex. info@erotikmassan.com)?
-   */
-  email: 'erotikmassan@gmail.com',
+  /** Kontakt – mejl som frågeformuläret skickas till. */
+  email: 'info@erotikmassan.com',
   phone: '+46 70 624 97 57',
   phoneHref: 'tel:+46706249757',
   siteUrl: 'https://www.erotikmassan.com',
 
   /**
    * Externa länkar (allt biljett-/bokningsflöde sker hos tredje part).
-   * ❓ Billetto-länken nedan är till VÅRENS mässa – behöver bytas till
-   *    september-eventets URL när Johan skapat det.
+   * ❓ Billetto: september-eventet är inte upplagt än – byt URL när Johan skapat det.
+   * ❓ bookArtist: Johan ska byta till en egen Instagram-sida för bokning.
    */
   links: {
-    tickets: 'https://billetto.se/e/erotic-event-ekebo-31-3-2023-biljetter-759068',
-    /** Artistbokning sker via samarbetspartnern Swedishstripp (10 % rabatt vid omnämnande av Fair Erotica). */
-    bookArtist: 'https://swedishstripp.com/',
+    tickets: 'https://billetto.se/',
+    bookArtist: 'https://instagram.com/fair_erotic',
     facebook: 'https://www.facebook.com/fairerotica',
     instagram: 'https://instagram.com/fair_erotic',
     youtube: 'https://www.youtube.com/channel/UCS3bTQSd3iYnnzvyGkp1law',
   },
 } as const
-
-/**
- * Samarbetspartners som visas på sajten.
- * 👉 Lägg till/ta bort rader här. Logotyper kan läggas i /public/images/partners/.
- */
-export const PARTNERS: { name: string; url: string }[] = [
-  { name: 'Swedish Stripp', url: 'https://swedishstripp.com/' },
-  { name: 'Svenskstrippförmedling', url: 'https://www.svenskstripp.com/' },
-  { name: 'Chat Noir', url: 'https://www.chatnoir.se/' },
-  { name: 'Club Heartbeat', url: 'http://www.clubheartbeat.se/' },
-]

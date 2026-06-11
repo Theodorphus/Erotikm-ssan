@@ -7,11 +7,11 @@ import { TICKET_TYPES, TICKETS_NOTE } from '@/lib/data/tickets'
 
 export const metadata: Metadata = {
   title: 'Köp biljetter',
-  description: 'Biljetter till Erotikmässan – fredag 250 kr, lördag 300 kr. Förköp via Billetto och slipp köa, eller köp i dörren.',
+  description: 'Biljetter till Erotikmässan – Early Bird 350 kr, Standard 450 kr och Premium VIP 850 kr. Förköp via Billetto och slipp köa, eller köp i dörren.',
   alternates: { canonical: '/biljetter' },
   openGraph: {
     title: 'Köp biljetter | Erotikmässan',
-    description: 'Biljetter till Erotikmässan – fredag 250 kr, lördag 300 kr. Förköp via Billetto och slipp köa, eller köp i dörren.',
+    description: 'Biljetter till Erotikmässan – Early Bird 350 kr, Standard 450 kr och Premium VIP 850 kr. Förköp via Billetto och slipp köa, eller köp i dörren.',
     url: '/biljetter',
   },
 }
@@ -25,9 +25,9 @@ export default function BiljetterPage() {
       />
 
       <section className="bg-ink py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
           {TICKET_TYPES.map((ticket, i) => (
-            <Reveal key={ticket.name} delay={i * 100}>
+            <Reveal key={ticket.name} delay={i * 100} className="h-full">
               <div
                 className={`relative h-full flex flex-col rounded-2xl border p-8 transition-all duration-300 ${
                   ticket.featured
@@ -40,7 +40,14 @@ export default function BiljetterPage() {
                     Populärast
                   </span>
                 )}
-                <h2 className="font-display text-2xl font-bold text-cream mb-1">{ticket.name}</h2>
+                <div className="flex items-center justify-between gap-2 mb-1">
+                  <h2 className="font-display text-2xl font-bold text-cream">{ticket.name}</h2>
+                  {ticket.badge && (
+                    <span className="text-[11px] font-semibold uppercase tracking-wide text-brand-pink-light bg-brand-pink/10 border border-brand-pink/30 px-2 py-0.5 rounded-full whitespace-nowrap">
+                      {ticket.badge}
+                    </span>
+                  )}
+                </div>
                 <p className="text-sm text-cream/60 mb-5">{ticket.description}</p>
                 <div className="mb-6">
                   {ticket.price !== null ? (

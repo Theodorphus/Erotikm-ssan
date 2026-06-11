@@ -2,10 +2,11 @@
  * Biljettyperna som presenteras på /biljetter.
  * Själva köpet sker hos Billetto – knappen länkar dit (EVENT.links.tickets).
  *
- * Priserna är hämtade från nuvarande www.erotikmassan.com (vårens mässa).
- * ❓ Bekräfta med Johan: gäller samma priser i september? Finns helg-/VIP-biljett?
- *
  * 👉 Ändra pris/förmåner här. Sätt featured: true på den biljett som ska lyftas fram.
+ *    Sätt limited till ett antal för att visa "begränsat antal"-etikett.
+ *
+ * ❓ Billetto-länken är ännu inte upplagd för september – biljettknapparna
+ *    pekar tills vidare till Billettos startsida.
  */
 export interface TicketType {
   name: string
@@ -17,20 +18,36 @@ export interface TicketType {
   perks: string[]
   /** Markera den biljett som ska framhävas visuellt. */
   featured?: boolean
+  /** Valfri etikett, t.ex. "Begränsat antal" eller "400 st". */
+  badge?: string
 }
 
 export const TICKET_TYPES: TicketType[] = [
   {
-    name: 'Fredagsbiljett',
-    price: 250,
-    description: 'Entré till mässan under fredagen.',
-    perks: ['Entré fredag', 'Alla utställare', 'Scenshower & uppträdanden'],
+    name: 'Early Bird',
+    price: 350,
+    description: 'Förköpspriset för dig som är snabb – begränsat antal.',
+    perks: ['Entré till mässan', 'Alla utställare', 'Scenshower & uppträdanden'],
+    badge: 'Endast 400 st',
   },
   {
-    name: 'Lördagsbiljett',
-    price: 300,
-    description: 'Entré till mässan under lördagen – kvällens stora shower.',
-    perks: ['Entré lördag', 'Alla utställare', 'Scenshower & uppträdanden', 'Huvudakt på stora scenen'],
+    name: 'Standard',
+    price: 450,
+    description: 'Ordinarie entrébiljett till mässan.',
+    perks: ['Entré till mässan', 'Alla utställare', 'Scenshower & uppträdanden'],
+  },
+  {
+    name: 'Premium VIP',
+    price: 850,
+    description: 'Det lilla extra – för dig som vill njuta av kvällen fullt ut.',
+    perks: [
+      'Allt i Standard',
+      'Välkomstglas bubbel',
+      'Goodiebag',
+      'Tillgång till VIP-avdelningen',
+      'Egen servitris',
+      'Inhägnat område vid stora scenen',
+    ],
     featured: true,
   },
 ]
