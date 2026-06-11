@@ -1,0 +1,53 @@
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Claude Code local settings
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated images (output-mappen ignoreras, men public-bilder spåras)
+output/
+!public/**/*.png
+!public/**/*.jpg
+!public/**/*.jpeg
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+
+# Logs
+logs/
+*.log
+
+# Misc
+.cache/
+.turbo/
+
+# Granskningsskript (scripts/audit.mjs) skriver hit
+audit-shots/

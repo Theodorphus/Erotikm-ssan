@@ -1,0 +1,63 @@
+<svg width="320" height="340" viewBox="0 0 320 340" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Löneugglan – maskot (platshållare)">
+  <defs>
+    <linearGradient id="body" x1="60" y1="80" x2="260" y2="320" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8B6B3E"/>
+      <stop offset="1" stop-color="#5E4527"/>
+    </linearGradient>
+    <linearGradient id="belly" x1="160" y1="150" x2="160" y2="300" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E9DFC8"/>
+      <stop offset="1" stop-color="#CBB98E"/>
+    </linearGradient>
+    <linearGradient id="crown" x1="120" y1="20" x2="200" y2="70" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E2C572"/>
+      <stop offset="1" stop-color="#B89B5E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- subtle shadow -->
+  <ellipse cx="160" cy="318" rx="92" ry="14" fill="#2C4733" opacity="0.12"/>
+
+  <!-- crown -->
+  <path d="M118 60 L118 34 L138 50 L160 26 L182 50 L202 34 L202 60 Z" fill="url(#crown)" stroke="#9C8043" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="118" cy="32" r="5" fill="#3A5A40"/>
+  <circle cx="160" cy="24" r="5" fill="#3A5A40"/>
+  <circle cx="202" cy="32" r="5" fill="#3A5A40"/>
+
+  <!-- ear tufts -->
+  <path d="M96 96 Q86 70 108 78 Z" fill="#5E4527"/>
+  <path d="M224 96 Q234 70 212 78 Z" fill="#5E4527"/>
+
+  <!-- body -->
+  <path d="M160 70 C100 70 70 120 70 185 C70 260 110 312 160 312 C210 312 250 260 250 185 C250 120 220 70 160 70 Z" fill="url(#body)"/>
+
+  <!-- wings -->
+  <path d="M78 170 C66 210 70 260 96 292 C92 250 92 210 100 178 Z" fill="#4A371F"/>
+  <path d="M242 170 C254 210 250 260 224 292 C228 250 228 210 220 178 Z" fill="#4A371F"/>
+
+  <!-- belly -->
+  <path d="M160 150 C122 150 104 188 104 230 C104 278 130 304 160 304 C190 304 216 278 216 230 C216 188 198 150 160 150 Z" fill="url(#belly)"/>
+
+  <!-- facial disc -->
+  <ellipse cx="124" cy="138" rx="40" ry="44" fill="#EFE7D2"/>
+  <ellipse cx="196" cy="138" rx="40" ry="44" fill="#EFE7D2"/>
+
+  <!-- eyes -->
+  <circle cx="124" cy="140" r="30" fill="#fff" stroke="#B89B5E" stroke-width="3"/>
+  <circle cx="196" cy="140" r="30" fill="#fff" stroke="#B89B5E" stroke-width="3"/>
+  <circle cx="128" cy="142" r="15" fill="#2C4733"/>
+  <circle cx="192" cy="142" r="15" fill="#2C4733"/>
+  <circle cx="133" cy="137" r="5" fill="#fff"/>
+  <circle cx="197" cy="137" r="5" fill="#fff"/>
+
+  <!-- beak -->
+  <path d="M160 158 L150 176 L170 176 Z" fill="#C98A2E"/>
+
+  <!-- feet -->
+  <path d="M138 304 l-6 12 m6 -12 l0 12 m0 -12 l6 12" stroke="#C98A2E" stroke-width="4" stroke-linecap="round"/>
+  <path d="M182 304 l-6 12 m6 -12 l0 12 m0 -12 l6 12" stroke="#C98A2E" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- little laptop -->
+  <rect x="120" y="244" width="80" height="48" rx="5" fill="#2C4733"/>
+  <rect x="126" y="250" width="68" height="36" rx="3" fill="#8FAE8B"/>
+  <path d="M112 292 h96 l-8 8 h-80 Z" fill="#24412C"/>
+</svg>
