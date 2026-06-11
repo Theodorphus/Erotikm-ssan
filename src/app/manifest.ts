@@ -14,12 +14,8 @@ export default function manifest(): MetadataRoute.Manifest {
     display: 'standalone',
     background_color: '#0B0B0F',
     theme_color: '#E11D74',
-    icons: [
-      {
-        src: '/icon.png',
-        sizes: '512x512',
-        type: 'image/png',
-      },
-    ],
+    // ❓ Ikoner läggs till när Johans logotyp kommit – lägg filen som
+    //    src/app/icon.png så plockas den upp automatiskt som favicon.
+    icons: [],
   }
 }
