@@ -70,8 +70,11 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Rosa neon-övergång från heron till innehållet */}
+      <div className="glow-line" aria-hidden="true" />
+
       {/* ── VAD KAN DU FÖRVÄNTA DIG ────────────────────────────────── */}
-      <section className="bg-ink border-y border-white/10 py-20 px-4 sm:px-6 lg:px-8">
+      <section className="bg-ink border-b border-white/10 py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <Reveal>
             <div className="text-center mb-12">
