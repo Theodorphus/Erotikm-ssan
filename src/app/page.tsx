@@ -12,7 +12,9 @@ export default function HomePage() {
     <>
       {/* ── HERO med nedräknare + biljettknapp ─────────────────────── */}
       <section className="mesh-forest grain relative overflow-hidden text-cream">
-        {/* Hero-bild: fade-in + slow zoom vid laddning, mjuk parallax vid scroll */}
+        {/* Hero-bild: fade-in + slow zoom vid laddning, mjuk parallax vid scroll.
+            Motivet (dansösen) ligger i bildens högra tredjedel, så på smala
+            mobilskärmar fokuserar vi åt höger (object-[78%]); på sm+ centreras den. */}
         <div className="hero-parallax absolute inset-x-0 -top-[18%] bottom-0" aria-hidden="true">
           <Image
             src="/images/hero.png"
@@ -20,7 +22,7 @@ export default function HomePage() {
             fill
             priority
             sizes="100vw"
-            className="hero-zoom object-cover object-center"
+            className="hero-zoom object-cover object-[78%_center] sm:object-center"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 to-ink/85" aria-hidden="true" />
