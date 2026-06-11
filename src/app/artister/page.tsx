@@ -8,6 +8,12 @@ import { ARTISTS } from '@/lib/data/artists'
 export const metadata: Metadata = {
   title: 'Våra artister',
   description: 'Möt artisterna och föreläsarna som finns på plats under Erotikmässan.',
+  alternates: { canonical: '/artister' },
+  openGraph: {
+    title: 'Våra artister | Erotikmässan',
+    description: 'Möt artisterna och föreläsarna som finns på plats under Erotikmässan.',
+    url: '/artister',
+  },
 }
 
 export default function ArtisterPage() {

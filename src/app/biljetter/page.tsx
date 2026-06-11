@@ -3,11 +3,17 @@ import { Ticket, Check } from 'lucide-react'
 import { PageHero } from '@/components/layout/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
 import { EVENT } from '@/lib/data/event'
-import { TICKET_TYPES } from '@/lib/data/tickets'
+import { TICKET_TYPES, TICKETS_NOTE } from '@/lib/data/tickets'
 
 export const metadata: Metadata = {
   title: 'Köp biljetter',
-  description: 'Tre biljettyper till Erotikmässan – välj den som passar dig. Köpet sker tryggt via Billetto.',
+  description: 'Biljetter till Erotikmässan – fredag 250 kr, lördag 300 kr. Förköp via Billetto och slipp köa, eller köp i dörren.',
+  alternates: { canonical: '/biljetter' },
+  openGraph: {
+    title: 'Köp biljetter | Erotikmässan',
+    description: 'Biljetter till Erotikmässan – fredag 250 kr, lördag 300 kr. Förköp via Billetto och slipp köa, eller köp i dörren.',
+    url: '/biljetter',
+  },
 }
 
 export default function BiljetterPage() {
@@ -19,7 +25,7 @@ export default function BiljetterPage() {
       />
 
       <section className="bg-ink py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
           {TICKET_TYPES.map((ticket, i) => (
             <Reveal key={ticket.name} delay={i * 100}>
               <div
@@ -73,9 +79,8 @@ export default function BiljetterPage() {
           ))}
         </div>
 
-        <p className="text-center text-cream/50 text-sm mt-10 max-w-xl mx-auto">
-          Köp och betalning hanteras av Billetto. Du skickas vidare till deras säkra sida när du
-          klickar på ”Köp”.
+        <p className="text-center text-cream/60 text-sm mt-10 max-w-xl mx-auto">
+          {TICKETS_NOTE}
         </p>
       </section>
     </>

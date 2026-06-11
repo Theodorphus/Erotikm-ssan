@@ -29,8 +29,11 @@ export function Countdown({ target }: { target: string }) {
   const [time, setTime] = useState<TimeLeft | null>(null)
 
   useEffect(() => {
-    setTime(diff(targetMs))
-    const id = setInterval(() => setTime(diff(targetMs)), 1000)
+    // Synkroniserar mot en extern klocka: tick varje sekund. Första värdet
+    // sätts direkt så nedräknaren visas utan en sekunds fördröjning.
+    const update = () => setTime(diff(targetMs))
+    update()
+    const id = setInterval(update, 1000)
     return () => clearInterval(id)
   }, [targetMs])
 

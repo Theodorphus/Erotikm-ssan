@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import { Ticket, Mic2, Store, MapPin, CalendarDays, ArrowRight } from 'lucide-react'
-import { FacebookIcon, InstagramIcon, TikTokIcon } from '@/components/ui/SocialIcons'
-import { EVENT } from '@/lib/data/event'
+import { Ticket, Mic2, Store, MapPin, CalendarDays, ArrowRight, Sparkles, Heart, Users } from 'lucide-react'
+import { FacebookIcon, InstagramIcon, YouTubeIcon } from '@/components/ui/SocialIcons'
+import { EVENT, PARTNERS } from '@/lib/data/event'
 import { Countdown } from '@/components/event/Countdown'
-import { VisitorCounter } from '@/components/event/VisitorCounter'
+import { Faq } from '@/components/event/Faq'
 import { Reveal } from '@/components/ui/Reveal'
 
 export default function HomePage() {
@@ -46,11 +46,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── BESÖKARRÄKNARE ─────────────────────────────────────────── */}
-      <section className="bg-ink border-y border-white/10 py-14 px-4">
-        <Reveal>
-          <VisitorCounter total={EVENT.visitorsTotal} label={EVENT.visitorsLabel} />
-        </Reveal>
+      {/* ── VAD KAN DU FÖRVÄNTA DIG ────────────────────────────────── */}
+      <section className="bg-ink border-y border-white/10 py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <Reveal>
+            <div className="text-center mb-12">
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-cream mb-3">
+                Vad väntar på mässan?
+              </h2>
+              <p className="text-cream/60 max-w-2xl mx-auto">
+                Två dagar fyllda av lust, kunskap och livsnjutning – under ett och samma tak.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid sm:grid-cols-3 gap-6">
+            <Highlight
+              icon={<Heart size={26} />}
+              title="Lust"
+              text="Upplev det senaste inom njutning och sensualitet, presenterat med värme och respekt."
+            />
+            <Highlight
+              icon={<Sparkles size={26} />}
+              title="Kunskap"
+              text="Föreläsningar och experter som inspirerar, informerar och utmanar tabun."
+            />
+            <Highlight
+              icon={<Users size={26} />}
+              title="Livsnjutning"
+              text="En öppen och välkomnande mötesplats för alla vuxna – oavsett vem du är."
+            />
+          </div>
+        </div>
       </section>
 
       {/* ── INFO / SNABBLÄNKAR (punkt 5 på hem) ───────────────────── */}
@@ -72,7 +99,7 @@ export default function HomePage() {
               href="/biljetter"
               icon={<Ticket size={26} />}
               title="Köp biljetter"
-              text="Tre biljettyper – välj den som passar dig. Köpet sker tryggt via Billetto."
+              text="Förköp via Billetto och slipp köa – eller köp biljett i dörren."
             />
             <LinkCard
               href="/artister"
@@ -90,7 +117,7 @@ export default function HomePage() {
               href="/boka-artist"
               icon={<Mic2 size={26} />}
               title="Boka artist av oss"
-              text="Vill du boka en av våra artister? Hör av dig via vårt Instagram-konto."
+              text="Boka uppträdande till ditt eget event via Swedishstripp – 10 % rabatt när du nämner oss."
             />
             <LinkCard
               href={EVENT.links.instagram}
@@ -144,15 +171,82 @@ export default function HomePage() {
                 <SocialButton href={EVENT.links.instagram} label="Instagram">
                   <InstagramIcon size={20} />
                 </SocialButton>
-                <SocialButton href={EVENT.links.tiktok} label="TikTok">
-                  <TikTokIcon size={20} />
+                <SocialButton href={EVENT.links.youtube} label="YouTube">
+                  <YouTubeIcon size={20} />
                 </SocialButton>
               </div>
             </div>
           </Reveal>
         </div>
       </section>
+
+      {/* ── SAMARBETSPARTNERS ──────────────────────────────────────── */}
+      <section className="bg-ink border-y border-white/10 py-14 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto text-center">
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.22em] text-cream/40 mb-7">
+              Våra samarbetspartners
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
+              {PARTNERS.map((p) => (
+                <a
+                  key={p.name}
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-display text-lg font-bold text-cream/50 hover:text-brand-pink transition-colors"
+                >
+                  {p.name}
+                </a>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── VANLIGA FRÅGOR ─────────────────────────────────────────── */}
+      <section className="bg-surface py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <Reveal>
+            <div className="text-center mb-10">
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-cream mb-3">
+                Vanliga frågor
+              </h2>
+              <p className="text-cream/60 max-w-xl mx-auto">
+                Det vanligaste du undrar inför besöket. Hittar du inte svaret?{' '}
+                <Link href="/kontakt" className="text-brand-pink hover:text-brand-pink-light font-semibold">
+                  Hör av dig
+                </Link>
+                .
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <Faq />
+          </Reveal>
+        </div>
+      </section>
     </>
+  )
+}
+
+function Highlight({
+  icon,
+  title,
+  text,
+}: {
+  icon: React.ReactNode
+  title: string
+  text: string
+}) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-ink-mid p-7 text-center sm:text-left">
+      <div className="h-12 w-12 rounded-xl bg-brand-pink/15 text-brand-pink flex items-center justify-center mb-5 mx-auto sm:mx-0">
+        {icon}
+      </div>
+      <h3 className="font-display text-xl font-bold text-cream mb-2">{title}</h3>
+      <p className="text-sm text-cream/60 leading-relaxed">{text}</p>
+    </div>
   )
 }
 

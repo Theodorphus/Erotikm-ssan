@@ -31,7 +31,8 @@ const playfair = Playfair_Display({
 /**
  * ROOT LAYOUT METADATA
  *
- * Global SEO-konfiguration för Wildkull Payroll AB
+ * Global SEO-konfiguration för Erotikmässan. Sidspecifik metadata sätts
+ * i respektive page.tsx och ärver/överlagrar detta.
  */
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
   || 'https://www.erotikmassan.com'
@@ -44,16 +45,20 @@ export const metadata: Metadata = {
     template: '%s | Erotikmässan',
   },
   description:
-    'Erotikmässan 11–12 september 2026 i Globen, Stockholm. Möt artister och utställare, gå på föreläsningar och köp din biljett. Lust, kunskap och livsnjutning.',
+    'Erotikmässan 11–12 september 2026 i Ekebo, Munka-Ljungby. Originalet – Sveriges första och största erotikmässa sedan 1996. Scenshower, utställare, tatuering och biljetter.',
+
+  alternates: { canonical: '/' },
 
   keywords: [
     'erotikmässan',
     'erotikmässa',
-    'mässa Globen',
+    'fair erotica',
+    'mässa Ekebo',
+    'Munka-Ljungby mässa',
     'sexualitet',
     'biljetter erotikmässan',
     'utställare erotikmässan',
-    'Stockholm mässa',
+    'erotik och tattoo',
   ],
 
   authors: [{ name: 'Erotikmässan' }],
@@ -66,7 +71,7 @@ export const metadata: Metadata = {
     siteName: 'Erotikmässan',
     title: 'Erotikmässan | Lust · Kunskap · Livsnjutning',
     description:
-      'Erotikmässan 11–12 september 2026 i Globen, Stockholm. Artister, utställare, föreläsningar och biljetter.',
+      'Erotikmässan 11–12 september 2026 i Ekebo, Munka-Ljungby. Originalet sedan 1996 – artister, utställare, scenshower och biljetter.',
     images: [
       {
         url: '/images/og/erotikmassan-og.png',
@@ -81,7 +86,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Erotikmässan | Lust · Kunskap · Livsnjutning',
     description:
-      'Erotikmässan 11–12 september 2026 i Globen, Stockholm. Artister, utställare och biljetter.',
+      'Erotikmässan 11–12 september 2026 i Ekebo, Munka-Ljungby. Originalet sedan 1996 – artister, utställare och biljetter.',
     images: ['/images/og/erotikmassan-og.png'],
   },
 
@@ -105,6 +110,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
+  themeColor: '#0B0B0F',
 }
 
 export default function RootLayout({

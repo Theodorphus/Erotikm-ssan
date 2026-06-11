@@ -8,6 +8,12 @@ import { EXHIBITORS } from '@/lib/data/exhibitors'
 export const metadata: Metadata = {
   title: 'Våra utställare',
   description: 'Upptäck utställarna som visar upp det senaste inom lust och livsnjutning på Erotikmässan.',
+  alternates: { canonical: '/utstallare' },
+  openGraph: {
+    title: 'Våra utställare | Erotikmässan',
+    description: 'Upptäck utställarna som visar upp det senaste inom lust och livsnjutning på Erotikmässan.',
+    url: '/utstallare',
+  },
 }
 
 export default function UtstallarePage() {

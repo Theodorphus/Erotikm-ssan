@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { MAIN_NAV } from '@/lib/data/navigation'
 import { EVENT } from '@/lib/data/event'
 import { MobileMenu } from './MobileMenu'
@@ -9,6 +10,7 @@ import { MobileMenu } from './MobileMenu'
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10)
@@ -37,15 +39,24 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-2">
-          {MAIN_NAV.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-cream/80 hover:text-cream hover:bg-white/5 px-3 py-1.5 rounded-md transition-colors text-sm"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {MAIN_NAV.map((item) => {
+            const isActive =
+              item.href === '/' ? pathname === '/' : pathname.startsWith(item.href)
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={isActive ? 'page' : undefined}
+                className={`px-3 py-1.5 rounded-md transition-colors text-sm ${
+                  isActive
+                    ? 'text-brand-pink-light bg-brand-pink/10 font-semibold'
+                    : 'text-cream/80 hover:text-cream hover:bg-white/5'
+                }`}
+              >
+                {item.label}
+              </Link>
+            )
+          })}
         </div>
 
         {/* CTA - Desktop */}

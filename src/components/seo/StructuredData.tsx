@@ -1,7 +1,25 @@
 import { EVENT } from '@/lib/data/event'
+import { TICKET_TYPES } from '@/lib/data/tickets'
+import { FAQ_ITEMS } from '@/lib/data/faq'
 
+/**
+ * JSON-LD strukturerad data för Google. Två scheman:
+ *  • Event – så mässan kan visas som ett evenemang i sökresultaten (datum,
+ *    plats, biljettpriser).
+ *  • FAQPage – ger chans till "rich results" med utfällbara frågor.
+ */
 export function StructuredData() {
-  const schema = {
+  const ticketOffers = TICKET_TYPES.filter((t) => t.price !== null).map((t) => ({
+    '@type': 'Offer',
+    name: t.name,
+    price: t.price,
+    priceCurrency: 'SEK',
+    url: EVENT.links.tickets,
+    availability: 'https://schema.org/InStock',
+    validFrom: EVENT.ticketsAvailableFrom,
+  }))
+
+  const eventSchema = {
     '@context': 'https://schema.org',
     '@type': 'Event',
     name: EVENT.name,
@@ -17,6 +35,8 @@ export function StructuredData() {
       name: EVENT.venue,
       address: {
         '@type': 'PostalAddress',
+        streetAddress: EVENT.venueStreet,
+        postalCode: EVENT.venuePostalCode,
         addressLocality: EVENT.city,
         addressCountry: 'SE',
       },
@@ -27,17 +47,33 @@ export function StructuredData() {
       url: EVENT.siteUrl,
       email: EVENT.email,
     },
-    offers: {
+    offers: ticketOffers.length > 0 ? ticketOffers : {
       '@type': 'Offer',
       url: EVENT.links.tickets,
       availability: 'https://schema.org/InStock',
     },
   }
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQ_ITEMS.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  }
+
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+    </>
   )
 }

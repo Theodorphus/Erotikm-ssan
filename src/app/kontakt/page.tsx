@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Mail, MapPin, CalendarDays, Store, Briefcase } from 'lucide-react'
+import { Mail, MapPin, CalendarDays, Store, Briefcase, Phone } from 'lucide-react'
 import { PageHero } from '@/components/layout/PageHero'
 import { KontaktForm } from './KontaktForm'
 import { EVENT } from '@/lib/data/event'
@@ -28,6 +28,12 @@ export default function KontaktPage() {
             <InfoCard icon={<Mail size={20} />} title="E-post">
               <a href={`mailto:${EVENT.email}`} className="text-brand-pink hover:text-brand-pink-light break-all">
                 {EVENT.email}
+              </a>
+            </InfoCard>
+
+            <InfoCard icon={<Phone size={20} />} title="Telefon">
+              <a href={EVENT.phoneHref} className="text-brand-pink hover:text-brand-pink-light">
+                {EVENT.phone}
               </a>
             </InfoCard>
 

@@ -1,8 +1,11 @@
 /**
- * De tre biljettyperna som presenteras på /biljetter.
+ * Biljettyperna som presenteras på /biljetter.
  * Själva köpet sker hos Billetto – knappen länkar dit (EVENT.links.tickets).
  *
- * ❓ Priser och förmåner är platshållare tills Johan bekräftar dem.
+ * Priserna är hämtade från nuvarande www.erotikmassan.com (vårens mässa).
+ * ❓ Bekräfta med Johan: gäller samma priser i september? Finns helg-/VIP-biljett?
+ *
+ * 👉 Ändra pris/förmåner här. Sätt featured: true på den biljett som ska lyftas fram.
  */
 export interface TicketType {
   name: string
@@ -18,22 +21,20 @@ export interface TicketType {
 
 export const TICKET_TYPES: TicketType[] = [
   {
-    name: 'Entrébiljett',
-    price: 295,
-    description: 'Tillträde till mässan en av dagarna.',
-    perks: ['Entré en dag', 'Tillgång till alla utställare', 'Scenprogram'],
+    name: 'Fredagsbiljett',
+    price: 250,
+    description: 'Entré till mässan under fredagen.',
+    perks: ['Entré fredag', 'Alla utställare', 'Scenshower & uppträdanden'],
   },
   {
-    name: 'Helgbiljett',
-    price: 450,
-    description: 'Tillträde båda mässdagarna.',
-    perks: ['Entré båda dagarna', 'Tillgång till alla utställare', 'Scenprogram', 'Återinträde'],
+    name: 'Lördagsbiljett',
+    price: 300,
+    description: 'Entré till mässan under lördagen – kvällens stora shower.',
+    perks: ['Entré lördag', 'Alla utställare', 'Scenshower & uppträdanden', 'Huvudakt på stora scenen'],
     featured: true,
   },
-  {
-    name: 'VIP-biljett',
-    price: 795,
-    description: 'Det lilla extra – för dig som vill ha förtur och förmåner.',
-    perks: ['Entré båda dagarna', 'Förtur till föreläsningar', 'VIP-lounge', 'Goodiebag'],
-  },
 ]
+
+/** Informationsrad som visas under biljettkorten. */
+export const TICKETS_NOTE =
+  'Förköp – slipp köa! Vi säljer alltid biljetter i dörren också. Köp och betalning online hanteras tryggt av Billetto.'

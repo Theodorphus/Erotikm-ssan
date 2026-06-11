@@ -7,15 +7,31 @@ import { EVENT } from '@/lib/data/event'
 
 export const metadata: Metadata = {
   title: 'Om oss',
-  description: 'Historien bakom Erotikmässan och material från tidigare mässor.',
+  description: 'Originalet sedan 1996 – historien bakom Sveriges första och största erotikmässa, från Vasahallen i Stockholm till Ekebo.',
+  alternates: { canonical: '/om-oss' },
+  openGraph: {
+    title: 'Om oss | Erotikmässan',
+    description: 'Originalet sedan 1996 – historien bakom Sveriges första och största erotikmässa, från Vasahallen i Stockholm till Ekebo.',
+    url: '/om-oss',
+  },
 }
 
 /**
- * ❓ Historik-texten är platshållare tills Johan skickar sitt eget material.
- *    Bilder från tidigare mässor läggs i /public/images/historia/.
+ * Historiken är hämtad från nuvarande www.erotikmassan.com.
+ * ❓ Be Johan om originalbilder från tidigare mässor (gamla sajten har galleri
+ *    från Ekebo 2024, Ekebo 2018 och Stockholm 2017).
+ *    Bilder läggs i /public/images/historia/.
  */
 const PAST_GALLERY: { src: string; alt: string }[] = [
-  // { src: '/images/historia/2024-1.jpg', alt: 'Erotikmässan 2024' },
+  // { src: '/images/historia/ekebo-2024-1.jpg', alt: 'Erotikmässan Ekebo 2024' },
+]
+
+/** Milstolpar som visas som tidslinje. 👉 Redigera fritt. */
+const TIMELINE: { year: string; text: string }[] = [
+  { year: '1996', text: 'Sveriges första erotikmässa arrangeras i Vasahallen på Djurgården i Stockholm – originalet är fött.' },
+  { year: '2000-talet', text: 'Mässan växer och turnerar landet runt: Malmö, Karlstad, Göteborg, Luleå, Falun och Linköping.' },
+  { year: '2009', text: 'Ekebo i Munka-Ljungby blir mässans hemmaplan – och har varit det sedan dess.' },
+  { year: 'Idag', text: 'Originalet och Sveriges största erotikmässa, med scenshower, utställare, tatuering och mycket mer.' },
 ]
 
 export default function OmOssPage() {
@@ -33,17 +49,31 @@ export default function OmOssPage() {
             <h2 className="font-display text-3xl font-bold text-cream mb-5">Vår historia</h2>
             <div className="space-y-4 text-cream/75 leading-relaxed">
               <p>
-                {EVENT.name} har under många år samlat besökare, artister och utställare kring en
-                sund och njutningsfull syn på sexualitet. Med nya ägare tar mässan nu ett nytt steg –
-                samma värme och nyfikenhet, men med ett friskt uttryck för en ny tid.
+                Vi är pionjärerna som startade den första erotikmässan i Sverige. {EVENT.name} är{' '}
+                <strong className="text-cream">originalet</strong> – och Sveriges största
+                erotikmässa. Allt började 1996 i Vasahallen på Djurgården i Stockholm, och sedan
+                dess har mässan turnerat genom hela landet innan den hittade sin hemmaplan i Ekebo.
               </p>
               <p>
-                {/* ❓ Ersätt med Johans egen text om mässans bakgrund och vision. */}
-                Vår vision är att skapa en trygg och inspirerande mötesplats där lust, kunskap och
-                livsnjutning står i centrum. Här möts experter, varumärken och besökare för
-                upplevelser, samtal och nya upptäckter.
+                På mässan möts besökare, artister och utställare kring en sund och njutningsfull
+                syn på sexualitet: scenshower, stripp, erotiska produkter, tatuering och piercing,
+                skönhetsvård, stripptävlingar, speed-dating – och god mat och dryck. En trygg,
+                öppen och välkomnande upplevelse för alla vuxna.
               </p>
             </div>
+
+            {/* Tidslinje */}
+            <ol className="mt-10 relative border-l border-brand-pink/30 pl-6 space-y-7">
+              {TIMELINE.map((t) => (
+                <li key={t.year} className="relative">
+                  <span className="absolute -left-[31px] top-1.5 h-2.5 w-2.5 rounded-full bg-brand-pink shadow-[0_0_12px_rgba(225,29,116,0.8)]" />
+                  <div className="font-display text-brand-pink-light font-bold text-sm uppercase tracking-wider mb-1">
+                    {t.year}
+                  </div>
+                  <p className="text-cream/70 text-sm leading-relaxed">{t.text}</p>
+                </li>
+              ))}
+            </ol>
           </Reveal>
 
           {/* Värdeord */}
@@ -89,7 +119,8 @@ export default function OmOssPage() {
             </div>
           ) : (
             <div className="rounded-2xl border border-dashed border-white/15 bg-ink/40 p-10 text-center text-cream/50">
-              Bildgalleri från tidigare mässor läggs upp här när materialet är klart.
+              Bildgalleri från Ekebo 2024, Ekebo 2018 och Stockholm 2017 läggs upp här när
+              materialet är på plats.
             </div>
           )}
         </div>
