@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Ticket, Mic2, Store, MapPin, CalendarDays, ArrowRight, Sparkles, Heart, Users } from 'lucide-react'
 import { FacebookIcon, InstagramIcon, YouTubeIcon } from '@/components/ui/SocialIcons'
 import { EVENT, PARTNERS } from '@/lib/data/event'
@@ -11,6 +12,17 @@ export default function HomePage() {
     <>
       {/* ── HERO med nedräknare + biljettknapp ─────────────────────── */}
       <section className="mesh-forest grain relative overflow-hidden text-cream">
+        {/* Hero-bild med mörk overlay för textläsbarhet */}
+        <Image
+          src="/images/hero.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 to-ink/85" aria-hidden="true" />
+
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 text-center">
           <p className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.22em] text-brand-pink-light mb-6">
             <CalendarDays size={16} /> {EVENT.dateText}
