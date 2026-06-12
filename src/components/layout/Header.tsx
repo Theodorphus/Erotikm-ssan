@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { MAIN_NAV } from '@/lib/data/navigation'
@@ -28,13 +29,18 @@ export function Header() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-18">
         {/* Logo */}
-        <Link href="/" className="group flex flex-col leading-none">
-          <span className="font-display font-extrabold tracking-tight text-cream text-[18px] sm:text-[20px]">
-            {EVENT.name}
-          </span>
-          <span className="hidden sm:block text-[10px] text-brand-pink-light font-semibold tracking-[0.22em] uppercase mt-1">
-            {EVENT.tagline}
-          </span>
+        <Link href="/" className="group flex items-center" aria-label={`${EVENT.brandName} – startsida`}>
+          <Image
+            src="/images/logo.png"
+            alt={EVENT.brandName}
+            width={1062}
+            height={163}
+            priority
+            // Explicit höjd via style: globals.css har en global `img { height: auto }`
+            // (samma specificitet som Tailwinds h-*) som annars överrider klassen.
+            className="w-auto"
+            style={{ height: 24 }}
+          />
         </Link>
 
         {/* Desktop Navigation */}

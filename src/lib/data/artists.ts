@@ -32,6 +32,7 @@ export const ARTISTS: Artist[] = [
     name: 'Aline',
     role: 'Dansare',
     bio: 'Mässans äkta ginger! Med fart och fläkt sätter hon igång publiken med sin show. Aline uppträder till vardags på Chat Noir i Göteborg, Dreams Bar i Trondheim och via Svensk Stripp.',
+    image: '/images/artists/aline.png',
     link: 'https://www.instagram.com/evolution.aline',
   },
   {
@@ -39,6 +40,7 @@ export const ARTISTS: Artist[] = [
     name: 'Cassie',
     role: 'Artist',
     bio: 'Erotikmässans nya tillskott och självklara stjärna. Med en skönhet som få och ett fängslande uttryck med rötter från Mellanöstern kliver hon fram som en kraft att räkna med. 3,5 år i branschen med uppträdanden på klubbar i Sverige, Köpenhamn och Prag.',
+    image: '/images/artists/cassie.png',
     link: 'https://www.instagram.com/cassi_noir',
   },
   {
@@ -46,6 +48,7 @@ export const ARTISTS: Artist[] = [
     name: 'Angela Jonasson',
     role: 'Dansare',
     bio: 'Fräck. Sensuell. Oemotståndlig. Hon rör sig över scenen med en självklar grace och en energi som går rakt igenom publiken – och hon twerkar som ingen annan.',
+    image: '/images/artists/angela-jonasson.png',
     link: 'https://www.instagram.com/angela_jonasson777',
   },
   {
@@ -53,6 +56,7 @@ export const ARTISTS: Artist[] = [
     name: 'Dominic Black',
     role: 'Dansare',
     bio: 'Internationell erotisk dansare med över 11 år av uppträdanden världen över – Lettland, Frankrike, Amsterdam, Spanien, Belgien, Finland, Norge, Rumänien med flera. Ursprungligen från Portugal, numera baserad i Storbritannien. Även modell och personlig tränare.',
+    image: '/images/artists/dominic-black.png',
     link: 'https://www.instagram.com/dominicblackstripper',
   },
   {
@@ -60,6 +64,7 @@ export const ARTISTS: Artist[] = [
     name: 'Seven',
     role: 'Dansare',
     bio: 'Vår egen Lucky Number Seven! Vår mörka skönhet som garanterat imponerar på alla. Med erfarenhet från USA bjuder hon på poledans och moves utöver det vanliga.',
+    image: '/images/artists/seven.png',
     link: 'https://www.instagram.com/rebel4this',
   },
   {
@@ -67,6 +72,7 @@ export const ARTISTS: Artist[] = [
     name: 'Melody',
     role: 'Artist',
     bio: 'Melody har arbetat som artist i över 4–5 år och uppträtt på klubbar runt om i Sverige samt internationellt. Hon förför med elegans och är magisk i sitt uttryck.',
+    image: '/images/artists/melody.png',
     link: 'https://www.instagram.com/milfymelody',
   },
 ]

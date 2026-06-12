@@ -23,7 +23,10 @@ export const metadata: Metadata = {
  *    Bilder läggs i /public/images/historia/.
  */
 const PAST_GALLERY: { src: string; alt: string }[] = [
-  // { src: '/images/historia/ekebo-2024-1.jpg', alt: 'Erotikmässan Ekebo 2024' },
+  // Format: liggande 4:3, visas med object-cover. Lägg till fler i /public/images/historia/.
+  { src: '/images/historia/object-cover1.png', alt: 'Erotikmässan – tidigare år' },
+  { src: '/images/historia/object-cover2.png', alt: 'Erotikmässan – tidigare år' },
+  { src: '/images/historia/object-cover3.png', alt: 'Erotikmässan – tidigare år' },
 ]
 
 /** Milstolpar som visas som tidslinje. 👉 Redigera fritt. */
