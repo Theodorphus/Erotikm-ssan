@@ -77,6 +77,7 @@ export function Header() {
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? 'Stäng menyn' : 'Öppna menyn'}
           aria-expanded={isOpen}
+          aria-controls="mobile-menu"
         >
           {isOpen ? (
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -24,6 +24,7 @@ export function StructuredData() {
     '@type': 'Event',
     name: EVENT.name,
     description: EVENT.motto,
+    inLanguage: 'sv-SE',
     startDate: EVENT.startDate,
     endDate: EVENT.endDate,
     eventStatus: 'https://schema.org/EventScheduled',
@@ -41,17 +42,26 @@ export function StructuredData() {
         addressCountry: 'SE',
       },
     },
+    ...(EVENT.guestArtist.name && {
+      performer: { '@type': 'PerformingGroup', name: EVENT.guestArtist.name },
+    }),
     organizer: {
       '@type': 'Organization',
-      name: EVENT.name,
+      name: EVENT.brandName,
+      alternateName: EVENT.name,
       url: EVENT.siteUrl,
       email: EVENT.email,
     },
-    offers: ticketOffers.length > 0 ? ticketOffers : {
-      '@type': 'Offer',
-      url: EVENT.links.tickets,
-      availability: 'https://schema.org/InStock',
-    },
+    offers:
+      ticketOffers.length > 0
+        ? ticketOffers
+        : {
+            '@type': 'Offer',
+            url: EVENT.links.tickets,
+            priceCurrency: 'SEK',
+            availability: 'https://schema.org/InStock',
+            validFrom: EVENT.ticketsAvailableFrom,
+          },
   }
 
   const faqSchema = {

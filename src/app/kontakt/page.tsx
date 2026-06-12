@@ -46,7 +46,7 @@ export default function KontaktPage() {
             </InfoCard>
 
             <InfoCard icon={<Store size={20} />} title="Vill du ställa ut?">
-              <p className="text-cream/70 text-sm">Välj ”Jag vill ställa ut” i formuläret.</p>
+              <p className="text-cream/70 text-sm">Välj ”Jag vill ställa ut på mässan” i formuläret.</p>
             </InfoCard>
 
             <InfoCard icon={<Briefcase size={20} />} title="Vill du jobba hos oss?">

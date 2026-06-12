@@ -1,17 +1,17 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { Heart, Sparkles, Users } from 'lucide-react'
+import { Flame, Sparkles, Star } from 'lucide-react'
 import { PageHero } from '@/components/layout/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
 import { EVENT } from '@/lib/data/event'
 
 export const metadata: Metadata = {
   title: 'Om oss',
-  description: 'Originalet sedan 1996 – historien bakom Sveriges första och största erotikmässa, från Vasahallen i Stockholm till Ekebo.',
+  description: 'Originalet sedan 1996 – historien bakom Sveriges första och största erotik- & tattoomässa, från Vasahallen i Stockholm tillbaka till Globen 2026.',
   alternates: { canonical: '/om-oss' },
   openGraph: {
     title: 'Om oss | Erotikmässan',
-    description: 'Originalet sedan 1996 – historien bakom Sveriges första och största erotikmässa, från Vasahallen i Stockholm till Ekebo.',
+    description: 'Originalet sedan 1996 – historien bakom Sveriges första och största erotik- & tattoomässa, från Vasahallen i Stockholm tillbaka till Globen 2026.',
     url: '/om-oss',
   },
 }
@@ -30,8 +30,8 @@ const PAST_GALLERY: { src: string; alt: string }[] = [
 const TIMELINE: { year: string; text: string }[] = [
   { year: '1996', text: 'Sveriges första erotikmässa arrangeras i Vasahallen på Djurgården i Stockholm – originalet är fött.' },
   { year: '2000-talet', text: 'Mässan växer och turnerar landet runt: Malmö, Karlstad, Göteborg, Luleå, Falun och Linköping.' },
-  { year: '2009', text: 'Ekebo i Munka-Ljungby blir mässans hemmaplan – och har varit det sedan dess.' },
-  { year: 'Idag', text: 'Originalet och Sveriges största erotikmässa, med scenshower, utställare, tatuering och mycket mer.' },
+  { year: '2009', text: 'Ekebo i Munka-Ljungby blir mässans hemmaplan under många år.' },
+  { year: '2026', text: 'Erotikmässan intar Globen i Stockholm – tillbaka där det en gång började.' },
 ]
 
 export default function OmOssPage() {
@@ -51,8 +51,9 @@ export default function OmOssPage() {
               <p>
                 Vi är pionjärerna som startade den första erotikmässan i Sverige. {EVENT.name} är{' '}
                 <strong className="text-cream">originalet</strong> – och Sveriges största
-                erotikmässa. Allt började 1996 i Vasahallen på Djurgården i Stockholm, och sedan
-                dess har mässan turnerat genom hela landet innan den hittade sin hemmaplan i Ekebo.
+                erotik- &amp; tattoomässa. Allt började 1996 i Vasahallen på Djurgården i
+                Stockholm, och sedan dess har mässan turnerat genom hela landet. 2026 är vi
+                tillbaka i Stockholm – i Globen.
               </p>
               <p>
                 På mässan möts besökare, artister och utställare kring en sund och njutningsfull
@@ -79,9 +80,9 @@ export default function OmOssPage() {
           {/* Värdeord */}
           <div className="grid sm:grid-cols-3 gap-5 mt-12">
             {[
-              { icon: <Heart size={24} />, title: 'Lust', text: 'Vi firar lusten som en naturlig del av livet.' },
-              { icon: <Sparkles size={24} />, title: 'Kunskap', text: 'Föreläsningar och experter som inspirerar och informerar.' },
-              { icon: <Users size={24} />, title: 'Livsnjutning', text: 'En öppen och välkomnande mötesplats för alla.' },
+              { icon: <Flame size={24} />, title: 'Lust', text: 'Vi firar lusten som en naturlig del av livet.' },
+              { icon: <Sparkles size={24} />, title: 'Spänning', text: 'Heta scenshower och upplevelser som kittlar nyfikenheten.' },
+              { icon: <Star size={24} />, title: 'Livsnjutning', text: 'En öppen och välkomnande mötesplats för alla.' },
             ].map((v, i) => (
               <Reveal key={v.title} delay={i * 90}>
                 <div className="rounded-2xl border border-white/10 bg-surface p-6 h-full">

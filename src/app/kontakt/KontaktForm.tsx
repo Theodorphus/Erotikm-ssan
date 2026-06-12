@@ -48,12 +48,12 @@ export function KontaktForm() {
       <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 
       <div className="grid sm:grid-cols-2 gap-5">
-        <Field label="Namn" name="namn" placeholder="För- och efternamn" required />
-        <Field label="Företag" name="foretag" placeholder="Företag (om aktuellt)" />
+        <Field label="Namn" name="namn" placeholder="För- och efternamn" required maxLength={100} />
+        <Field label="Företag" name="foretag" placeholder="Företag (om aktuellt)" maxLength={150} />
       </div>
       <div className="grid sm:grid-cols-2 gap-5">
-        <Field label="E-post" name="email" type="email" placeholder="namn@exempel.se" required />
-        <Field label="Telefon" name="telefon" type="tel" placeholder="070-123 45 67" />
+        <Field label="E-post" name="email" type="email" placeholder="namn@exempel.se" required maxLength={150} />
+        <Field label="Telefon" name="telefon" type="tel" placeholder="070-123 45 67" maxLength={40} />
       </div>
 
       <div>
@@ -79,6 +79,7 @@ export function KontaktForm() {
           id="meddelande"
           name="meddelande"
           rows={5}
+          maxLength={3000}
           placeholder="Berätta kort om dig och vad din förfrågan gäller…"
           className="w-full px-4 py-3 rounded-lg border border-white/15 bg-ink text-cream outline-none focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/30 transition-colors resize-none"
         />
@@ -108,12 +109,14 @@ function Field({
   type = 'text',
   placeholder,
   required,
+  maxLength,
 }: {
   label: string
   name: string
   type?: string
   placeholder?: string
   required?: boolean
+  maxLength?: number
 }) {
   return (
     <div>
@@ -125,6 +128,7 @@ function Field({
         name={name}
         type={type}
         required={required}
+        maxLength={maxLength}
         placeholder={placeholder}
         className="w-full px-4 py-3 rounded-lg border border-white/15 bg-ink text-cream outline-none focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/30 transition-colors"
       />
