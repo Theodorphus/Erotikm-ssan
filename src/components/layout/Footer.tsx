@@ -64,7 +64,7 @@ export function Footer({ event: EVENT }: { event: EventData }) {
               </div>
               <div className="flex items-center gap-2.5 text-sm text-cream/70">
                 <MapPin size={16} className="text-brand-pink flex-shrink-0" />
-                <span>{EVENT.venue}, {EVENT.city}</span>
+                <span>{EVENT.venue}, {EVENT.venueStreet}, {EVENT.city}</span>
               </div>
               <a href={`mailto:${EVENT.email}`} className="flex items-center gap-2.5 text-sm text-cream/70 hover:text-brand-pink transition-colors">
                 <Mail size={16} className="text-brand-pink flex-shrink-0" />

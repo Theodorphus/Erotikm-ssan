@@ -37,7 +37,7 @@ export default function KontaktPage() {
             </InfoCard>
 
             <InfoCard icon={<MapPin size={20} />} title="Var">
-              <p className="text-cream/70">{EVENT.venue}, {EVENT.city}</p>
+              <p className="text-cream/70">{EVENT.venue}, {EVENT.venueStreet}, {EVENT.city}</p>
             </InfoCard>
 
             <InfoCard icon={<Store size={20} />} title="Vill du ställa ut?">

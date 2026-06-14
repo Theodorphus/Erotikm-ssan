@@ -7,11 +7,11 @@ import { EVENT } from '@/lib/data/event'
 
 export const metadata: Metadata = {
   title: 'Om oss',
-  description: 'Originalet sedan 1996 – historien bakom Sveriges första och största erotik- & tattoomässa, från Vasahallen i Stockholm tillbaka till Globen 2026.',
+  description: 'Originalet sedan 1996 – historien bakom Sveriges första och största erotik- & tattoomässa, från Vasahallen i Stockholm tillbaka till Colosseum vid Globen 2026.',
   alternates: { canonical: '/om-oss' },
   openGraph: {
     title: 'Om oss | Erotikmässan',
-    description: 'Originalet sedan 1996 – historien bakom Sveriges första och största erotik- & tattoomässa, från Vasahallen i Stockholm tillbaka till Globen 2026.',
+    description: 'Originalet sedan 1996 – historien bakom Sveriges första och största erotik- & tattoomässa, från Vasahallen i Stockholm tillbaka till Colosseum vid Globen 2026.',
     url: '/om-oss',
   },
 }
@@ -34,7 +34,7 @@ const TIMELINE: { year: string; text: string }[] = [
   { year: '1996', text: 'Sveriges första erotikmässa arrangeras i Vasahallen på Djurgården i Stockholm – originalet är fött.' },
   { year: '2000-talet', text: 'Mässan växer och turnerar landet runt: Malmö, Karlstad, Göteborg, Luleå, Falun och Linköping.' },
   { year: '2009', text: 'Ekebo i Munka-Ljungby blir mässans hemmaplan under många år.' },
-  { year: '2026', text: 'Erotikmässan intar Globen i Stockholm – tillbaka där det en gång började.' },
+  { year: '2026', text: 'Fair Erotica intar Colosseum vid Globen i Stockholm – tillbaka där det en gång började, med ett nytt team vid rodret och en ny era för mässan.' },
 ]
 
 export default function OmOssPage() {
@@ -55,14 +55,31 @@ export default function OmOssPage() {
                 Vi är pionjärerna som startade den första erotikmässan i Sverige. {EVENT.name} är{' '}
                 <strong className="text-cream">originalet</strong> – och Sveriges största
                 erotik- &amp; tattoomässa. Allt började 1996 i Vasahallen på Djurgården i
-                Stockholm, och sedan dess har mässan turnerat genom hela landet. 2026 är vi
-                tillbaka i Stockholm – i Globen.
+                Stockholm, och sedan dess har mässan turnerat genom hela landet.
+              </p>
+              <p>
+                Cirkeln är sluten. Den 11–12 september 2026 är vi äntligen tillbaka där allt en
+                gång började – i Stockholm. Vi är otroligt stolta över att Fair Erotica flyttar in
+                på den välkända nöjesarenan <strong className="text-cream">Colosseum vid Globen</strong>,
+                Arenavägen 75. I och med flytten startar en helt ny epok för mässan: tillsammans har
+                vi tagit över rodret för att leda mässan in i en ny era, med målet att förnya,
+                förbättra och leverera ett event i absolut världsklass.
+              </p>
+              <p>
+                Vi lägger ett enormt fokus på att ge dig som besökare en helt unik och sprakande
+                upplevelse. Det fullspäckade schemat bjuder på storslagna scenframträdanden med en
+                perfekt mix av både folkkära legendarer och helt nya, spännande artister – samt sång
+                och dans i absolut toppklass som håller stämningen på max under båda kvällarna.
               </p>
               <p>
                 På mässan möts besökare, artister och utställare kring en sund och njutningsfull
                 syn på sexualitet: scenshower, stripp, erotiska produkter, tatuering och piercing,
                 skönhetsvård, stripptävlingar, speed-dating – och god mat och dryck. En trygg,
                 öppen och välkomnande upplevelse för alla vuxna.
+              </p>
+              <p className="text-cream/90">
+                Varmt välkomna till framtidens erotikmässa,<br />
+                <span className="text-brand-pink-light font-semibold">Johan, Joakim, Simone &amp; Yngve med Crew</span>
               </p>
             </div>
 

@@ -22,9 +22,9 @@ export const EVENT = {
   /** Öppettider per dag. ❓ Preliminärt enligt Johan, kan uppdateras. */
   openingHours: 'Fre & lör kl. 18–02',
 
-  /** Plats: masslokal 12 i Globen, Stockholm. */
-  venue: 'Globen, masslokal 12',
-  venueStreet: 'Globentorget 2',
+  /** Plats: Colosseum på Arenavägen 75, i Globenområdet (Johanneshov), Stockholm. */
+  venue: 'Colosseum',
+  venueStreet: 'Arenavägen 75',
   venuePostalCode: '121 77',
   city: 'Stockholm',
 

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Ticket, Mic2, Store, MapPin, CalendarDays, Clock, ArrowRight, Sparkles, Flame, Star, Brush } from 'lucide-react'
+import { Ticket, Mic2, Store, MapPin, CalendarDays, Clock, ArrowRight, Sparkles, Flame, Star, Brush, Music2, Eye, Heart, Disc3, ShoppingBag } from 'lucide-react'
 import { FacebookIcon, InstagramIcon, TikTokIcon } from '@/components/ui/SocialIcons'
 import { Countdown } from '@/components/event/Countdown'
 import { Faq } from '@/components/event/Faq'
@@ -139,6 +139,73 @@ export default async function HomePage() {
             ].map((h, i) => (
               <Reveal key={h.title} delay={(i + 1) * 120} className="h-full">
                 <Highlight icon={h.icon} title={h.title} text={h.text} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="glow-line" aria-hidden="true" />
+
+      {/* ── PROGRAMMET: konkreta programpunkter (från Johans mejl) ──── */}
+      <section className="bg-surface border-b border-white/10 py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <Reveal>
+            <div className="text-center mb-12">
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-cream mb-3">
+                Det här väntar på mässan
+              </h2>
+              <p className="text-cream/60 max-w-2xl mx-auto">
+                Ett fullspäckat schema från start till mål – allt under ett och samma tak.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              {
+                icon: <Music2 size={24} />,
+                title: 'Kända liveartister',
+                text: 'Folkkära legendarer och nya, spännande artister sätter stämningen med sång i toppklass.',
+              },
+              {
+                icon: <Sparkles size={24} />,
+                title: 'Exklusiva scenshower',
+                text: 'Professionell och spektakulär striptease i världsklass på stora scenen.',
+              },
+              {
+                icon: <ShoppingBag size={24} />,
+                title: 'Över 20 utställare',
+                text: 'Det nyaste på marknaden inom vuxenleksaker och välbefinnande.',
+              },
+              {
+                icon: <Disc3 size={24} />,
+                title: 'Pulserande dansgolv',
+                text: 'Kasta dig ut och festa loss till rytmen ända till sena timmen.',
+              },
+              {
+                icon: <Eye size={24} />,
+                title: 'Klassisk peep show',
+                text: 'Spännande stunder i den klassiska peep show-traditionen.',
+              },
+              {
+                icon: <Heart size={24} />,
+                title: 'Privat lapdance',
+                text: 'En avskild och lyxig miljö för en helt privat upplevelse.',
+              },
+              {
+                icon: <Brush size={24} />,
+                title: 'Skickliga tatuerare',
+                text: 'På plats hela helgen för både drop-in och tidsbokning.',
+              },
+              {
+                icon: <Star size={24} />,
+                title: 'Professionella piercers',
+                text: 'Förverkliga dina smyckesdrömmar med hjälp av proffs på plats.',
+              },
+            ].map((p, i) => (
+              <Reveal key={p.title} delay={(i % 4) * 90} className="h-full">
+                <Highlight icon={p.icon} title={p.title} text={p.text} />
               </Reveal>
             ))}
           </div>
