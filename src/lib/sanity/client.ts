@@ -12,7 +12,10 @@ export const sanityClient = sanityConfigured
       projectId,
       dataset,
       apiVersion,
-      useCdn: true,
+      // useCdn:false → varje ISR-revalidering (var 60:e s) får färskt innehåll
+      // från Sanity i stället för deras ev. fördröjda CDN-cache. Trafikvolymen
+      // är låg så kostnaden är försumbar.
+      useCdn: false,
     })
   : null
 

@@ -5,6 +5,9 @@ import { Reveal } from '@/components/ui/Reveal'
 import { TICKETS_NOTE } from '@/lib/data/tickets'
 import { getTickets, getEvent } from '@/lib/content'
 
+// ISR: hämta om från Sanity var 60:e sekund.
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'Köp biljetter',
   description: 'Biljetter till Erotikmässan – Early Bird 350 kr, Standard 450 kr och Premium VIP 850 kr. Förköp via Billetto och slipp köa, eller köp i dörren.',

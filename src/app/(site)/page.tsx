@@ -8,6 +8,10 @@ import { AgeBadge } from '@/components/event/AgeBadge'
 import { Reveal } from '@/components/ui/Reveal'
 import { getEvent, getFaq } from '@/lib/content'
 
+// Hämta om innehållet från Sanity var 60:e sekund (ISR), så Johans ändringar
+// i Studion slår igenom live utan ny deploy.
+export const revalidate = 60
+
 export default async function HomePage() {
   const [EVENT, faqItems] = await Promise.all([getEvent(), getFaq()])
   return (

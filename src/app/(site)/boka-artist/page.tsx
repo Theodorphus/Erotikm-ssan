@@ -3,6 +3,9 @@ import { InstagramIcon } from '@/components/ui/SocialIcons'
 import { PageHero } from '@/components/layout/PageHero'
 import { getEvent } from '@/lib/content'
 
+// ISR: hämta om från Sanity var 60:e sekund.
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'Boka artist',
   description:

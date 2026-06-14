@@ -5,6 +5,9 @@ import { PageHero } from '@/components/layout/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
 import { getExhibitors } from '@/lib/content'
 
+// ISR: hämta om från Sanity var 60:e sekund.
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'Våra utställare',
   description: 'Upptäck utställarna som visar upp det senaste inom lust och livsnjutning på Erotikmässan.',

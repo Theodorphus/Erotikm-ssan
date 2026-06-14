@@ -8,6 +8,9 @@ import { getEvent } from '@/lib/content'
  * Layout för själva sajten (allt utom /studio). Lägger till header, footer,
  * mörkt tema, SEO-structured-data och Analytics runt sidorna.
  */
+// ISR: header/footer hämtar eventdata från Sanity var 60:e sekund.
+export const revalidate = 60
+
 export default async function SiteLayout({
   children,
 }: Readonly<{
