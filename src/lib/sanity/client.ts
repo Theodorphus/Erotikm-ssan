@@ -1,5 +1,5 @@
 import { createClient } from 'next-sanity'
-import imageUrlBuilder from '@sanity/image-url'
+import { createImageUrlBuilder } from '@sanity/image-url'
 import type { SanityImageSource } from '@sanity/image-url'
 import { apiVersion, dataset, projectId, sanityConfigured } from '../../../sanity/env'
 
@@ -19,7 +19,7 @@ export const sanityClient = sanityConfigured
     })
   : null
 
-const builder = sanityClient ? imageUrlBuilder(sanityClient) : null
+const builder = sanityClient ? createImageUrlBuilder(sanityClient) : null
 
 /** Bygg en bild-URL från en Sanity-bildreferens. Returnerar null om ej konfigurerat. */
 export function urlForImage(source: SanityImageSource | undefined): string | null {
