@@ -6,7 +6,7 @@
  *   2. Lägg projectId i .env.local (NEXT_PUBLIC_SANITY_PROJECT_ID).
  *   3. Skapa en write-token i Sanity (API → Tokens, role: Editor) och
  *      lägg den som SANITY_WRITE_TOKEN i .env.local.
- *   4. Kör:  node scripts/seed-sanity.mjs
+ *   4. Kör:  npm run seed   (= node --import tsx scripts/seed-sanity.mjs)
  *
  * Scriptet är idempotent: dokument får fasta _id:n och skrivs med createOrReplace,
  * så att köra det igen skapar inga dubbletter. Bilder laddas upp som assets.
@@ -14,10 +14,12 @@
 import { createClient } from '@sanity/client'
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
-import { register } from 'node:module'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
+
+/** Dynamisk import av en lokal fil – på Windows krävs file://-URL. */
+const importFile = (p) => import(pathToFileURL(resolve(root, p)).href)
 const root = resolve(__dirname, '..')
 
 // Läs .env.local manuellt (inga extra beroenden).
@@ -37,13 +39,14 @@ if (!projectId || !token) {
 
 const client = createClient({ projectId, dataset, token, apiVersion: '2024-10-01', useCdn: false })
 
-// Importera datafilerna via tsx-loader så .ts kan läsas direkt.
-register('tsx/esm', import.meta.url)
-const { EVENT } = await import(resolve(root, 'src/lib/data/event.ts'))
-const { ARTISTS } = await import(resolve(root, 'src/lib/data/artists.ts'))
-const { EXHIBITORS } = await import(resolve(root, 'src/lib/data/exhibitors.ts'))
-const { TICKET_TYPES } = await import(resolve(root, 'src/lib/data/tickets.ts'))
-const { FAQ_ITEMS } = await import(resolve(root, 'src/lib/data/faq.ts'))
+// Importera datafilerna direkt – .ts läses via tsx, som laddas med
+// `node --import tsx` (se npm-scriptet "seed"). På Node 20.6+/24 är detta
+// rätt sätt; den gamla register('tsx/esm') deprekerades.
+const { EVENT } = await importFile('src/lib/data/event.ts')
+const { ARTISTS } = await importFile('src/lib/data/artists.ts')
+const { EXHIBITORS } = await importFile('src/lib/data/exhibitors.ts')
+const { TICKET_TYPES } = await importFile('src/lib/data/tickets.ts')
+const { FAQ_ITEMS } = await importFile('src/lib/data/faq.ts')
 
 /** Ladda upp en lokal /public-bild som Sanity-asset, eller null om den saknas. */
 async function uploadImage(relPath) {
