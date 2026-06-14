@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Mic2 } from 'lucide-react'
 import { PageHero } from '@/components/layout/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
-import { ARTISTS } from '@/lib/data/artists'
+import { getArtists } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'Våra artister',
@@ -16,7 +16,8 @@ export const metadata: Metadata = {
   },
 }
 
-export default function ArtisterPage() {
+export default async function ArtisterPage() {
+  const artists = await getArtists()
   return (
     <>
       <PageHero
@@ -26,7 +27,7 @@ export default function ArtisterPage() {
 
       <section className="bg-ink py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto space-y-8">
-          {ARTISTS.map((artist, i) => (
+          {artists.map((artist, i) => (
             // Stagger-delayen loopar (i % 4) så kort långt ner i listan inte
             // får sekundlånga fördröjningar när de scrollas in.
             <Reveal key={artist.slug} delay={(i % 4) * 90}>

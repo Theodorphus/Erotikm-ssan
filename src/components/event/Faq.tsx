@@ -2,18 +2,18 @@
 
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
-import { FAQ_ITEMS } from '@/lib/data/faq'
+import type { FaqItem } from '@/lib/data/faq'
 
 /**
- * Dragspels-FAQ i mörkt tema. Innehållet kommer från lib/data/faq.ts (samma
- * källa som FAQ-strukturerad data), så frågor redigeras på ett ställe.
+ * Dragspels-FAQ i mörkt tema. Frågorna skickas in som prop (från content-lagret,
+ * dvs Sanity med datafil-fallback).
  */
-export function Faq() {
+export function Faq({ items }: { items: FaqItem[] }) {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
     <ul className="divide-y divide-white/10 rounded-2xl border border-white/10 bg-surface overflow-hidden">
-      {FAQ_ITEMS.map((item, i) => {
+      {items.map((item, i) => {
         const isOpen = open === i
         return (
           <li

@@ -1,10 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Plus_Jakarta_Sans, Playfair_Display } from 'next/font/google'
 import './globals.css'
-import { Header } from '@/components/layout/Header'
-import { Footer } from '@/components/layout/Footer'
-import { StructuredData } from '@/components/seo/StructuredData'
-import { Analytics } from '@vercel/analytics/next'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -20,7 +16,7 @@ const jakarta = Plus_Jakarta_Sans({
   weight: ['700', '800'],
 })
 
-// Serif för en mer förtroendeingivande, "kontorsmässig" ton i rubriker/citat.
+// Serif för en mer förtroendeingivande ton i rubriker/citat.
 const playfair = Playfair_Display({
   variable: '--font-serif',
   subsets: ['latin'],
@@ -29,26 +25,22 @@ const playfair = Playfair_Display({
 })
 
 /**
- * ROOT LAYOUT METADATA
- *
- * Global SEO-konfiguration för Erotikmässan. Sidspecifik metadata sätts
- * i respektive page.tsx och ärver/överlagrar detta.
+ * ROOT LAYOUT – endast <html>/<body> + globala typsnitt.
+ * Sajtens chrome (Header/Footer/SEO/mörkt tema) ligger i (site)/layout.tsx,
+ * så att /studio (Sanity-admin) kan rendera helt utan sajtens layout.
  */
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
   || 'https://www.erotikmassan.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-
   title: {
     default: 'Erotikmässan | Lust · Spänning · Livsnjutning',
     template: '%s | Erotikmässan',
   },
   description:
     'Erotikmässan 11–12 september 2026 i Globen, Stockholm. Originalet – Sveriges första och största erotik- & tattoomässa sedan 1996. Scenshower, utställare, tatuering och biljetter.',
-
   alternates: { canonical: '/' },
-
   keywords: [
     'erotikmässan',
     'erotikmässa',
@@ -60,10 +52,8 @@ export const metadata: Metadata = {
     'utställare erotikmässan',
     'tatueringsmässa',
   ],
-
   authors: [{ name: 'Erotikmässan' }],
   creator: 'Erotikmässan',
-
   openGraph: {
     type: 'website',
     locale: 'sv_SE',
@@ -81,7 +71,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   twitter: {
     card: 'summary_large_image',
     title: 'Erotikmässan | Lust · Spänning · Livsnjutning',
@@ -89,7 +78,6 @@ export const metadata: Metadata = {
       'Erotikmässan 11–12 september 2026 i Globen, Stockholm. Originalet sedan 1996 – artister, utställare, tatuering och biljetter.',
     images: ['/images/og/erotikmassan-og.png'],
   },
-
   robots: {
     index: true,
     follow: true,
@@ -120,21 +108,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sv" className={`${inter.variable} ${jakarta.variable} ${playfair.variable} h-full antialiased`}>
-      <head>
-        <StructuredData />
-      </head>
-      <body className="min-h-full flex flex-col bg-ink text-cream">
-        <a
-          href="#innehall"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-white focus:text-brand-pink focus:font-semibold focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg"
-        >
-          Hoppa till innehållet
-        </a>
-        <Header />
-        <main id="innehall" className="flex-1">{children}</main>
-        <Footer />
-        <Analytics />
-      </body>
+      <body className="min-h-full">{children}</body>
     </html>
   )
 }

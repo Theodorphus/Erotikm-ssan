@@ -3,9 +3,9 @@ import { Mail, MapPin, CalendarDays, Clock } from 'lucide-react'
 import { FacebookIcon, InstagramIcon, TikTokIcon } from '@/components/ui/SocialIcons'
 import { AgeBadge } from '@/components/event/AgeBadge'
 import { FOOTER_LINKS } from '@/lib/data/navigation'
-import { EVENT } from '@/lib/data/event'
+import type { EventData } from '@/lib/content'
 
-export function Footer() {
+export function Footer({ event: EVENT }: { event: EventData }) {
   const currentYear = new Date().getFullYear()
 
   return (

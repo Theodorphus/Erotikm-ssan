@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { InstagramIcon } from '@/components/ui/SocialIcons'
 import { PageHero } from '@/components/layout/PageHero'
-import { EVENT } from '@/lib/data/event'
+import { getEvent } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'Boka artist',
@@ -16,7 +16,8 @@ export const metadata: Metadata = {
   },
 }
 
-export default function BokaArtistPage() {
+export default async function BokaArtistPage() {
+  const event = await getEvent()
   return (
     <>
       <PageHero
@@ -37,7 +38,7 @@ export default function BokaArtistPage() {
             tillgänglighet och pris.
           </p>
           <a
-            href={EVENT.links.bookArtist}
+            href={event.links.bookArtist}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 bg-brand-pink text-white font-semibold px-8 py-4 rounded-lg hover:bg-brand-pink-dark transition-colors shadow-lg shadow-brand-pink/25"

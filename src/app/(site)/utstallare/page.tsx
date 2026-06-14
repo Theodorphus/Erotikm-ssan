@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Store } from 'lucide-react'
 import { PageHero } from '@/components/layout/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
-import { EXHIBITORS } from '@/lib/data/exhibitors'
+import { getExhibitors } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'Våra utställare',
@@ -16,7 +16,8 @@ export const metadata: Metadata = {
   },
 }
 
-export default function UtstallarePage() {
+export default async function UtstallarePage() {
+  const exhibitors = await getExhibitors()
   return (
     <>
       <PageHero
@@ -26,7 +27,7 @@ export default function UtstallarePage() {
 
       <section className="bg-ink py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto space-y-8">
-          {EXHIBITORS.map((ex, i) => (
+          {exhibitors.map((ex, i) => (
             // Stagger-delayen loopar (i % 4) så kort långt ner i listan inte
             // får sekundlånga fördröjningar när de scrollas in.
             <Reveal key={ex.slug} delay={(i % 4) * 90}>

@@ -2,13 +2,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Ticket, Mic2, Store, MapPin, CalendarDays, Clock, ArrowRight, Sparkles, Flame, Star, Brush } from 'lucide-react'
 import { FacebookIcon, InstagramIcon, TikTokIcon } from '@/components/ui/SocialIcons'
-import { EVENT } from '@/lib/data/event'
 import { Countdown } from '@/components/event/Countdown'
 import { Faq } from '@/components/event/Faq'
 import { AgeBadge } from '@/components/event/AgeBadge'
 import { Reveal } from '@/components/ui/Reveal'
+import { getEvent, getFaq } from '@/lib/content'
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [EVENT, faqItems] = await Promise.all([getEvent(), getFaq()])
   return (
     <>
       {/* ── HERO med nedräknare + biljettknapp ─────────────────────── */}
@@ -271,7 +272,7 @@ export default function HomePage() {
             </div>
           </Reveal>
           <Reveal delay={100}>
-            <Faq />
+            <Faq items={faqItems} />
           </Reveal>
         </div>
       </section>

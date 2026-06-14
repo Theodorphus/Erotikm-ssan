@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import { Ticket, Check } from 'lucide-react'
 import { PageHero } from '@/components/layout/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
-import { EVENT } from '@/lib/data/event'
-import { TICKET_TYPES, TICKETS_NOTE } from '@/lib/data/tickets'
+import { TICKETS_NOTE } from '@/lib/data/tickets'
+import { getTickets, getEvent } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'Köp biljetter',
@@ -16,17 +16,18 @@ export const metadata: Metadata = {
   },
 }
 
-export default function BiljetterPage() {
+export default async function BiljetterPage() {
+  const [tickets, event] = await Promise.all([getTickets(), getEvent()])
   return (
     <>
       <PageHero
         title="Köp biljetter"
-        subtitle={`${EVENT.dateText} · ${EVENT.venue}, ${EVENT.city}. Välj din biljett – köpet sker tryggt via Billetto.`}
+        subtitle={`${event.dateText} · ${event.venue}, ${event.city}. Välj din biljett – köpet sker tryggt via Billetto.`}
       />
 
       <section className="bg-ink py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-          {TICKET_TYPES.map((ticket, i) => (
+          {tickets.map((ticket, i) => (
             <Reveal key={ticket.name} delay={i * 100} className="h-full">
               <div
                 className={`relative h-full flex flex-col rounded-2xl border p-8 transition-all duration-300 ${
@@ -70,7 +71,7 @@ export default function BiljetterPage() {
                   ))}
                 </ul>
                 <a
-                  href={EVENT.links.tickets}
+                  href={event.links.tickets}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`inline-flex items-center justify-center gap-2 w-full font-semibold px-6 py-3.5 rounded-lg transition-colors ${

@@ -5,10 +5,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { MAIN_NAV } from '@/lib/data/navigation'
-import { EVENT } from '@/lib/data/event'
+import type { EventData } from '@/lib/content'
 import { MobileMenu } from './MobileMenu'
 
-export function Header() {
+export function Header({ event: EVENT }: { event: EventData }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
@@ -97,7 +97,7 @@ export function Header() {
         </button>
       </nav>
 
-      {isOpen && <MobileMenu isOpen={isOpen} onClose={() => setIsOpen(false)} />}
+      {isOpen && <MobileMenu isOpen={isOpen} onClose={() => setIsOpen(false)} ticketsUrl={EVENT.links.tickets} />}
     </header>
   )
 }

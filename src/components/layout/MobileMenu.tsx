@@ -5,14 +5,14 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Ticket } from 'lucide-react'
 import { MAIN_NAV } from '@/lib/data/navigation'
-import { EVENT } from '@/lib/data/event'
 
 interface MobileMenuProps {
   isOpen: boolean
   onClose: () => void
+  ticketsUrl: string
 }
 
-export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose, ticketsUrl }: MobileMenuProps) {
   const pathname = usePathname()
 
   // Stäng på Escape + lås bakgrundsscroll medan menyn är öppen.
@@ -56,7 +56,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
         <div className="pt-3">
           <a
-            href={EVENT.links.tickets}
+            href={ticketsUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 text-center bg-brand-pink text-white font-semibold px-5 py-3 rounded-lg hover:bg-brand-pink-dark transition-colors"
