@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Ticket, Mic2, Store, MapPin, CalendarDays, Clock, ArrowRight, Sparkles, Flame, Star, Brush } from 'lucide-react'
-import { FacebookIcon, InstagramIcon, YouTubeIcon } from '@/components/ui/SocialIcons'
+import { FacebookIcon, InstagramIcon, TikTokIcon } from '@/components/ui/SocialIcons'
 import { EVENT } from '@/lib/data/event'
 import { Countdown } from '@/components/event/Countdown'
 import { Faq } from '@/components/event/Faq'
@@ -101,6 +101,24 @@ export default function HomePage() {
           </Reveal>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Gästartisten lyfts först – Johan ville ha den före Lust-rutorna. */}
+            {EVENT.guestArtist.name && (
+              <Reveal className="h-full">
+                <div className="card-sheen h-full rounded-2xl border border-brand-pink/50 bg-surface-pink p-7 text-center sm:text-left shadow-lg shadow-brand-pink/10">
+                  <div className="h-12 w-12 rounded-xl bg-brand-pink text-white flex items-center justify-center mb-5 mx-auto sm:mx-0">
+                    <Star size={26} />
+                  </div>
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-brand-pink-light font-semibold mb-1">
+                    Mässans gästartist
+                  </p>
+                  <h3 className="font-display text-xl font-bold text-cream mb-2">
+                    {EVENT.guestArtist.name}
+                  </h3>
+                  <p className="text-sm text-cream/70 leading-relaxed">{EVENT.guestArtist.text}</p>
+                </div>
+              </Reveal>
+            )}
+
             {[
               {
                 icon: <Flame size={26} />,
@@ -118,27 +136,10 @@ export default function HomePage() {
                 text: 'En öppen och välkomnande mötesplats för alla vuxna – oavsett vem du är.',
               },
             ].map((h, i) => (
-              <Reveal key={h.title} delay={i * 120} className="h-full">
+              <Reveal key={h.title} delay={(i + 1) * 120} className="h-full">
                 <Highlight icon={h.icon} title={h.title} text={h.text} />
               </Reveal>
             ))}
-
-            {EVENT.guestArtist.name && (
-              <Reveal delay={360} className="h-full">
-                <div className="card-sheen h-full rounded-2xl border border-brand-pink/50 bg-surface-pink p-7 text-center sm:text-left shadow-lg shadow-brand-pink/10">
-                  <div className="h-12 w-12 rounded-xl bg-brand-pink text-white flex items-center justify-center mb-5 mx-auto sm:mx-0">
-                    <Star size={26} />
-                  </div>
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-brand-pink-light font-semibold mb-1">
-                    Mässans gästartist
-                  </p>
-                  <h3 className="font-display text-xl font-bold text-cream mb-2">
-                    {EVENT.guestArtist.name}
-                  </h3>
-                  <p className="text-sm text-cream/70 leading-relaxed">{EVENT.guestArtist.text}</p>
-                </div>
-              </Reveal>
-            )}
           </div>
         </div>
       </section>
@@ -241,8 +242,8 @@ export default function HomePage() {
                 <SocialButton href={EVENT.links.instagram} label="Instagram">
                   <InstagramIcon size={20} />
                 </SocialButton>
-                <SocialButton href={EVENT.links.youtube} label="YouTube">
-                  <YouTubeIcon size={20} />
+                <SocialButton href={EVENT.links.tiktok} label="TikTok">
+                  <TikTokIcon size={20} />
                 </SocialButton>
               </div>
             </div>

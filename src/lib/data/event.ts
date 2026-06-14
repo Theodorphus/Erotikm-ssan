@@ -44,22 +44,26 @@ export const EVENT = {
   /** När biljetterna börjar säljas (ISO) – används i strukturerad data. */
   ticketsAvailableFrom: '2026-06-01T00:00:00+02:00',
 
-  /** Kontakt – mejl som frågeformuläret skickas till. */
+  /**
+   * Kontakt – mejl som frågeformuläret skickas till.
+   * OBS: Telefonnummer visas medvetet INTE (för många samtal) – all kontakt
+   * styrs till e-post. info@erotikmassan.com är landningsadressen som Johan
+   * vidarebefordrar till sina övriga adresser.
+   */
   email: 'info@erotikmassan.com',
-  phone: '+46 70 624 97 57',
-  phoneHref: 'tel:+46706249757',
   siteUrl: 'https://www.erotikmassan.com',
 
   /**
    * Externa länkar (allt biljett-/bokningsflöde sker hos tredje part).
    * ❓ Billetto: september-eventet är inte upplagt än – byt URL när Johan skapat det.
    * ❓ bookArtist: Johan ska byta till en egen Instagram-sida för bokning.
+   * ❓ Sociala länkar: Johan återkommer med riktiga FB/IG/TikTok-länkar.
    */
   links: {
     tickets: 'https://billetto.se/',
     bookArtist: 'https://instagram.com/fair_erotic',
     facebook: 'https://www.facebook.com/fairerotica',
     instagram: 'https://instagram.com/fair_erotic',
-    youtube: 'https://www.youtube.com/channel/UCS3bTQSd3iYnnzvyGkp1law',
+    tiktok: 'https://www.tiktok.com/',
   },
 } as const

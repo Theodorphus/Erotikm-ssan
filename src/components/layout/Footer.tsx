@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { Mail, MapPin, CalendarDays, Clock, Phone } from 'lucide-react'
-import { FacebookIcon, InstagramIcon, YouTubeIcon } from '@/components/ui/SocialIcons'
+import { Mail, MapPin, CalendarDays, Clock } from 'lucide-react'
+import { FacebookIcon, InstagramIcon, TikTokIcon } from '@/components/ui/SocialIcons'
 import { AgeBadge } from '@/components/event/AgeBadge'
 import { FOOTER_LINKS } from '@/lib/data/navigation'
 import { EVENT } from '@/lib/data/event'
@@ -30,8 +30,8 @@ export function Footer() {
               <a href={EVENT.links.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-cream/60 hover:text-brand-pink transition-colors">
                 <InstagramIcon size={20} />
               </a>
-              <a href={EVENT.links.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="text-cream/60 hover:text-brand-pink transition-colors">
-                <YouTubeIcon size={20} />
+              <a href={EVENT.links.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="text-cream/60 hover:text-brand-pink transition-colors">
+                <TikTokIcon size={20} />
               </a>
             </div>
           </div>
@@ -69,10 +69,6 @@ export function Footer() {
               <a href={`mailto:${EVENT.email}`} className="flex items-center gap-2.5 text-sm text-cream/70 hover:text-brand-pink transition-colors">
                 <Mail size={16} className="text-brand-pink flex-shrink-0" />
                 <span>{EVENT.email}</span>
-              </a>
-              <a href={EVENT.phoneHref} className="flex items-center gap-2.5 text-sm text-cream/70 hover:text-brand-pink transition-colors">
-                <Phone size={16} className="text-brand-pink flex-shrink-0" />
-                <span>{EVENT.phone}</span>
               </a>
             </div>
           </div>
