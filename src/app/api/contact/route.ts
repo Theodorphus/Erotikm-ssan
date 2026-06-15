@@ -7,6 +7,40 @@ function getResend() {
   return new Resend(process.env.RESEND_API_KEY)
 }
 
+/**
+ * Enkel rate limit per IP (glidande fönster). In-memory → gäller per
+ * server-instans, så det är ett "best effort"-skydd mot spam/abuse utan
+ * extra beroende. Räcker gott för ett kontaktformulär med låg trafik.
+ */
+const RATE_LIMIT = 5 // max antal skickade förfrågningar
+const RATE_WINDOW_MS = 60 * 60 * 1000 // per timme
+const hits = new Map<string, number[]>()
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now()
+  const recent = (hits.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS)
+  if (recent.length >= RATE_LIMIT) {
+    hits.set(ip, recent)
+    return true
+  }
+  recent.push(now)
+  hits.set(ip, recent)
+  // Städa bort gamla IP:n så Map:en inte växer obegränsat.
+  if (hits.size > 5000) {
+    for (const [key, times] of hits) {
+      if (times.every((t) => now - t >= RATE_WINDOW_MS)) hits.delete(key)
+    }
+  }
+  return false
+}
+
+/** Läs klientens IP från standard-proxyheaders (Vercel/Cloudflare). */
+function getClientIp(request: NextRequest): string {
+  const fwd = request.headers.get('x-forwarded-for')
+  if (fwd) return fwd.split(',')[0].trim()
+  return request.headers.get('x-real-ip') ?? 'unknown'
+}
+
 /** Fälten kommer från ett publikt formulär – escapa innan de läggs i HTML-mejlet. */
 function esc(value: string) {
   return value
@@ -24,6 +58,14 @@ export async function POST(request: NextRequest) {
     // Svara "ok" så att boten inte försöker igen.
     if (typeof body?.website === 'string' && body.website.length > 0) {
       return NextResponse.json({ success: true, message: 'Din förfrågan har mottagits' }, { status: 200 })
+    }
+
+    // Rate limit per IP – stoppar spam/abuse av e-postutskicket.
+    if (isRateLimited(getClientIp(request))) {
+      return NextResponse.json(
+        { error: 'För många förfrågningar. Försök igen om en stund.' },
+        { status: 429 }
+      )
     }
 
     const result = contactSchema.safeParse(body)

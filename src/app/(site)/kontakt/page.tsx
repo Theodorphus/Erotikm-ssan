@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Kontakt',
   description:
     'Vill du ställa ut eller jobba på Erotikmässan? Skicka en förfrågan så återkommer vi.',
-  alternates: { canonical: `${EVENT.siteUrl}/kontakt` },
+  alternates: { canonical: '/kontakt' },
 }
 
 export default function KontaktPage() {

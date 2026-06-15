@@ -19,19 +19,24 @@ export default async function HomePage() {
       {/* ── HERO med nedräknare + biljettknapp ─────────────────────── */}
       <section className="mesh-forest grain relative overflow-hidden text-cream">
         {/* Hero-bild: fade-in + slow zoom vid laddning, mjuk parallax vid scroll.
-            Motivet (dansösen) ligger i bildens högra tredjedel, så på smala
-            mobilskärmar fokuserar vi åt höger (object-[78%]); på sm+ centreras den. */}
+            Motivet (dansösen) ligger i bildens högra fjärdedel. Vi fokuserar
+            därför åt höger på ALLA skärmar (object-right) så hon alltid syns
+            stor och tydlig – inte "inkastad" mot en tom mittyta. Den centrerade
+            texten balanserar mot den mörkare vänsterhalvan. */}
         <div className="hero-parallax absolute inset-x-0 -top-[18%] bottom-0" aria-hidden="true">
           <Image
-            src="/images/hero.png"
+            src="/images/hero.webp"
             alt=""
             fill
             priority
             sizes="100vw"
-            className="hero-zoom object-cover object-[78%_center] sm:object-center"
+            className="hero-zoom object-cover object-[88%_center] sm:object-right"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 to-ink/85" aria-hidden="true" />
+        {/* Mörk gradient: tyngre i vänsterkant + botten så rubrik/knappar håller
+            kontrast, medan dansösen i högerkanten lämnas ljusare och syns. */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/55 to-ink/25" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/20 to-ink/85" aria-hidden="true" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 text-center">
           <p

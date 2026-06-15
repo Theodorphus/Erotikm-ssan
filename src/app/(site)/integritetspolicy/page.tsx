@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Integritetspolicy',
   description:
     'Så hanterar Erotikmässan dina personuppgifter när du kontaktar oss via webbplatsen. Vi följer GDPR.',
-  alternates: { canonical: `${EVENT.siteUrl}/integritetspolicy` },
+  alternates: { canonical: '/integritetspolicy' },
   robots: { index: false, follow: true },
 }
 

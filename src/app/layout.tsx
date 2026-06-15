@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Plus_Jakarta_Sans, Playfair_Display } from 'next/font/google'
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({
@@ -14,14 +14,6 @@ const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
   display: 'swap',
   weight: ['700', '800'],
-})
-
-// Serif för en mer förtroendeingivande ton i rubriker/citat.
-const playfair = Playfair_Display({
-  variable: '--font-serif',
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['500', '600', '700'],
 })
 
 /**
@@ -109,7 +101,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="sv" className={`${inter.variable} ${jakarta.variable} ${playfair.variable} h-full antialiased`}>
+    <html lang="sv" className={`${inter.variable} ${jakarta.variable} h-full antialiased`}>
       <body className="min-h-full">{children}</body>
     </html>
   )

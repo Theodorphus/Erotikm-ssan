@@ -24,9 +24,9 @@ export const metadata: Metadata = {
  */
 const PAST_GALLERY: { src: string; alt: string }[] = [
   // Format: liggande 4:3, visas med object-cover. Lägg till fler i /public/images/historia/.
-  { src: '/images/historia/object-cover1.png', alt: 'Erotikmässan – tidigare år' },
-  { src: '/images/historia/object-cover2.png', alt: 'Erotikmässan – tidigare år' },
-  { src: '/images/historia/object-cover3.png', alt: 'Erotikmässan – tidigare år' },
+  { src: '/images/historia/object-cover1.webp', alt: 'Erotikmässan – tidigare år' },
+  { src: '/images/historia/object-cover2.webp', alt: 'Erotikmässan – tidigare år' },
+  { src: '/images/historia/object-cover3.webp', alt: 'Erotikmässan – tidigare år' },
 ]
 
 /** Milstolpar som visas som tidslinje. 👉 Redigera fritt. */

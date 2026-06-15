@@ -17,33 +17,16 @@
   --color-brand-pink: #E11D74;
   --color-brand-pink-dark: #B01259;
   --color-brand-pink-light: #F25CA2;
-  --color-brand-pink-lighter: #FBD5E6;
-
-  /* Djup CTA-/sektionsfärg – nära svart för kontrast */
-  --color-dark-section: #0B0B0F;
-
-  /* Primärfärger (mapped till rosa-paletten så Button m.fl. funkar) */
-  --color-navy: #E11D74;
-  --color-petrol: #B01259;
 
   /* Premium-palett (hero, sektioner, om, kontakt) */
   --color-ink-deep: #08080B;
   --color-ink: #0B0B0F;
   --color-ink-mid: #15131A;
-  --color-blush: #F25CA2;
   --color-cream: #F5F2F4;
-  /* Accent – rosa highlight */
-  --color-gold-accent: #E11D74;
 
   /* Typsnitt */
   --font-sans: var(--font-inter);
   --font-display: var(--font-display);
-  --font-serif: var(--font-serif);
-
-  /* Skuggor (användes tidigare via tailwind.config.ts som Tailwind v4 inte läser) */
-  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.05);
-  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.1);
-  --shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 body {
@@ -92,27 +75,9 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
-/* Smooth scrolling (native fallback; Lenis tar över när den är aktiv) */
+/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
-}
-
-/* ── Lenis smooth-scroll baskrav ──────────────────────────────────── */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
 }
 
 /* Links styling */
@@ -163,75 +128,7 @@ img {
   }
 }
 
-/* ── Memorial / gravstenssidan ─────────────────────────────────── */
-
-.font-serif-memorial {
-  font-family: var(--font-serif), Georgia, 'Times New Roman', serif;
-}
-
-/* Masked text reveal – raderna stiger upp bakom en "mask" */
-.mask-reveal {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: bottom;
-}
-.mask-reveal > span {
-  display: inline-block;
-  transform: translateY(110%);
-}
-.mask-reveal.is-visible > span {
-  animation: maskRise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-@keyframes maskRise {
-  from {
-    transform: translateY(110%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-/* Mjuk fade-in (subtitle m.m.) */
-.mem-fade {
-  opacity: 0;
-}
-.mem-fade.is-visible {
-  animation: memFade 1s ease-out 0.25s both;
-}
-@keyframes memFade {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Långsam drift för dekorativa parallax-element */
-@keyframes memDrift {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .mask-reveal > span,
-  .mask-reveal.is-visible > span,
-  .mem-fade,
-  .mem-fade.is-visible {
-    animation: none;
-    transform: none;
-    opacity: 1;
-  }
-}
-
-/* ── Premium gradient-mesh-bakgrunder (ersätter foton) ─────────────── */
+/* ── Premium gradient-mesh-bakgrund (ersätter foton) ───────────────── */
 
 /* Mörk rosa/svart mesh – för heroes/CTA med ljus text ovanpå */
 .mesh-forest {
@@ -241,46 +138,6 @@ img {
     radial-gradient(at 82% 12%, rgba(176, 18, 89, 0.45) 0px, transparent 45%),
     radial-gradient(at 75% 78%, rgba(11, 11, 15, 0.9) 0px, transparent 55%),
     radial-gradient(at 30% 85%, rgba(242, 92, 162, 0.22) 0px, transparent 45%);
-}
-
-/* Mörk neutral mesh – sekundära mörka sektioner */
-.mesh-memorial {
-  background-color: #08080B;
-  background-image:
-    radial-gradient(at 20% 20%, rgba(42, 22, 32, 0.8) 0px, transparent 50%),
-    radial-gradient(at 80% 15%, rgba(30, 27, 37, 0.7) 0px, transparent 45%),
-    radial-gradient(at 70% 80%, rgba(8, 8, 11, 0.95) 0px, transparent 55%),
-    radial-gradient(at 30% 85%, rgba(225, 29, 116, 0.16) 0px, transparent 45%);
-}
-
-/* Mörk "surface"-mesh – för sektioner som behöver lite liv men förblir mörka */
-.mesh-cream {
-  background-color: #15131A;
-  background-image:
-    radial-gradient(at 12% 18%, rgba(225, 29, 116, 0.14) 0px, transparent 45%),
-    radial-gradient(at 88% 28%, rgba(242, 92, 162, 0.08) 0px, transparent 40%),
-    radial-gradient(at 60% 95%, rgba(176, 18, 89, 0.12) 0px, transparent 45%);
-}
-
-/* Mjuka, driftande blobbar som läggs i bakgrunden */
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.5;
-  will-change: transform;
-}
-@keyframes blobFloat {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(20px, -28px) scale(1.08);
-  }
-}
-.blob-animate {
-  animation: blobFloat 14s ease-in-out infinite;
 }
 
 /* Diskret film-korn för djup ovanpå gradienter */
@@ -391,85 +248,6 @@ img {
 /* ── Premium scroll-/depth-animationer (lättviktigt, ingen lib) ───────── */
 
 /*
- * Generisk "reveal"-bas som styrs av .is-visible (sätts av IntersectionObserver).
- * Varianter via data-reveal: up | left | right | scale | blur.
- * Stöder stagger via --reveal-delay (sätts inline per barn).
- */
-[data-reveal] {
-  opacity: 0;
-  transform: translate3d(0, 28px, 0);
-  transition:
-    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
-}
-[data-reveal='left'] {
-  transform: translate3d(-32px, 0, 0);
-}
-[data-reveal='right'] {
-  transform: translate3d(32px, 0, 0);
-}
-[data-reveal='scale'] {
-  transform: scale(0.94);
-}
-[data-reveal='blur'] {
-  filter: blur(10px);
-  transform: translate3d(0, 16px, 0);
-}
-[data-reveal].is-visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0) scale(1);
-  filter: blur(0);
-}
-
-/* Mjuk svävning för dekor-ikoner (kompletterar memDrift) */
-@keyframes floatIcon {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-7px) rotate(1.5deg);
-  }
-}
-.float-icon {
-  animation: floatIcon 6s ease-in-out infinite;
-  will-change: transform;
-}
-
-/* Långsam, kontinuerlig rotation för ringdekor */
-@keyframes spinSlow {
-  to {
-    transform: rotate(360deg);
-  }
-}
-.spin-slow {
-  animation: spinSlow 40s linear infinite;
-}
-
-/* Skimmer över guld-/grön gradienttext */
-.text-shimmer {
-  background: linear-gradient(
-    100deg,
-    var(--color-blush) 0%,
-    var(--color-gold-accent) 45%,
-    var(--color-blush) 90%
-  );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: shimmer 6s linear infinite;
-}
-@keyframes shimmer {
-  to {
-    background-position: -200% 0;
-  }
-}
-
-/*
  * Premium-kort: mjuk lyft + djupare skugga + glansstrimma vid hover.
  * 3D-känsla utan WebGL.
  */
@@ -518,111 +296,7 @@ img {
   transform: translateX(130%);
 }
 
-/*
- * Radix Accordion – mjuk höjd + opacitet (klasserna animate-expand/animate-collapse
- * refereras i ui/Accordion.tsx men saknade tidigare definition → snäppte upp).
- */
-@keyframes accordionDown {
-  from {
-    height: 0;
-    opacity: 0;
-  }
-  to {
-    height: var(--radix-accordion-content-height);
-    opacity: 1;
-  }
-}
-@keyframes accordionUp {
-  from {
-    height: var(--radix-accordion-content-height);
-    opacity: 1;
-  }
-  to {
-    height: 0;
-    opacity: 0;
-  }
-}
-.animate-expand {
-  animation: accordionDown 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.animate-collapse {
-  animation: accordionUp 0.28s cubic-bezier(0.4, 0, 1, 1);
-}
-
-/* Tilt-kort: 3D-lutning mot pekaren (variabler sätts av TiltCard) */
-.tilt {
-  transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg))
-    translateZ(0);
-  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-.tilt-glare {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  background: radial-gradient(
-    circle at var(--glare-x, 50%) var(--glare-y, 50%),
-    rgba(255, 255, 255, 0.35),
-    transparent 45%
-  );
-}
-.tilt:hover .tilt-glare {
-  opacity: 1;
-}
-
-/* Marquee – horisontellt löpande nyckelord mellan sektioner */
-.marquee {
-  display: flex;
-  width: max-content;
-  animation: marqueeScroll var(--marquee-duration, 32s) linear infinite;
-}
-@keyframes marqueeScroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-.marquee-mask {
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-}
-
-/* Parallax-frame: bild/video-ram med inre lager som driver i scroll */
-.parallax-frame {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
-.parallax-frame > .parallax-layer {
-  position: absolute;
-  inset: -12% 0;
-  width: 100%;
-  height: 124%;
-  object-fit: cover;
-  will-change: transform;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .animate-expand,
-  .animate-collapse {
-    animation: none;
-  }
-  [data-reveal] {
-    opacity: 1;
-    transform: none;
-    filter: none;
-    transition: none;
-  }
-  .float-icon,
-  .spin-slow,
-  .text-shimmer,
-  .marquee,
   .hero-zoom,
   .hero-parallax,
   .wipe-in,
@@ -631,12 +305,10 @@ img {
   }
   .card-lift,
   .card-icon,
-  .card-sheen::before,
-  .tilt {
+  .card-sheen::before {
     transition: none;
   }
-  .card-lift:hover,
-  .tilt {
+  .card-lift:hover {
     transform: none;
   }
 }
