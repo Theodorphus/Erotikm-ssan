@@ -5,7 +5,10 @@
 import { NextStudio } from 'next-sanity/studio'
 import config from '../../../../sanity.config'
 
-export const dynamic = 'force-static'
+// Studion är en interaktiv klient-app (Sanitys admin), inte statiskt innehåll.
+// force-static gjorde att den tomma catch-all-rutten (/studio) 404:ade i
+// produktion på Vercel – force-dynamic renderar on-demand och löser det.
+export const dynamic = 'force-dynamic'
 
 export { metadata, viewport } from 'next-sanity/studio'
 

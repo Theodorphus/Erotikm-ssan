@@ -55,3 +55,4 @@ logs/
 
 # Granskningsskript (scripts/audit.mjs) skriver hit
 audit-shots/
+.vercel
