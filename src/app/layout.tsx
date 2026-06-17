@@ -86,6 +86,12 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
     },
   },
+  // Google Search Console-verifiering via meta-tagg. Sätt GOOGLE_SITE_VERIFICATION
+  // i env (token från Search Console → "HTML-tagg"-metoden) så läggs taggen in.
+  // Är den tom utelämnas verifieringen helt.
+  ...(process.env.GOOGLE_SITE_VERIFICATION && {
+    verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
+  }),
 }
 
 export const viewport: Viewport = {
