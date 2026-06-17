@@ -33,9 +33,9 @@ export default async function BiljetterPage() {
           {tickets.map((ticket, i) => (
             <Reveal key={ticket.name} delay={i * 100} className="h-full">
               <div
-                className={`relative h-full flex flex-col rounded-2xl border p-8 transition-all duration-300 ${
+                className={`relative isolate h-full flex flex-col rounded-2xl border p-8 transition-all duration-300 ${
                   ticket.featured
-                    ? 'border-brand-pink bg-surface-pink shadow-xl shadow-brand-pink/10'
+                    ? 'premium-glow border-brand-pink bg-surface-pink shadow-xl shadow-brand-pink/10'
                     : 'border-white/10 bg-surface hover:border-brand-pink/40'
                 }`}
               >

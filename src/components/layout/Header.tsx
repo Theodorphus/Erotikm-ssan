@@ -71,7 +71,7 @@ export function Header({ event: EVENT }: { event: EventData }) {
             href={EVENT.links.tickets}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-brand-pink text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-brand-pink-dark transition-colors shadow-md shadow-brand-pink/20"
+            className="cta-shine inline-flex items-center justify-center bg-brand-pink text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-brand-pink-dark transition-colors shadow-md shadow-brand-pink/20"
           >
             Köp biljetter
           </a>

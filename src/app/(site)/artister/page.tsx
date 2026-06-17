@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { Mic2 } from 'lucide-react'
 import { PageHero } from '@/components/layout/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
+import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder'
 import { getArtists } from '@/lib/content'
 
 // ISR: hämta om från Sanity var 60:e sekund.
@@ -36,7 +36,7 @@ export default async function ArtisterPage() {
             <Reveal key={artist.slug} delay={(i % 4) * 90}>
               <article
                 id={artist.slug}
-                className="grid sm:grid-cols-[220px_1fr] gap-6 sm:gap-8 items-center rounded-2xl border border-white/10 bg-surface p-6 sm:p-8"
+                className="card-lift grid sm:grid-cols-[220px_1fr] gap-6 sm:gap-8 items-center rounded-2xl border border-white/10 bg-surface p-6 sm:p-8"
               >
                 <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-surface-2 flex items-center justify-center">
                   {artist.image ? (
@@ -48,7 +48,7 @@ export default async function ArtisterPage() {
                       className="object-cover"
                     />
                   ) : (
-                    <Mic2 size={48} className="text-brand-pink/40" />
+                    <ImagePlaceholder name={artist.name} />
                   )}
                 </div>
                 <div className="min-w-0">

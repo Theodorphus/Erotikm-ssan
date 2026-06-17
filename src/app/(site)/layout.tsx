@@ -1,6 +1,8 @@
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { StructuredData } from '@/components/seo/StructuredData'
+import { GoogleAnalytics } from '@/components/seo/GoogleAnalytics'
+import { ScrollToTop } from '@/components/ui/ScrollToTop'
 import { Analytics } from '@vercel/analytics/next'
 import { getEvent } from '@/lib/content'
 
@@ -29,7 +31,9 @@ export default async function SiteLayout({
       <Header event={event} />
       <main id="innehall" className="flex-1">{children}</main>
       <Footer event={event} />
+      <ScrollToTop />
       <Analytics />
+      <GoogleAnalytics />
     </div>
   )
 }

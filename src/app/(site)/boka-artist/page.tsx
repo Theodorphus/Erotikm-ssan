@@ -28,8 +28,11 @@ export default async function BokaArtistPage() {
         subtitle="Vill du boka en av våra artister till ditt eget event? Kontakta oss enklast via Instagram."
       />
 
-      <section className="bg-ink py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto text-center rounded-2xl border border-white/10 bg-surface p-10">
+      <section className="relative overflow-hidden bg-ink py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
+        {/* Atmosfäriska neon-lager bakom kortet – scenljus i diset. */}
+        <div className="aurora opacity-70" aria-hidden="true" />
+        <div className="bokeh" aria-hidden="true" />
+        <div className="relative z-10 max-w-2xl mx-auto text-center card-sheen rounded-2xl border border-white/10 bg-surface/80 backdrop-blur-sm p-10 shadow-2xl shadow-brand-pink/10">
           <div className="h-16 w-16 rounded-2xl bg-brand-pink/15 text-brand-pink flex items-center justify-center mx-auto mb-6">
             <InstagramIcon size={32} />
           </div>

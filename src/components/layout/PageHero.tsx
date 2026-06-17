@@ -13,7 +13,9 @@ export function PageHero({
   children?: ReactNode
 }) {
   return (
-    <section className="mesh-forest relative overflow-hidden text-cream py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <section className="mesh-forest grain relative overflow-hidden text-cream py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
+      {/* Mjuka neon-orbs bakom rubriken – ger djup utan foto. */}
+      <div className="aurora" aria-hidden="true" />
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         <h1 className="font-display text-4xl sm:text-5xl font-extrabold mb-4">{title}</h1>
         {subtitle && (
