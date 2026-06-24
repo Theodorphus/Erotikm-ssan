@@ -127,6 +127,7 @@ async function run() {
       perks: t.perks,
       badge: t.badge,
       featured: !!t.featured,
+      group: t.group,
       order: i,
     })
   })

@@ -29,10 +29,24 @@ export const ticket = defineType({
       of: [{ type: 'string' }],
     }),
     defineField({
+      name: 'group',
+      title: 'Dag / grupp',
+      type: 'string',
+      description: 'Vilken dag biljetten gäller – grupperar korten på sidan.',
+      options: {
+        list: [
+          { title: 'Fredag', value: 'Fredag' },
+          { title: 'Lördag', value: 'Lördag' },
+          { title: '2-dagarspass', value: '2-dagarspass' },
+        ],
+      },
+      initialValue: 'Fredag',
+    }),
+    defineField({
       name: 'badge',
       title: 'Etikett',
       type: 'string',
-      description: 'T.ex. "Endast 400 st" eller "Begränsat antal".',
+      description: 'T.ex. "Endast 200 st" eller "Begränsat antal".',
     }),
     defineField({
       name: 'featured',

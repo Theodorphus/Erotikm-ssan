@@ -57,13 +57,13 @@ export const EVENT = {
    * Externa länkar (allt biljett-/bokningsflöde sker hos tredje part).
    * ❓ Billetto: september-eventet är inte upplagt än – byt URL när Johan skapat det.
    * ❓ bookArtist: Johan ska byta till en egen Instagram-sida för bokning.
-   * ❓ Sociala länkar: Johan återkommer med riktiga FB/IG/TikTok-länkar.
+   * ❓ Facebook: Johan har inte skickat URL än (bara bild) – uppdatera när den kommer.
    */
   links: {
     tickets: 'https://billetto.se/',
-    bookArtist: 'https://instagram.com/fair_erotic',
+    bookArtist: 'https://www.instagram.com/fair.erotica',
     facebook: 'https://www.facebook.com/fairerotica',
-    instagram: 'https://instagram.com/fair_erotic',
-    tiktok: 'https://www.tiktok.com/',
+    instagram: 'https://www.instagram.com/fair.erotica',
+    tiktok: 'https://www.tiktok.com/@fair.erotica',
   },
 } as const

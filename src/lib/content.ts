@@ -81,11 +81,12 @@ type SanityTicket = {
   perks?: string[]
   badge?: string
   featured?: boolean
+  group?: TicketType['group']
 }
 
 export async function getTickets(): Promise<TicketType[]> {
   const data = await safeFetch<SanityTicket[]>(
-    `*[_type == "ticket"]|order(order asc){ name, price, description, perks, badge, featured }`
+    `*[_type == "ticket"]|order(order asc){ name, price, description, perks, badge, featured, group }`
   )
   if (!data || data.length === 0) return TICKET_TYPES
   return data.map((t) => ({
@@ -95,6 +96,7 @@ export async function getTickets(): Promise<TicketType[]> {
     perks: t.perks ?? [],
     badge: t.badge,
     featured: t.featured,
+    group: t.group ?? 'Fredag',
   }))
 }
 
