@@ -38,8 +38,9 @@ export function Header({ event: EVENT }: { event: EventData }) {
             priority
             // Explicit höjd via style: globals.css har en global `img { height: auto }`
             // (samma specificitet som Tailwinds h-*) som annars överrider klassen.
-            className="w-auto"
-            style={{ height: 24 }}
+            // Något större i vila, krymper diskret när headern kompaktas vid scroll.
+            className="w-auto transition-[height] duration-200"
+            style={{ height: isScrolled ? 24 : 28 }}
           />
         </Link>
 
@@ -71,7 +72,7 @@ export function Header({ event: EVENT }: { event: EventData }) {
             href={EVENT.links.tickets}
             target="_blank"
             rel="noopener noreferrer"
-            className="cta-shine inline-flex items-center justify-center bg-brand-pink text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-brand-pink-dark transition-colors shadow-md shadow-brand-pink/20"
+            className="cta-shine btn-gradient inline-flex items-center justify-center text-white font-semibold px-6 py-2.5 rounded-full shadow-md shadow-brand-pink/20"
           >
             Köp biljetter
           </a>

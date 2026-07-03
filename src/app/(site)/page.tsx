@@ -39,13 +39,20 @@ export default async function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/20 to-ink/85" aria-hidden="true" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 text-center">
+          {/* Trust-badge: Sveriges första & största sedan 1996 – premiumsignal. */}
           <p
-            className="reveal inline-flex items-center gap-2 text-sm uppercase tracking-[0.22em] text-brand-pink-light mb-6"
+            className="reveal inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-cream/80 border border-white/15 bg-white/5 backdrop-blur-sm rounded-full px-4 py-1.5 mb-5"
+            style={{ animationDelay: '0.1s' }}
+          >
+            <Sparkles size={13} className="text-brand-pink-light" /> Originalet · sedan 1996
+          </p>
+          <p
+            className="reveal flex items-center justify-center gap-2 text-sm uppercase tracking-[0.22em] text-brand-pink-light mb-6"
             style={{ animationDelay: '0.15s' }}
           >
             <CalendarDays size={16} /> {EVENT.dateText}
           </p>
-          <h1 className="wipe-in font-display text-5xl sm:text-7xl font-extrabold leading-[1.05] mb-5">
+          <h1 className="wipe-in title-glow font-display text-5xl sm:text-7xl font-extrabold leading-[1.05] mb-5">
             {EVENT.name}
           </h1>
           <p
@@ -77,14 +84,14 @@ export default async function HomePage() {
               href={EVENT.links.tickets}
               target="_blank"
               rel="noopener noreferrer"
-              className="reveal inline-flex items-center justify-center gap-2 bg-brand-pink text-white font-semibold px-8 py-4 rounded-lg hover:bg-brand-pink-dark transition-colors shadow-lg shadow-brand-pink/25"
+              className="reveal cta-shine btn-gradient inline-flex items-center justify-center gap-2 text-white font-semibold px-9 py-4 rounded-full shadow-lg shadow-brand-pink/25"
               style={{ animationDelay: '0.85s' }}
             >
               <Ticket size={20} /> Köp biljetter
             </a>
             <Link
               href="/artister"
-              className="reveal inline-flex items-center justify-center gap-2 bg-white/5 border border-white/15 text-cream font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors"
+              className="reveal inline-flex items-center justify-center gap-2 bg-white/5 border border-white/15 text-cream font-semibold px-9 py-4 rounded-full hover:bg-white/10 hover:border-white/25 transition-colors"
               style={{ animationDelay: '0.89s' }}
             >
               Se artisterna <ArrowRight size={18} />
@@ -153,8 +160,6 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
-
-      <div className="glow-line" aria-hidden="true" />
 
       {/* ── PROGRAMMET: konkreta programpunkter (från Johans mejl) ──── */}
       <section className="bg-surface border-b border-white/10 py-20 px-4 sm:px-6 lg:px-8">
@@ -276,8 +281,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <div className="glow-line" aria-hidden="true" />
-
       {/* ── PRAKTISK INFO + SOCIALA MEDIER (punkt 4) ──────────────── */}
       <section className="bg-ink py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-10">
@@ -328,8 +331,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <div className="glow-line" aria-hidden="true" />
-
       {/* ── VANLIGA FRÅGOR ─────────────────────────────────────────── */}
       <section className="bg-surface py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
@@ -366,12 +367,21 @@ function Highlight({
   text: string
 }) {
   return (
-    <div className="h-full rounded-2xl border border-white/10 bg-ink-mid p-7 text-center sm:text-left">
-      <div className="h-12 w-12 rounded-xl bg-brand-pink/15 text-brand-pink flex items-center justify-center mb-5 mx-auto sm:mx-0">
+    // Mild hover (endast border-glow, ingen lyft) – korten är inte klickbara
+    // och ska inte konkurrera med LinkCards card-lift.
+    <div className="relative overflow-hidden h-full rounded-2xl border border-white/10 bg-ink-mid p-7 text-center sm:text-left transition-colors duration-300 hover:border-brand-pink/35">
+      {/* Vattenstämpel: samma ikon, stor och svag i hörnet – ger djup. */}
+      <div
+        className="absolute -bottom-3 -right-3 text-brand-pink opacity-[0.07] scale-[3.2] origin-bottom-right -rotate-12"
+        aria-hidden="true"
+      >
         {icon}
       </div>
-      <h3 className="font-display text-xl font-bold text-cream mb-2">{title}</h3>
-      <p className="text-sm text-cream/60 leading-relaxed">{text}</p>
+      <div className="relative h-12 w-12 rounded-xl bg-gradient-to-br from-brand-pink/30 to-brand-pink/5 border border-brand-pink/30 text-brand-pink flex items-center justify-center mb-5 mx-auto sm:mx-0 shadow-[0_0_16px_rgba(225,29,116,0.2)]">
+        {icon}
+      </div>
+      <h3 className="relative font-display text-xl font-bold text-cream mb-2">{title}</h3>
+      <p className="relative text-sm text-cream/60 leading-relaxed">{text}</p>
     </div>
   )
 }
@@ -390,15 +400,22 @@ function LinkCard({
   external?: boolean
 }) {
   const inner = (
-    <div className="card-lift group h-full rounded-2xl border border-white/10 bg-ink-mid p-7 hover:border-brand-pink/50 hover:bg-surface-2">
-      <div className="card-icon h-12 w-12 rounded-xl bg-brand-pink/15 text-brand-pink flex items-center justify-center mb-5">
+    <div className="card-lift group relative overflow-hidden h-full rounded-2xl border border-white/10 bg-ink-mid p-7 hover:border-brand-pink/50 hover:bg-surface-2">
+      {/* Vattenstämpel: samma ikon, stor och svag i hörnet – ger djup. */}
+      <div
+        className="absolute -bottom-3 -right-3 text-brand-pink opacity-[0.07] scale-[3.2] origin-bottom-right -rotate-12 transition-transform duration-500 group-hover:scale-[3.6] group-hover:-rotate-6"
+        aria-hidden="true"
+      >
         {icon}
       </div>
-      <h3 className="font-display text-xl font-bold text-cream mb-2 flex items-center gap-2">
+      <div className="card-icon relative h-12 w-12 rounded-xl bg-gradient-to-br from-brand-pink/30 to-brand-pink/5 border border-brand-pink/30 text-brand-pink flex items-center justify-center mb-5 shadow-[0_0_16px_rgba(225,29,116,0.2)]">
+        {icon}
+      </div>
+      <h3 className="relative font-display text-xl font-bold text-cream mb-2 flex items-center gap-2">
         {title}
         <ArrowRight size={16} className="text-brand-pink opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
       </h3>
-      <p className="text-sm text-cream/60 leading-relaxed">{text}</p>
+      <p className="relative text-sm text-cream/60 leading-relaxed">{text}</p>
     </div>
   )
 

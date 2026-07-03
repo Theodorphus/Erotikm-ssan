@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Ticket, Check } from 'lucide-react'
 import { PageHero } from '@/components/layout/PageHero'
+import { NotifyForm } from '@/components/event/NotifyForm'
 import { Reveal } from '@/components/ui/Reveal'
 import { TICKETS_NOTE, TICKET_GROUPS, type TicketType } from '@/lib/data/tickets'
 import { getTickets, getEvent } from '@/lib/content'
@@ -8,13 +9,14 @@ import { getTickets, getEvent } from '@/lib/content'
 // ISR: hämta om från Sanity var 60:e sekund.
 export const revalidate = 60
 
+// Obs: inga hårdkodade priser här – de styrs i Sanity och ändras över tid.
 export const metadata: Metadata = {
   title: 'Köp biljetter',
-  description: 'Biljetter till Erotikmässan – fredag, lördag och 2-dagarspass. Early Bird från 350 kr, Standard 450 kr och Premium VIP. Förköp via Billetto och slipp köa, eller köp i dörren.',
+  description: 'Biljetter till Erotikmässan – Early Bird, Standard och Premium VIP, per dag eller som 2-dagarspass. Förköp via Billetto och slipp köa, eller köp i dörren.',
   alternates: { canonical: '/biljetter' },
   openGraph: {
     title: 'Köp biljetter | Erotikmässan',
-    description: 'Biljetter till Erotikmässan – fredag, lördag och 2-dagarspass. Early Bird från 350 kr, Standard 450 kr och Premium VIP. Förköp via Billetto och slipp köa, eller köp i dörren.',
+    description: 'Biljetter till Erotikmässan – Early Bird, Standard och Premium VIP, per dag eller som 2-dagarspass. Förköp via Billetto och slipp köa, eller köp i dörren.',
     url: '/biljetter',
   },
 }
@@ -37,7 +39,9 @@ function TicketCard({ ticket, ticketsUrl, delay }: { ticket: TicketType; tickets
         <div className="flex items-center justify-between gap-2 mb-1">
           <h3 className="font-display text-2xl font-bold text-cream">{ticket.name}</h3>
           {ticket.badge && (
-            <span className="text-[11px] font-semibold uppercase tracking-wide text-brand-pink-light bg-brand-pink/10 border border-brand-pink/30 px-2 py-0.5 rounded-full whitespace-nowrap">
+            <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-brand-pink-light bg-brand-pink/10 border border-brand-pink/30 px-2.5 py-0.5 rounded-full whitespace-nowrap">
+              {/* Pulserande prick = "begränsat antal" – driver förköp */}
+              <span className="pulse-dot" aria-hidden="true" />
               {ticket.badge}
             </span>
           )}
@@ -67,10 +71,10 @@ function TicketCard({ ticket, ticketsUrl, delay }: { ticket: TicketType; tickets
           href={ticketsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className={`inline-flex items-center justify-center gap-2 w-full font-semibold px-6 py-3.5 rounded-lg transition-colors ${
+          className={`inline-flex items-center justify-center gap-2 w-full font-semibold px-6 py-3.5 rounded-full ${
             ticket.featured
-              ? 'bg-brand-pink text-white hover:bg-brand-pink-dark'
-              : 'bg-white/5 border border-white/15 text-cream hover:bg-white/10'
+              ? 'btn-gradient cta-shine text-white'
+              : 'bg-white/5 border border-white/15 text-cream hover:bg-white/10 transition-colors'
           }`}
         >
           <Ticket size={18} /> Köp via Billetto
@@ -127,6 +131,19 @@ export default async function BiljetterPage() {
         <p className="text-center text-cream/60 text-sm mt-12 max-w-xl mx-auto">
           {TICKETS_NOTE}
         </p>
+
+        {/* E-postinsamling: fångar besökare tills Billetto-eventet är live. */}
+        <Reveal delay={150}>
+          <div className="mt-14 max-w-2xl mx-auto rounded-2xl border border-white/10 bg-surface-2 p-8 sm:p-10 text-center">
+            <h2 className="font-display text-2xl font-bold text-cream mb-2">
+              Vill du ha besked när biljetterna släpps?
+            </h2>
+            <p className="text-cream/60 mb-6">
+              Lämna din e-post så hör vi av oss så fort förköpet öppnar på Billetto.
+            </p>
+            <NotifyForm />
+          </div>
+        </Reveal>
       </section>
     </>
   )

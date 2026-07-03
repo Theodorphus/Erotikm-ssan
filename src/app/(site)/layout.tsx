@@ -1,5 +1,6 @@
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { MobileTicketBar } from '@/components/layout/MobileTicketBar'
 import { StructuredData } from '@/components/seo/StructuredData'
 import { GoogleAnalytics } from '@/components/seo/GoogleAnalytics'
 import { ScrollToTop } from '@/components/ui/ScrollToTop'
@@ -31,6 +32,7 @@ export default async function SiteLayout({
       <Header event={event} />
       <main id="innehall" className="flex-1">{children}</main>
       <Footer event={event} />
+      <MobileTicketBar ticketsUrl={event.links.tickets} />
       <ScrollToTop />
       <Analytics />
       <GoogleAnalytics />
