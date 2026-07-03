@@ -59,7 +59,7 @@ export function MobileMenu({ isOpen, onClose, ticketsUrl }: MobileMenuProps) {
             href={ticketsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 text-center bg-brand-pink text-white font-semibold px-5 py-3 rounded-lg hover:bg-brand-pink-dark transition-colors"
+            className="btn-gradient flex items-center justify-center gap-2 text-center text-white font-semibold px-5 py-3 rounded-full"
             onClick={onClose}
           >
             <Ticket size={18} /> Köp biljetter

@@ -33,7 +33,7 @@ export default async function BokaArtistPage() {
         <div className="aurora opacity-70" aria-hidden="true" />
         <div className="bokeh" aria-hidden="true" />
         <div className="relative z-10 max-w-2xl mx-auto text-center card-sheen rounded-2xl border border-white/10 bg-surface/80 backdrop-blur-sm p-10 shadow-2xl shadow-brand-pink/10">
-          <div className="h-16 w-16 rounded-2xl bg-brand-pink/15 text-brand-pink flex items-center justify-center mx-auto mb-6">
+          <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-brand-pink/30 to-brand-pink/5 border border-brand-pink/30 text-brand-pink flex items-center justify-center mx-auto mb-6 shadow-[0_0_20px_rgba(225,29,116,0.25)]">
             <InstagramIcon size={32} />
           </div>
           <h2 className="font-display text-2xl font-bold text-cream mb-3">

@@ -105,12 +105,19 @@ export default function OmOssPage() {
               { icon: <Star size={24} />, title: 'Livsnjutning', text: 'En öppen och välkomnande mötesplats för alla.' },
             ].map((v, i) => (
               <Reveal key={v.title} delay={i * 90}>
-                <div className="rounded-2xl border border-white/10 bg-surface p-6 h-full">
-                  <div className="h-11 w-11 rounded-xl bg-brand-pink/15 text-brand-pink flex items-center justify-center mb-4">
+                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-surface p-6 h-full transition-colors duration-300 hover:border-brand-pink/35">
+                  {/* Vattenstämpel: samma ikon, stor och svag i hörnet – ger djup. */}
+                  <div
+                    className="absolute -bottom-3 -right-3 text-brand-pink opacity-[0.07] scale-[3.2] origin-bottom-right -rotate-12"
+                    aria-hidden="true"
+                  >
                     {v.icon}
                   </div>
-                  <h3 className="font-display text-lg font-bold text-cream mb-1.5">{v.title}</h3>
-                  <p className="text-sm text-cream/60">{v.text}</p>
+                  <div className="relative h-11 w-11 rounded-xl bg-gradient-to-br from-brand-pink/30 to-brand-pink/5 border border-brand-pink/30 text-brand-pink flex items-center justify-center mb-4 shadow-[0_0_16px_rgba(225,29,116,0.2)]">
+                    {v.icon}
+                  </div>
+                  <h3 className="relative font-display text-lg font-bold text-cream mb-1.5">{v.title}</h3>
+                  <p className="relative text-sm text-cream/60">{v.text}</p>
                 </div>
               </Reveal>
             ))}

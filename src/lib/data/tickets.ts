@@ -28,7 +28,7 @@ export const TICKET_TYPES: TicketType[] = [
     price: 350,
     description: 'Förköpspriset för dig som är snabb – begränsat antal.',
     perks: ['Entré till mässan', 'Alla utställare', 'Scenshower & uppträdanden'],
-    badge: 'Endast 400 st',
+    badge: 'Endast 200 st per dag',
   },
   {
     name: 'Standard',
@@ -38,7 +38,7 @@ export const TICKET_TYPES: TicketType[] = [
   },
   {
     name: 'Premium VIP',
-    price: 850,
+    price: 1100,
     description: 'Det lilla extra – för dig som vill njuta av kvällen fullt ut.',
     perks: [
       'Allt i Standard',
