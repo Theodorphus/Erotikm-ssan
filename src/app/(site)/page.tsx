@@ -5,6 +5,7 @@ import { FacebookIcon, InstagramIcon, TikTokIcon } from '@/components/ui/SocialI
 import { Countdown } from '@/components/event/Countdown'
 import { Faq } from '@/components/event/Faq'
 import { AgeBadge } from '@/components/event/AgeBadge'
+import { FrokenSnuskSilhouette } from '@/components/event/FrokenSnuskSilhouette'
 import { Reveal } from '@/components/ui/Reveal'
 import { getEvent, getFaq } from '@/lib/content'
 
@@ -37,6 +38,23 @@ export default async function HomePage() {
             kontrast, medan dansösen i högerkanten lämnas ljusare och syns. */}
         <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/55 to-ink/25" aria-hidden="true" />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/20 to-ink/85" aria-hidden="true" />
+
+        {/* Fröken Snusk – dragplåstret på heroens mörka vänsterhalva (Johans
+            önskemål). Siluett i mask + neon-namn, länkad till artistsidan.
+            Endast på breda skärmar: på mobil är vänsterytan text-yta. */}
+        <Link
+          href="/artister#froken-snusk"
+          aria-label="Fröken Snusk – mässans gästartist, läs mer"
+          className="hidden lg:flex absolute left-[3%] xl:left-[6%] bottom-0 z-10 flex-col items-center group"
+        >
+          <FrokenSnuskSilhouette className="w-56 xl:w-64 h-auto transition-transform duration-500 group-hover:scale-[1.03]" />
+          <span className="neon-name font-display text-xl xl:text-2xl font-extrabold uppercase tracking-[0.18em] -mt-4 mb-1">
+            Fröken Snusk
+          </span>
+          <span className="text-[10px] uppercase tracking-[0.3em] text-brand-pink-light/90 mb-6">
+            Gästartist · Live på scen
+          </span>
+        </Link>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 text-center">
           {/* Trust-badge: Sveriges första & största sedan 1996 – premiumsignal. */}
