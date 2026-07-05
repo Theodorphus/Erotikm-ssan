@@ -25,7 +25,7 @@ export default async function HomePage() {
             redan balanserad. */}
         <div className="hero-parallax absolute inset-x-0 -top-[18%] bottom-0" aria-hidden="true">
           <Image
-            src="/images/hero-snusk-v2.webp"
+            src="/images/hero-snusk-v3.webp"
             alt=""
             fill
             priority
