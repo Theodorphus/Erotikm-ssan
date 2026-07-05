@@ -40,7 +40,7 @@ const HEADLINERS = [
     slug: 'froken-snusk',
     role: 'Mässans gästartist',
     bio: 'Sveriges mest omtalade maskerade popfenomen intar stora scenen. Hitmakerskan bakom de virala succéerna – ingen vet vem hon är, alla vet vad hon levererar. Mässans stora dragplåster.',
-    link: 'https://www.instagram.com/frokensnusk',
+    link: 'https://www.instagram.com/frokensnuskofficial/',
     order: 0,
   },
   {

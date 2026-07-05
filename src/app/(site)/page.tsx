@@ -5,7 +5,6 @@ import { FacebookIcon, InstagramIcon, TikTokIcon } from '@/components/ui/SocialI
 import { Countdown } from '@/components/event/Countdown'
 import { Faq } from '@/components/event/Faq'
 import { AgeBadge } from '@/components/event/AgeBadge'
-import { FrokenSnuskSilhouette } from '@/components/event/FrokenSnuskSilhouette'
 import { Reveal } from '@/components/ui/Reveal'
 import { getEvent, getFaq } from '@/lib/content'
 
@@ -40,15 +39,26 @@ export default async function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/20 to-ink/85" aria-hidden="true" />
 
         {/* Fröken Snusk – dragplåstret på heroens mörka vänsterhalva (Johans
-            önskemål). Siluett i mask + neon-namn, länkad till artistsidan.
+            önskemål). Riktigt pressfoto i neonramat kort (samma stil som
+            posterunderlaget), länkad till artistsidan.
             Endast på breda skärmar: på mobil är vänsterytan text-yta. */}
         <Link
           href="/artister#froken-snusk"
           aria-label="Fröken Snusk – mässans gästartist, läs mer"
-          className="hidden lg:flex absolute left-[3%] xl:left-[6%] bottom-0 z-10 flex-col items-center group"
+          className="hidden lg:flex absolute left-[3%] xl:left-[6%] top-1/2 -translate-y-1/2 z-10 flex-col items-center group"
         >
-          <FrokenSnuskSilhouette className="w-56 xl:w-64 h-auto transition-transform duration-500 group-hover:scale-[1.03]" />
-          <span className="neon-name font-display text-xl xl:text-2xl font-extrabold uppercase tracking-[0.18em] -mt-4 mb-1">
+          <span className="relative block w-52 xl:w-60 aspect-[4/5] rounded-2xl overflow-hidden border-2 border-brand-pink/60 shadow-[0_0_18px_rgba(225,29,116,0.5),0_0_48px_rgba(225,29,116,0.3)] transition-transform duration-500 group-hover:scale-[1.03] mb-4">
+            <Image
+              src="/images/artists/froken-snusk.jpg"
+              alt="Fröken Snusk i sin rosa balaklava"
+              fill
+              sizes="(min-width: 1280px) 240px, 208px"
+              className="object-cover"
+            />
+            {/* Mjuk mörk ton nertill så kortet smälter mot heron */}
+            <span className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" aria-hidden="true" />
+          </span>
+          <span className="neon-name font-display text-xl xl:text-2xl font-extrabold uppercase tracking-[0.18em] mb-1">
             Fröken Snusk
           </span>
           <span className="text-[10px] uppercase tracking-[0.3em] text-brand-pink-light/90 mb-6">
