@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Ticket, Check } from 'lucide-react'
+import { Ticket, Check, Building2, Mail } from 'lucide-react'
 import { PageHero } from '@/components/layout/PageHero'
 import { NotifyForm } from '@/components/event/NotifyForm'
 import { Reveal } from '@/components/ui/Reveal'
@@ -131,6 +131,25 @@ export default async function BiljetterPage() {
         <p className="text-center text-cream/60 text-sm mt-12 max-w-xl mx-auto">
           {TICKETS_NOTE}
         </p>
+
+        {/* Företagsbokning / VIP-bordsservice – egen kontaktkanal (Joakim). */}
+        <Reveal delay={100}>
+          <div className="mt-10 max-w-2xl mx-auto rounded-2xl border border-brand-pink/25 bg-brand-pink/5 p-7 sm:p-8 text-center">
+            <div className="inline-flex items-center gap-2 text-brand-pink-light font-semibold uppercase tracking-wider text-sm mb-3">
+              <Building2 size={18} /> Företagsbokning &amp; VIP-bordsservice
+            </div>
+            <p className="text-cream/70 mb-4">
+              Vill ni boka bord för företaget eller en VIP-upplevelse med bordsservice?
+              Kontakta oss så ordnar vi det.
+            </p>
+            <a
+              href="mailto:joakim@erotikmassan.com"
+              className="inline-flex items-center gap-2 text-brand-pink hover:text-brand-pink-light font-semibold transition-colors"
+            >
+              <Mail size={18} /> joakim@erotikmassan.com
+            </a>
+          </div>
+        </Reveal>
 
         {/* E-postinsamling: fångar besökare tills Billetto-eventet är live. */}
         <Reveal delay={150}>
