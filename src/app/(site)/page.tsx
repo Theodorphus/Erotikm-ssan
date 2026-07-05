@@ -39,8 +39,8 @@ export default async function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/20 to-ink/85" aria-hidden="true" />
 
         {/* Fröken Snusk – dragplåstret på heroens mörka vänsterhalva (Johans
-            önskemål). Riktigt pressfoto i neonramat kort (samma stil som
-            posterunderlaget), länkad till artistsidan.
+            önskemål). Endast neontext (bilden borttagen på önskemål),
+            länkad till artistsidan.
             Breda skärmar: absolut i vänsterkanten. Mobil/surfplatta har en
             egen variant i textflödet längre ner (vänsterytan är text-yta). */}
         <Link
@@ -48,18 +48,7 @@ export default async function HomePage() {
           aria-label="Fröken Snusk – mässans gästartist, läs mer"
           className="hidden lg:flex absolute left-[3%] xl:left-[6%] top-1/2 -translate-y-1/2 z-10 flex-col items-center group"
         >
-          <span className="relative block w-52 xl:w-60 aspect-[4/5] rounded-2xl overflow-hidden border-2 border-brand-pink/60 shadow-[0_0_18px_rgba(225,29,116,0.5),0_0_48px_rgba(225,29,116,0.3)] transition-transform duration-500 group-hover:scale-[1.03] mb-4">
-            <Image
-              src="/images/artists/froken-snusk.jpg"
-              alt="Fröken Snusk i sin rosa balaklava"
-              fill
-              sizes="(min-width: 1280px) 240px, 208px"
-              className="object-cover"
-            />
-            {/* Mjuk mörk ton nertill så kortet smälter mot heron */}
-            <span className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" aria-hidden="true" />
-          </span>
-          <span className="neon-name font-display text-xl xl:text-2xl font-extrabold uppercase tracking-[0.18em] mb-1">
+          <span className="neon-name font-display text-xl xl:text-2xl font-extrabold uppercase tracking-[0.18em] mb-1 transition-transform duration-500 group-hover:scale-[1.03]">
             Fröken Snusk
           </span>
           <span className="text-[10px] uppercase tracking-[0.3em] text-brand-pink-light/90 mb-6">
@@ -94,25 +83,15 @@ export default async function HomePage() {
             {EVENT.motto}. {EVENT.venue}, {EVENT.city}.
           </p>
 
-          {/* Fröken Snusk på mobil/surfplatta: samma neonramade kort som på
-              desktop, men i flödet under mottot – den absoluta vänster-
-              placeringen får bara plats på breda skärmar. */}
+          {/* Fröken Snusk på mobil/surfplatta: neontext i flödet under mottot
+              (bilden borttagen på önskemål). Den absoluta vänster-placeringen
+              på desktop får bara plats på breda skärmar. */}
           <Link
             href="/artister#froken-snusk"
             aria-label="Fröken Snusk – mässans gästartist, läs mer"
             className="reveal lg:hidden inline-flex flex-col items-center group mb-8"
             style={{ animationDelay: '0.6s' }}
           >
-            <span className="relative block w-40 sm:w-48 aspect-[4/5] rounded-2xl overflow-hidden border-2 border-brand-pink/60 shadow-[0_0_18px_rgba(225,29,116,0.5),0_0_48px_rgba(225,29,116,0.3)] transition-transform duration-500 group-hover:scale-[1.03] mb-3">
-              <Image
-                src="/images/artists/froken-snusk.jpg"
-                alt="Fröken Snusk i sin rosa balaklava"
-                fill
-                sizes="(min-width: 640px) 192px, 160px"
-                className="object-cover"
-              />
-              <span className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" aria-hidden="true" />
-            </span>
             <span className="neon-name font-display text-lg font-extrabold uppercase tracking-[0.18em] mb-1">
               Fröken Snusk
             </span>
