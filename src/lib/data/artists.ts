@@ -28,6 +28,13 @@ export interface Artist {
 
 export const ARTISTS: Artist[] = [
   {
+    slug: 'froken-snusk',
+    name: 'Fröken Snusk',
+    role: 'Gästartist',
+    bio: 'Årets stora gästartist – live på stora scenen. Bakom den rosa balaklavan gömmer sig ett av Sveriges mest omtalade namn, känd för sin råa scennärvaro och ikoniska look. Ett dragplåster du inte vill missa.',
+    image: '/images/artists/froken-snusk.jpg',
+  },
+  {
     slug: 'aline',
     name: 'Aline',
     role: 'Dansare',
