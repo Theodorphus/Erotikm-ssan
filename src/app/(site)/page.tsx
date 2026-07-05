@@ -41,7 +41,8 @@ export default async function HomePage() {
         {/* Fröken Snusk – dragplåstret på heroens mörka vänsterhalva (Johans
             önskemål). Riktigt pressfoto i neonramat kort (samma stil som
             posterunderlaget), länkad till artistsidan.
-            Endast på breda skärmar: på mobil är vänsterytan text-yta. */}
+            Breda skärmar: absolut i vänsterkanten. Mobil/surfplatta har en
+            egen variant i textflödet längre ner (vänsterytan är text-yta). */}
         <Link
           href="/artister#froken-snusk"
           aria-label="Fröken Snusk – mässans gästartist, läs mer"
@@ -93,9 +94,36 @@ export default async function HomePage() {
             {EVENT.motto}. {EVENT.venue}, {EVENT.city}.
           </p>
 
+          {/* Fröken Snusk på mobil/surfplatta: samma neonramade kort som på
+              desktop, men i flödet under mottot – den absoluta vänster-
+              placeringen får bara plats på breda skärmar. */}
+          <Link
+            href="/artister#froken-snusk"
+            aria-label="Fröken Snusk – mässans gästartist, läs mer"
+            className="reveal lg:hidden inline-flex flex-col items-center group mb-8"
+            style={{ animationDelay: '0.6s' }}
+          >
+            <span className="relative block w-40 sm:w-48 aspect-[4/5] rounded-2xl overflow-hidden border-2 border-brand-pink/60 shadow-[0_0_18px_rgba(225,29,116,0.5),0_0_48px_rgba(225,29,116,0.3)] transition-transform duration-500 group-hover:scale-[1.03] mb-3">
+              <Image
+                src="/images/artists/froken-snusk.jpg"
+                alt="Fröken Snusk i sin rosa balaklava"
+                fill
+                sizes="(min-width: 640px) 192px, 160px"
+                className="object-cover"
+              />
+              <span className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" aria-hidden="true" />
+            </span>
+            <span className="neon-name font-display text-lg font-extrabold uppercase tracking-[0.18em] mb-1">
+              Fröken Snusk
+            </span>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-brand-pink-light/90">
+              Gästartist · Live på scen
+            </span>
+          </Link>
+
           <div
             className="reveal flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-cream/70 mb-10"
-            style={{ animationDelay: '0.6s' }}
+            style={{ animationDelay: '0.65s' }}
           >
             <span className="inline-flex items-center gap-2">
               <Clock size={16} className="text-brand-pink" /> {EVENT.openingHours}
