@@ -25,7 +25,7 @@ export default async function HomePage() {
             på den mörkare mittytan bakom/bredvid henne, inte på ansiktet. */}
         <div className="hero-parallax absolute inset-x-0 -top-[18%] bottom-0" aria-hidden="true">
           <Image
-            src="/images/hero.webp"
+            src="/images/hero-snusk.webp"
             alt=""
             fill
             priority
