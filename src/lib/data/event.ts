@@ -13,14 +13,14 @@ export const EVENT = {
   tagline: 'Lust · Spänning · Livsnjutning',
   motto: 'Originalet – Sveriges första och största erotik- & tattoomässa, sedan 1996',
 
-  /** Mässans datum (ISO). Nedräknaren räknar mot startdatumet. */
-  startDate: '2026-09-11T18:00:00+02:00',
-  endDate: '2026-09-13T02:00:00+02:00',
+  /** Mässans datum (ISO). Nedräknaren räknar mot startdatumet (fre kl 19). */
+  startDate: '2026-09-11T19:00:00+02:00',
+  endDate: '2026-09-13T03:00:00+02:00',
   /** Människovänlig datumtext som visas i UI. */
   dateText: '11–12 september 2026',
 
-  /** Öppettider per dag. ❓ Preliminärt enligt Johan, kan uppdateras. */
-  openingHours: 'Fre & lör kl. 18–02',
+  /** Öppettider. Fre + lör kväll 19–03, plus lördagens Dax-event 15–18. */
+  openingHours: 'Fre 19–03 · Lör 15–18 & 19–03',
 
   /** Plats: Colosseum på Arenavägen 75, i Globenområdet (Johanneshov), Stockholm. */
   venue: 'Colosseum',

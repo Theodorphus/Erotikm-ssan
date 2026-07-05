@@ -36,6 +36,7 @@ export const ticket = defineType({
       options: {
         list: [
           { title: 'Fredag', value: 'Fredag' },
+          { title: 'Lördag Dax (15–18)', value: 'Lördag Dax' },
           { title: 'Lördag', value: 'Lördag' },
           { title: '2-dagarspass', value: '2-dagarspass' },
         ],

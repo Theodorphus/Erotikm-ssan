@@ -20,8 +20,8 @@ export interface TicketType {
   featured?: boolean
   /** Valfri etikett, t.ex. "Begränsat antal" eller "400 st". */
   badge?: string
-  /** Vilken dag biljetten gäller – används för att gruppera korten. */
-  group: 'Fredag' | 'Lördag' | '2-dagarspass'
+  /** Vilken dag/event biljetten gäller – används för att gruppera korten. */
+  group: 'Fredag' | 'Lördag Dax' | 'Lördag' | '2-dagarspass'
 }
 
 // Återanvändbara förmånslistor (samma upplägg per dag).
@@ -60,7 +60,16 @@ export const TICKET_TYPES: TicketType[] = [
     featured: true,
     group: 'Fredag',
   },
-  // ── Lördag ──────────────────────────────────────────────────────────
+  // ── Lördag Dax-event (dagtid 15–18) ────────────────────────────────
+  {
+    name: 'Lördag Dax-event',
+    price: 180,
+    description: 'Dagseventet lördag kl. 15–18. Stripp­shower och hela mässan – dock utan sångartister/huvudakter.',
+    perks: ['Entré till mässan', 'Alla utställare', 'Strippshower'],
+    badge: 'Kl. 15–18',
+    group: 'Lördag Dax',
+  },
+  // ── Lördag (kväll 19–03) ────────────────────────────────────────────
   {
     name: 'Early Bird Lördag',
     price: 350,
@@ -103,7 +112,7 @@ export const TICKET_TYPES: TicketType[] = [
 ]
 
 /** Ordningen som biljettgrupperna visas i på sidan. */
-export const TICKET_GROUPS: TicketType['group'][] = ['Fredag', 'Lördag', '2-dagarspass']
+export const TICKET_GROUPS: TicketType['group'][] = ['Fredag', 'Lördag Dax', 'Lördag', '2-dagarspass']
 
 /** Informationsrad som visas under biljettkorten. */
 export const TICKETS_NOTE =
