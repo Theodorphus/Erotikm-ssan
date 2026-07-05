@@ -39,7 +39,8 @@ export const ARTISTS: Artist[] = [
     name: 'Alexander "Guldtand" Sahlin',
     role: 'Poddprofil',
     bio: 'Alexander "Guldtand" Sahlin har etablerat sig som en av Sveriges mest uppmärksammade poddprofiler, känd för sin raka, ofiltrerade intervjustil och sina möten med några av Sveriges mest välkända och färgstarka profiler inom vår kategori. Nu gästar han mässan tillsammans med sitt Club 24 Crew, där besökarna får chansen att träffa teamet och uppleva stämningen på nära håll.',
-    image: '/images/artists/Alexander_Guldtand.jpg',
+    image: '/images/artists/alexander-guldtand.jpg',
+    link: 'https://www.instagram.com/guldtandspodcast',
   },
   {
     slug: 'aline',
