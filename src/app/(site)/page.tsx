@@ -19,25 +19,24 @@ export default async function HomePage() {
       {/* ── HERO med nedräknare + biljettknapp ─────────────────────── */}
       <section className="mesh-forest grain relative overflow-hidden text-cream">
         {/* Hero-bild: fade-in + slow zoom vid laddning, mjuk parallax vid scroll.
-            Motivet (Fröken Snusk vid stången) ligger något vänster om mitten,
-            dansös-siluetten till höger. Vi fokuserar åt vänster (object-left)
-            så henne + siluetten hålls i bild och den centrerade rubriken landar
-            på den mörkare mittytan bakom/bredvid henne, inte på ansiktet. */}
+            Motivet är komponerat för hero: Fröken Snusk i vänstra tredjedelen,
+            dansös-siluett + neonhjärta till höger, och en mörk ren mittyta där
+            den centrerade rubriken landar. Därför object-center – bilden är
+            redan balanserad. */}
         <div className="hero-parallax absolute inset-x-0 -top-[18%] bottom-0" aria-hidden="true">
           <Image
-            src="/images/hero-snusk.webp"
+            src="/images/hero-snusk-v2.webp"
             alt=""
             fill
             priority
             sizes="100vw"
-            className="hero-zoom object-cover object-[30%_center] sm:object-[35%_center]"
+            className="hero-zoom object-cover object-center"
           />
         </div>
-        {/* Mörk gradient: tyngst i mitten/botten så rubrik + knappar håller
-            kontrast ovanpå bilden, medan Fröken Snusk (vänster) och siluetten
-            (höger) lämnas ljusare i kanterna. */}
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/60 to-ink/45" aria-hidden="true" />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/45 via-ink/25 to-ink/85" aria-hidden="true" />
+        {/* Mörk gradient: lätt jämn ton + tyngre botten så rubrik/knappar håller
+            kontrast i mittytan, medan motivet i kanterna lämnas ljust och syns. */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/55 via-ink/45 to-ink/40" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/15 to-ink/85" aria-hidden="true" />
 
         {/* Fröken Snusk – dragplåstret på heroens mörka vänsterhalva (Johans
             önskemål). Endast neontext (bilden borttagen på önskemål),
