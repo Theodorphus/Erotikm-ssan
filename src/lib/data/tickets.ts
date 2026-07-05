@@ -54,7 +54,7 @@ export const TICKET_TYPES: TicketType[] = [
   },
   {
     name: 'Premium VIP Fredag',
-    price: 1100,
+    price: 1200,
     description: 'Det lilla extra – för dig som vill njuta av kvällen fullt ut.',
     perks: PREMIUM_PERKS,
     featured: true,
@@ -87,7 +87,7 @@ export const TICKET_TYPES: TicketType[] = [
   },
   {
     name: 'Premium VIP Lördag',
-    price: 1100,
+    price: 1200,
     description: 'Det lilla extra – för dig som vill njuta av kvällen fullt ut.',
     perks: PREMIUM_PERKS,
     featured: true,
@@ -103,7 +103,7 @@ export const TICKET_TYPES: TicketType[] = [
   },
   {
     name: 'Premium VIP 2 dagar',
-    price: 2000,
+    price: 2200,
     description: 'Hela VIP-upplevelsen båda kvällarna.',
     perks: PREMIUM_PERKS,
     featured: true,
