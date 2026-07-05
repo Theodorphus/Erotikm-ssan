@@ -8,8 +8,8 @@
 export const EVENT = {
   name: 'Erotikmässan',
   shortName: 'Erotikmässan',
-  /** Varumärkesnamn (engelskt/socialt). Sajten heter Fair Erotica / Erotikmässan. */
-  brandName: 'Fair Erotica',
+  /** Varumärkesnamn. Ett enda namn används överallt: Erotikmässan. */
+  brandName: 'Erotikmässan',
   tagline: 'Lust · Spänning · Livsnjutning',
   motto: 'Originalet – Sveriges första och största erotik- & tattoomässa, sedan 1996',
 

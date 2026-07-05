@@ -36,7 +36,6 @@ export const metadata: Metadata = {
   keywords: [
     'erotikmässan',
     'erotikmässa',
-    'fair erotica',
     'mässa Globen',
     'Colosseum Stockholm',
     'erotikmässan Colosseum',

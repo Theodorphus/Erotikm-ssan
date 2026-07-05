@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { MAIN_NAV } from '@/lib/data/navigation'
@@ -28,20 +27,16 @@ export function Header({ event: EVENT }: { event: EventData }) {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-18">
-        {/* Logo */}
+        {/* Logo – text-logotyp i neon-stil (bildlogon hette "Fair Erotica";
+            Johan valde ett enda namn: Erotikmässan). Byt gärna till en ny
+            bildlogo här när en sådan finns. */}
         <Link href="/" className="group flex items-center" aria-label={`${EVENT.brandName} – startsida`}>
-          <Image
-            src="/images/logo.png"
-            alt={EVENT.brandName}
-            width={1062}
-            height={163}
-            priority
-            // Explicit höjd via style: globals.css har en global `img { height: auto }`
-            // (samma specificitet som Tailwinds h-*) som annars överrider klassen.
-            // Något större i vila, krymper diskret när headern kompaktas vid scroll.
-            className="w-auto transition-[height] duration-200"
-            style={{ height: isScrolled ? 24 : 28 }}
-          />
+          <span
+            className="neon-name font-display font-extrabold uppercase tracking-[0.12em] leading-none transition-[font-size] duration-200"
+            style={{ fontSize: isScrolled ? 18 : 21 }}
+          >
+            {EVENT.name}
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
