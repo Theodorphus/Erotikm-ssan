@@ -25,12 +25,12 @@ export default async function HomePage() {
             redan balanserad. */}
         <div className="hero-parallax absolute inset-x-0 -top-[18%] bottom-0" aria-hidden="true">
           <Image
-            src="/images/hero-snusk-v3.webp"
+            src="/images/hero-snusk-v5.webp"
             alt=""
             fill
             priority
             sizes="100vw"
-            className="hero-zoom object-cover object-center"
+            className="hero-zoom object-cover object-[22%_center] sm:object-center"
           />
         </div>
         {/* Mörk gradient: lätt jämn ton + tyngre botten så rubrik/knappar håller
