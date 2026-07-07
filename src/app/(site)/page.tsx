@@ -38,23 +38,38 @@ export default async function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-ink/55 via-ink/45 to-ink/40" aria-hidden="true" />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/15 to-ink/85" aria-hidden="true" />
 
-        {/* Fröken Snusk – dragplåstret på heroens mörka vänsterhalva (Johans
-            önskemål). Endast neontext (bilden borttagen på önskemål),
-            länkad till artistsidan.
-            Breda skärmar: absolut i vänsterkanten. Mobil/surfplatta har en
-            egen variant i textflödet längre ner (vänsterytan är text-yta). */}
-        <Link
-          href="/artister#froken-snusk"
-          aria-label="Fröken Snusk – mässans gästartist, läs mer"
-          className="hidden lg:flex absolute left-[3%] xl:left-[6%] top-1/2 -translate-y-1/2 z-10 flex-col items-center group"
-        >
-          <span className="neon-name font-display text-xl xl:text-2xl font-extrabold uppercase tracking-[0.18em] mb-1 transition-transform duration-500 group-hover:scale-[1.03]">
-            Fröken Snusk
-          </span>
-          <span className="text-[10px] uppercase tracking-[0.3em] text-brand-pink-light/90 mb-6">
-            Gästartist · Live på scen
-          </span>
-        </Link>
+        {/* Headliner-stapel på heroens mörka vänsterhalva (Johans önskemål):
+            Fröken Snusk överst (rosa neon, dragplåstret), Alex Guldtand under
+            (guldtonad, nedtonad andra headliner). Samlade i vänsterkanten så de
+            läses som en enhet och inte krockar med dansös-siluetten/hjärtat till
+            höger. Endast neontext (bilderna borttagna på önskemål), länkade till
+            artistsidan. Mobil/surfplatta har en egen variant i textflödet nedan. */}
+        <div className="hidden lg:flex absolute left-[3%] xl:left-[6%] top-1/2 -translate-y-1/2 z-10 flex-col items-center gap-6">
+          <Link
+            href="/artister#froken-snusk"
+            aria-label="Fröken Snusk – mässans gästartist, läs mer"
+            className="flex flex-col items-center group"
+          >
+            <span className="neon-name font-display text-xl xl:text-2xl font-extrabold uppercase tracking-[0.18em] mb-1 transition-transform duration-500 group-hover:scale-[1.03]">
+              Fröken Snusk
+            </span>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-brand-pink-light/90">
+              Gästartist · Live på scen
+            </span>
+          </Link>
+          <Link
+            href="/artister#alexander-guldtand"
+            aria-label="Alex Guldtand – poddprofil med Club 24 Crew, läs mer"
+            className="flex flex-col items-center text-center group"
+          >
+            <span className="gold-name font-display text-lg xl:text-xl font-bold uppercase tracking-[0.16em] mb-1 transition-transform duration-500 group-hover:scale-[1.03]">
+              Alex Guldtand
+            </span>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-cream/60">
+              Poddprofil · Club 24 Crew
+            </span>
+          </Link>
+        </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 text-center">
           {/* Trust-badge: Sveriges första & största sedan 1996 – premiumsignal. */}
@@ -86,19 +101,33 @@ export default async function HomePage() {
           {/* Fröken Snusk på mobil/surfplatta: neontext i flödet under mottot
               (bilden borttagen på önskemål). Den absoluta vänster-placeringen
               på desktop får bara plats på breda skärmar. */}
-          <Link
-            href="/artister#froken-snusk"
-            aria-label="Fröken Snusk – mässans gästartist, läs mer"
-            className="reveal lg:hidden inline-flex flex-col items-center group mb-8"
-            style={{ animationDelay: '0.6s' }}
-          >
-            <span className="neon-name font-display text-lg font-extrabold uppercase tracking-[0.18em] mb-1">
-              Fröken Snusk
-            </span>
-            <span className="text-[10px] uppercase tracking-[0.3em] text-brand-pink-light/90">
-              Gästartist · Live på scen
-            </span>
-          </Link>
+          <div className="reveal lg:hidden flex flex-col items-center gap-4 mb-8" style={{ animationDelay: '0.6s' }}>
+            <Link
+              href="/artister#froken-snusk"
+              aria-label="Fröken Snusk – mässans gästartist, läs mer"
+              className="inline-flex flex-col items-center group"
+            >
+              <span className="neon-name font-display text-lg font-extrabold uppercase tracking-[0.18em] mb-1">
+                Fröken Snusk
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.3em] text-brand-pink-light/90">
+                Gästartist · Live på scen
+              </span>
+            </Link>
+            {/* Alex Guldtand – andra headliner, nedtonad rad under gästartisten. */}
+            <Link
+              href="/artister#alexander-guldtand"
+              aria-label="Alex Guldtand – poddprofil med Club 24 Crew, läs mer"
+              className="inline-flex flex-col items-center group"
+            >
+              <span className="gold-name font-display text-base font-bold uppercase tracking-[0.16em] mb-1">
+                Alex Guldtand
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.3em] text-cream/60">
+                Poddprofil · Club 24 Crew
+              </span>
+            </Link>
+          </div>
 
           <div
             className="reveal flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-cream/70 mb-10"
