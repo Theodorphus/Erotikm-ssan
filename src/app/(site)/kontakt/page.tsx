@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Mail, MapPin, CalendarDays, Store, Briefcase } from 'lucide-react'
 import { PageHero } from '@/components/layout/PageHero'
 import { KontaktForm } from './KontaktForm'
+import { MapEmbed } from '@/components/event/MapEmbed'
 import { EVENT } from '@/lib/data/event'
 
 export const metadata: Metadata = {
@@ -37,7 +38,15 @@ export default function KontaktPage() {
             </InfoCard>
 
             <InfoCard icon={<MapPin size={20} />} title="Var">
-              <p className="text-cream/70">{EVENT.venue}, {EVENT.venueStreet}, {EVENT.city}</p>
+              <a
+                href={EVENT.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-cream/70 transition-colors hover:text-brand-pink"
+              >
+                {EVENT.venue}, {EVENT.venueStreet}, {EVENT.city}
+                <span className="mt-0.5 block text-xs text-cream/50">Visa på Google Maps →</span>
+              </a>
             </InfoCard>
 
             <InfoCard icon={<Store size={20} />} title="Vill du ställa ut?">
@@ -57,6 +66,12 @@ export default function KontaktPage() {
             </div>
             <KontaktForm />
           </div>
+        </div>
+
+        {/* Karta – hitta hit */}
+        <div className="max-w-6xl mx-auto mt-10">
+          <h2 className="text-2xl font-bold text-cream mb-4">Hitta hit</h2>
+          <MapEmbed />
         </div>
       </div>
     </>

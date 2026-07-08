@@ -27,6 +27,20 @@ export const EVENT = {
   venueStreet: 'Arenavägen 75',
   venuePostalCode: '121 77',
   city: 'Stockholm',
+  /**
+   * Google Maps-länkar. mapsUrl öppnar kartan i ny flik (klickbar adress),
+   * mapsEmbedUrl används i inbäddade kartrutor (iframe, kräver ingen API-nyckel).
+   * 👉 Byggs från adressen – ändra bara adressfälten ovan så följer länkarna med.
+   */
+  get mapsQuery() {
+    return `${this.venue}, ${this.venueStreet}, ${this.venuePostalCode} ${this.city}`
+  },
+  get mapsUrl() {
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.mapsQuery)}`
+  },
+  get mapsEmbedUrl() {
+    return `https://www.google.com/maps?q=${encodeURIComponent(this.mapsQuery)}&output=embed`
+  },
 
   /** Åldersgräns. Visas tydligt på sajten. */
   minAge: 18,

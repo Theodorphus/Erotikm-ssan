@@ -5,6 +5,7 @@ import { FacebookIcon, InstagramIcon, TikTokIcon } from '@/components/ui/SocialI
 import { Countdown } from '@/components/event/Countdown'
 import { Faq } from '@/components/event/Faq'
 import { AgeBadge } from '@/components/event/AgeBadge'
+import { MapEmbed } from '@/components/event/MapEmbed'
 import { Reveal } from '@/components/ui/Reveal'
 import { getEvent, getFaq } from '@/lib/content'
 
@@ -359,7 +360,15 @@ export default async function HomePage() {
                   <Clock size={20} className="text-brand-pink flex-shrink-0" /> {EVENT.openingHours}
                 </li>
                 <li className="flex items-center gap-3">
-                  <MapPin size={20} className="text-brand-pink flex-shrink-0" /> {EVENT.venue}, {EVENT.city}
+                  <MapPin size={20} className="text-brand-pink flex-shrink-0" />
+                  <a
+                    href={EVENT.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-brand-pink transition-colors"
+                  >
+                    {EVENT.venue}, {EVENT.city}
+                  </a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Ticket size={20} className="text-brand-pink flex-shrink-0" />
@@ -391,6 +400,9 @@ export default async function HomePage() {
                 </SocialButton>
               </div>
             </div>
+          </Reveal>
+          <Reveal delay={200} className="sm:col-span-2">
+            <MapEmbed />
           </Reveal>
         </div>
       </section>
