@@ -31,14 +31,14 @@ export const metadata: Metadata = {
     template: '%s | Erotikmässan',
   },
   description:
-    'Erotikmässan 11–12 september 2026 på Colosseum, Globen i Stockholm. Originalet – Sveriges första och största erotik- & tattoomässa sedan 1996. Scenshower, utställare, tatuering och biljetter.',
+    'Erotikmässan 11–12 september 2026 på A75 Eventlokal, Globen i Stockholm. Originalet – Sveriges första och största erotik- & tattoomässa sedan 1996. Scenshower, utställare, tatuering och biljetter.',
   alternates: { canonical: '/' },
   keywords: [
     'erotikmässan',
     'erotikmässa',
     'mässa Globen',
-    'Colosseum Stockholm',
-    'erotikmässan Colosseum',
+    'A75 Eventlokal Stockholm',
+    'erotikmässan A75 Eventlokal',
     'Stockholm mässa',
     'erotik och tattoo',
     'biljetter erotikmässan',
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     siteName: 'Erotikmässan',
     title: 'Erotikmässan | Lust · Spänning · Livsnjutning',
     description:
-      'Erotikmässan 11–12 september 2026 på Colosseum, Globen i Stockholm. Originalet sedan 1996 – artister, utställare, tatuering, scenshower och biljetter.',
+      'Erotikmässan 11–12 september 2026 på A75 Eventlokal, Globen i Stockholm. Originalet sedan 1996 – artister, utställare, tatuering, scenshower och biljetter.',
     images: [
       {
         url: '/images/og/erotikmassan-og.png',
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Erotikmässan | Lust · Spänning · Livsnjutning',
     description:
-      'Erotikmässan 11–12 september 2026 på Colosseum, Globen i Stockholm. Originalet sedan 1996 – artister, utställare, tatuering och biljetter.',
+      'Erotikmässan 11–12 september 2026 på A75 Eventlokal, Globen i Stockholm. Originalet sedan 1996 – artister, utställare, tatuering och biljetter.',
     images: ['/images/og/erotikmassan-og.png'],
   },
   robots: {

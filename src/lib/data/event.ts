@@ -22,8 +22,8 @@ export const EVENT = {
   /** Öppettider. Fre + lör kväll 19–03, plus lördagens Dax-event 15–18. */
   openingHours: 'Fre 19–03 · Lör 15–18 & 19–03',
 
-  /** Plats: Colosseum på Arenavägen 75, i Globenområdet (Johanneshov), Stockholm. */
-  venue: 'Colosseum',
+  /** Plats: A75 Eventlokal på Arenavägen 75, i Globenområdet (Johanneshov), Stockholm. */
+  venue: 'A75 Eventlokal',
   venueStreet: 'Arenavägen 75',
   venuePostalCode: '121 77',
   city: 'Stockholm',

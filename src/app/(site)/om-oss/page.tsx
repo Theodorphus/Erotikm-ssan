@@ -7,11 +7,11 @@ import { EVENT } from '@/lib/data/event'
 
 export const metadata: Metadata = {
   title: 'Om oss',
-  description: 'Originalet sedan 1996 – historien bakom Sveriges första och största erotik- & tattoomässa, från Vasahallen i Stockholm tillbaka till Colosseum vid Globen 2026.',
+  description: 'Originalet sedan 1996 – historien bakom Sveriges första och största erotik- & tattoomässa, från Vasahallen i Stockholm tillbaka till A75 Eventlokal vid Globen 2026.',
   alternates: { canonical: '/om-oss' },
   openGraph: {
     title: 'Om oss | Erotikmässan',
-    description: 'Originalet sedan 1996 – historien bakom Sveriges första och största erotik- & tattoomässa, från Vasahallen i Stockholm tillbaka till Colosseum vid Globen 2026.',
+    description: 'Originalet sedan 1996 – historien bakom Sveriges första och största erotik- & tattoomässa, från Vasahallen i Stockholm tillbaka till A75 Eventlokal vid Globen 2026.',
     url: '/om-oss',
   },
 }
@@ -34,7 +34,7 @@ const TIMELINE: { year: string; text: string }[] = [
   { year: '1996', text: 'Sveriges första erotikmässa arrangeras i Vasahallen på Djurgården i Stockholm – originalet är fött.' },
   { year: '2000-talet', text: 'Mässan växer och turnerar landet runt: Malmö, Karlstad, Göteborg, Luleå, Falun och Linköping.' },
   { year: '2009', text: 'Ekebo i Munka-Ljungby blir mässans hemmaplan under många år.' },
-  { year: '2026', text: 'Erotikmässan intar Colosseum vid Globen i Stockholm – tillbaka där det en gång började, med ett nytt team vid rodret och en ny era för mässan.' },
+  { year: '2026', text: 'Erotikmässan intar A75 Eventlokal vid Globen i Stockholm – tillbaka där det en gång började, med ett nytt team vid rodret och en ny era för mässan.' },
 ]
 
 export default function OmOssPage() {
@@ -60,7 +60,7 @@ export default function OmOssPage() {
               <p>
                 Cirkeln är sluten. Den 11–12 september 2026 är vi äntligen tillbaka där allt en
                 gång började – i Stockholm. Vi är otroligt stolta över att Erotikmässan flyttar in
-                på den välkända nöjesarenan <strong className="text-cream">Colosseum vid Globen</strong>,
+                på den välkända nöjesarenan <strong className="text-cream">A75 Eventlokal vid Globen</strong>,
                 Arenavägen 75. I och med flytten startar en helt ny epok för mässan: tillsammans har
                 vi tagit över rodret för att leda mässan in i en ny era, med målet att förnya,
                 förbättra och leverera ett event i absolut världsklass.
