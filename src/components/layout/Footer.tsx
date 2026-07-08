@@ -87,6 +87,17 @@ export function Footer({ event: EVENT }: { event: EventData }) {
             <Link href="/integritetspolicy" className="hover:text-brand-pink transition-colors">Integritetspolicy</Link>
           </div>
         </div>
+
+        <div className="mt-6 text-center text-xs text-cream/30">
+          <a
+            href="https://www.webbdev.se/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-cream/60 transition-colors"
+          >
+            Hemsida skapad av Webbdev
+          </a>
+        </div>
       </div>
     </footer>
   )
