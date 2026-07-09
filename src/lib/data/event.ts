@@ -69,12 +69,14 @@ export const EVENT = {
 
   /**
    * Externa länkar.
-   * tickets: mässans egen biljettförsäljning (tickets.erotikmassan.com).
+   * tickets: mässans egen biljettförsäljning – länkar direkt till event-sidan
+   *   (inte roten) så besökaren hamnar på "Buy tickets" utan mellansteg.
+   *   Systemet stödjer inte djuplänk till en förvald biljett.
    * ❓ bookArtist: Johan ska byta till en egen Instagram-sida för bokning.
    * ❓ Facebook: Johan har inte skickat URL än (bara bild) – uppdatera när den kommer.
    */
   links: {
-    tickets: 'https://tickets.erotikmassan.com/',
+    tickets: 'https://tickets.erotikmassan.com/490715/erotikmassan-2026-stockholm',
     bookArtist: 'https://www.instagram.com/fair.erotica',
     facebook: 'https://www.facebook.com/fairerotica',
     instagram: 'https://www.instagram.com/fair.erotica',
