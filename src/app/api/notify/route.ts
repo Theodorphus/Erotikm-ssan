@@ -84,7 +84,9 @@ export async function POST(request: NextRequest) {
     })
 
     if (sendError) {
-      console.error('Resend error (notify):', sendError)
+      // Resend returnerar ett fel-objekt (name/message) som inte serialiseras
+      // tydligt med bara `sendError` – logga message explicit så grundorsaken syns.
+      console.error('Resend error (notify):', sendError.message ?? sendError)
       return NextResponse.json({ error: 'Kunde inte skicka. Försök igen.' }, { status: 500 })
     }
 
