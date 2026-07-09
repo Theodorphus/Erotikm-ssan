@@ -20,7 +20,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'Var köper jag biljett?',
     answer:
-      'Förköp din biljett online via Billetto och slipp köa – men vi säljer alltid biljetter i dörren också. Du kan välja biljett för fredag, lördag eller ett 2-dagarspass, i nivåerna Early Bird (begränsat antal), Standard och Premium VIP. Se alla priser på biljettsidan.',
+      'Förköp din biljett online och slipp köa – men vi säljer alltid biljetter i dörren också. Du kan välja biljett för fredag, lördag eller ett 2-dagarspass, i nivåerna Early Bird (begränsat antal), Standard och Premium VIP. Se alla priser på biljettsidan.',
   },
   {
     question: 'Finns det en åldersgräns?',

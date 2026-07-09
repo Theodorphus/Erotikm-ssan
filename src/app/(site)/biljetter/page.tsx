@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Ticket, Check, Building2, Mail } from 'lucide-react'
 import { PageHero } from '@/components/layout/PageHero'
-import { NotifyForm } from '@/components/event/NotifyForm'
 import { Reveal } from '@/components/ui/Reveal'
 import { TICKETS_NOTE, TICKET_GROUPS, type TicketType } from '@/lib/data/tickets'
 import { getTickets, getEvent } from '@/lib/content'
@@ -12,11 +11,11 @@ export const revalidate = 60
 // Obs: inga hårdkodade priser här – de styrs i Sanity och ändras över tid.
 export const metadata: Metadata = {
   title: 'Köp biljetter',
-  description: 'Biljetter till Erotikmässan – Early Bird, Standard och Premium VIP, per dag eller som 2-dagarspass. Förköp via Billetto och slipp köa, eller köp i dörren.',
+  description: 'Biljetter till Erotikmässan – Early Bird, Standard och Premium VIP, per dag eller som 2-dagarspass. Förköp online och slipp köa, eller köp i dörren.',
   alternates: { canonical: '/biljetter' },
   openGraph: {
     title: 'Köp biljetter | Erotikmässan',
-    description: 'Biljetter till Erotikmässan – Early Bird, Standard och Premium VIP, per dag eller som 2-dagarspass. Förköp via Billetto och slipp köa, eller köp i dörren.',
+    description: 'Biljetter till Erotikmässan – Early Bird, Standard och Premium VIP, per dag eller som 2-dagarspass. Förköp online och slipp köa, eller köp i dörren.',
     url: '/biljetter',
   },
 }
@@ -56,7 +55,7 @@ function TicketCard({ ticket, ticketsUrl, delay }: { ticket: TicketType; tickets
               <span className="text-cream/60 ml-1">kr</span>
             </>
           ) : (
-            <span className="font-display text-2xl font-bold text-brand-pink">Se Billetto</span>
+            <span className="font-display text-2xl font-bold text-brand-pink">Se pris online</span>
           )}
         </div>
         <ul className="space-y-3 mb-8 flex-1">
@@ -77,7 +76,7 @@ function TicketCard({ ticket, ticketsUrl, delay }: { ticket: TicketType; tickets
               : 'bg-white/5 border border-white/15 text-cream hover:bg-white/10 transition-colors'
           }`}
         >
-          <Ticket size={18} /> Köp via Billetto
+          <Ticket size={18} /> Köp biljett
         </a>
       </div>
     </Reveal>
@@ -99,7 +98,7 @@ export default async function BiljetterPage() {
     <>
       <PageHero
         title="Köp biljetter"
-        subtitle={`${event.dateText} · ${event.venue}, ${event.city}. Välj din biljett – köpet sker tryggt via Billetto.`}
+        subtitle={`${event.dateText} · ${event.venue}, ${event.city}. Välj din biljett – köp tryggt online.`}
       />
 
       <section className="bg-ink py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
@@ -151,18 +150,6 @@ export default async function BiljetterPage() {
           </div>
         </Reveal>
 
-        {/* E-postinsamling: fångar besökare tills Billetto-eventet är live. */}
-        <Reveal delay={150}>
-          <div className="mt-14 max-w-2xl mx-auto rounded-2xl border border-white/10 bg-surface-2 p-8 sm:p-10 text-center">
-            <h2 className="font-display text-2xl font-bold text-cream mb-2">
-              Vill du ha besked när biljetterna släpps?
-            </h2>
-            <p className="text-cream/60 mb-6">
-              Lämna din e-post så hör vi av oss så fort förköpet öppnar på Billetto.
-            </p>
-            <NotifyForm />
-          </div>
-        </Reveal>
       </section>
     </>
   )

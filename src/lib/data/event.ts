@@ -68,13 +68,13 @@ export const EVENT = {
   siteUrl: 'https://www.erotikmassan.com',
 
   /**
-   * Externa länkar (allt biljett-/bokningsflöde sker hos tredje part).
-   * ❓ Billetto: september-eventet är inte upplagt än – byt URL när Johan skapat det.
+   * Externa länkar.
+   * tickets: mässans egen biljettförsäljning (tickets.erotikmassan.com).
    * ❓ bookArtist: Johan ska byta till en egen Instagram-sida för bokning.
    * ❓ Facebook: Johan har inte skickat URL än (bara bild) – uppdatera när den kommer.
    */
   links: {
-    tickets: 'https://billetto.se/',
+    tickets: 'https://tickets.erotikmassan.com/',
     bookArtist: 'https://www.instagram.com/fair.erotica',
     facebook: 'https://www.facebook.com/fairerotica',
     instagram: 'https://www.instagram.com/fair.erotica',

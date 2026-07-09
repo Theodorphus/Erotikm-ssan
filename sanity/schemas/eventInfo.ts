@@ -47,7 +47,7 @@ export const eventInfo = defineType({
     }),
     defineField({
       name: 'ticketsUrl',
-      title: 'Biljettlänk (Billetto)',
+      title: 'Biljettlänk (tickets.erotikmassan.com)',
       type: 'url',
     }),
     defineField({

@@ -310,7 +310,7 @@ export default async function HomePage() {
               href="/biljetter"
               icon={<Ticket size={26} />}
               title="Köp biljetter"
-              text="Förköp via Billetto och slipp köa – eller köp biljett i dörren."
+              text="Förköp online och slipp köa – eller köp biljett i dörren."
             />
             <LinkCard
               href="/artister"
@@ -373,7 +373,7 @@ export default async function HomePage() {
                 <li className="flex items-center gap-3">
                   <Ticket size={20} className="text-brand-pink flex-shrink-0" />
                   <a href={EVENT.links.tickets} target="_blank" rel="noopener noreferrer" className="hover:text-brand-pink">
-                    Biljetter via Billetto
+                    Köp biljetter online
                   </a>
                 </li>
                 <li className="pt-1">

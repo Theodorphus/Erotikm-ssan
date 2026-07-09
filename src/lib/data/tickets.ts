@@ -1,16 +1,14 @@
 /**
  * Biljettyperna som presenteras på /biljetter.
- * Själva köpet sker hos Billetto – knappen länkar dit (EVENT.links.tickets).
+ * Själva köpet sker på mässans egen biljettsida – knappen länkar dit
+ * (EVENT.links.tickets → tickets.erotikmassan.com).
  *
  * 👉 Ändra pris/förmåner här. Sätt featured: true på den biljett som ska lyftas fram.
  *    Sätt limited till ett antal för att visa "begränsat antal"-etikett.
- *
- * ❓ Billetto-länken är ännu inte upplagd för september – biljettknapparna
- *    pekar tills vidare till Billettos startsida.
  */
 export interface TicketType {
   name: string
-  /** Pris i SEK (visas formaterat). Sätt null för "Se Billetto". */
+  /** Pris i SEK (visas formaterat). Sätt null för "Se pris online". */
   price: number | null
   /** Kort beskrivning av biljetten. */
   description: string
@@ -116,4 +114,4 @@ export const TICKET_GROUPS: TicketType['group'][] = ['Fredag', 'Lördag Dax', 'L
 
 /** Informationsrad som visas under biljettkorten. */
 export const TICKETS_NOTE =
-  'Förköp – slipp köa! Vi säljer alltid biljetter i dörren också. Köp och betalning online hanteras tryggt av Billetto.'
+  'Förköp – slipp köa! Vi säljer alltid biljetter i dörren också. Köp och betalning online sker tryggt och säkert.'

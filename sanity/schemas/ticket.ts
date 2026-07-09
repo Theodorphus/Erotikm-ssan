@@ -15,7 +15,7 @@ export const ticket = defineType({
       name: 'price',
       title: 'Pris (SEK)',
       type: 'number',
-      description: 'Lämna tomt för att visa "Se Billetto".',
+      description: 'Lämna tomt för att visa "Se pris online".',
     }),
     defineField({
       name: 'description',
@@ -69,7 +69,7 @@ export const ticket = defineType({
     select: { title: 'name', subtitle: 'price' },
     prepare: ({ title, subtitle }) => ({
       title,
-      subtitle: subtitle != null ? `${subtitle} kr` : 'Se Billetto',
+      subtitle: subtitle != null ? `${subtitle} kr` : 'Se pris online',
     }),
   },
 })
