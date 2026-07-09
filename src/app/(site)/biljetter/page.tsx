@@ -67,7 +67,7 @@ function TicketCard({ ticket, ticketsUrl, delay }: { ticket: TicketType; tickets
           ))}
         </ul>
         <a
-          href={ticketsUrl}
+          href={ticket.url || ticketsUrl}
           target="_blank"
           rel="noopener noreferrer"
           className={`inline-flex items-center justify-center gap-2 w-full font-semibold px-6 py-3.5 rounded-full ${

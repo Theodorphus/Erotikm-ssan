@@ -5,6 +5,12 @@
  *
  * 👉 Ändra pris/förmåner här. Sätt featured: true på den biljett som ska lyftas fram.
  *    Sätt limited till ett antal för att visa "begränsat antal"-etikett.
+ *
+ * 👉 url: valfri direktlänk (checkout-URL) till just den biljetten, så besökaren
+ *    hamnar direkt på rätt biljett i stället för på biljettsystemets startsida.
+ *    Fylls normalt i via Sanity per biljett; saknas den faller knappen tillbaka
+ *    på den generella biljettsidan. OBS: dessa fallback-värden används bara om
+ *    Sanity är tomt – de riktiga länkarna ska ligga i Sanity.
  */
 export interface TicketType {
   name: string
@@ -18,6 +24,12 @@ export interface TicketType {
   featured?: boolean
   /** Valfri etikett, t.ex. "Begränsat antal" eller "400 st". */
   badge?: string
+  /**
+   * Valfri direktlänk till just denna biljett (checkout-URL). Sätts i Sanity.
+   * Finns den → knappen går rakt dit. Saknas den → fallback till den
+   * generella biljettsidan (EVENT.links.tickets).
+   */
+  url?: string
   /** Vilken dag/event biljetten gäller – används för att gruppera korten. */
   group: 'Fredag' | 'Lördag Dax' | 'Lördag' | '2-dagarspass'
 }
@@ -56,6 +68,7 @@ export const TICKET_TYPES: TicketType[] = [
     description: 'Det lilla extra – för dig som vill njuta av kvällen fullt ut.',
     perks: PREMIUM_PERKS,
     featured: true,
+    url: 'https://tickets.erotikmassan.com/checkout?order=272781be-f61c-425e-92b6-59c0ee448e74',
     group: 'Fredag',
   },
   // ── Lördag Dax-event (dagtid 15–18) ────────────────────────────────

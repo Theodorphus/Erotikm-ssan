@@ -44,6 +44,13 @@ export const ticket = defineType({
       initialValue: 'Fredag',
     }),
     defineField({
+      name: 'url',
+      title: 'Direktlänk till denna biljett',
+      type: 'url',
+      description:
+        'Klistra in checkout-länken för just denna biljett (t.ex. https://tickets.erotikmassan.com/checkout?order=...). Då hamnar besökaren direkt på rätt biljett. Lämnas tomt → knappen går till den vanliga biljettsidan.',
+    }),
+    defineField({
       name: 'badge',
       title: 'Etikett',
       type: 'string',
