@@ -11,11 +11,11 @@ export const revalidate = 60
 // Obs: inga hårdkodade priser här – de styrs i Sanity och ändras över tid.
 export const metadata: Metadata = {
   title: 'Köp biljetter',
-  description: 'Biljetter till Erotikmässan – Early Bird, Standard och Premium VIP, per dag eller som 2-dagarspass. Förköp online och slipp köa, eller köp i dörren.',
+  description: 'Biljetter till Erotikmässan – Standard och Premium VIP, per dag eller som 2-dagarspass. Förköp online och slipp köa, eller köp i dörren.',
   alternates: { canonical: '/biljetter' },
   openGraph: {
     title: 'Köp biljetter | Erotikmässan',
-    description: 'Biljetter till Erotikmässan – Early Bird, Standard och Premium VIP, per dag eller som 2-dagarspass. Förköp online och slipp köa, eller köp i dörren.',
+    description: 'Biljetter till Erotikmässan – Standard och Premium VIP, per dag eller som 2-dagarspass. Förköp online och slipp köa, eller köp i dörren.',
     url: '/biljetter',
   },
 }

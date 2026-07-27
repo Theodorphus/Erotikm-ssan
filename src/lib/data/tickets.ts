@@ -40,14 +40,6 @@ const PREMIUM_PERKS = [
 export const TICKET_TYPES: TicketType[] = [
   // ── Fredag ──────────────────────────────────────────────────────────
   {
-    name: 'Early Bird Fredag',
-    price: 350,
-    description: 'Förköpspriset för dig som är snabb – begränsat antal.',
-    perks: STANDARD_PERKS,
-    badge: 'Endast 200 st',
-    group: 'Fredag',
-  },
-  {
     name: 'Standard Fredag',
     price: 450,
     description: 'Ordinarie entrébiljett för fredagen.',
@@ -72,14 +64,6 @@ export const TICKET_TYPES: TicketType[] = [
     group: 'Lördag Dax',
   },
   // ── Lördag (kväll 19–03) ────────────────────────────────────────────
-  {
-    name: 'Early Bird Lördag',
-    price: 350,
-    description: 'Förköpspriset för dig som är snabb – begränsat antal.',
-    perks: STANDARD_PERKS,
-    badge: 'Endast 200 st',
-    group: 'Lördag',
-  },
   {
     name: 'Standard Lördag',
     price: 450,
