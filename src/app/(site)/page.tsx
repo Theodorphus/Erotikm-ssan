@@ -7,6 +7,7 @@ import { Faq } from '@/components/event/Faq'
 import { AgeBadge } from '@/components/event/AgeBadge'
 import { MapEmbed } from '@/components/event/MapEmbed'
 import { Reveal } from '@/components/ui/Reveal'
+import { FaqStructuredData } from '@/components/seo/StructuredData'
 import { getEvent, getFaq } from '@/lib/content'
 
 // Hämta om innehållet från Sanity var 60:e sekund (ISR), så Johans ändringar
@@ -347,7 +348,8 @@ export default async function HomePage() {
       </section>
 
       {/* ── PRAKTISK INFO + SOCIALA MEDIER (punkt 4) ──────────────── */}
-      <section className="bg-ink py-20 px-4 sm:px-6 lg:px-8">
+      {/* id="plats": måltavla för 301:an från gamla /venue (se next.config.ts). */}
+      <section id="plats" className="bg-ink py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-10">
           <Reveal>
             <div>
@@ -409,6 +411,8 @@ export default async function HomePage() {
 
       {/* ── VANLIGA FRÅGOR ─────────────────────────────────────────── */}
       <section className="bg-surface py-20 px-4 sm:px-6 lg:px-8">
+        {/* FAQPage-markup med exakt de frågor som renderas nedan. */}
+        <FaqStructuredData items={faqItems} />
         <div className="max-w-3xl mx-auto">
           <Reveal>
             <div className="text-center mb-10">

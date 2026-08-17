@@ -36,6 +36,28 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  /**
+   * Omdirigeringar från den gamla Wix-sajtens URL:er (301, permanent).
+   *
+   * Endast sidor med en verklig motsvarighet här pekas om. Wix demobutik
+   * (/shop och /product-page/jag-är-en-produkt*) får medvetet fortsätta ge
+   * 404: att peka orelaterade sidor mot startsidan räknas som "soft 404" av
+   * Google, ger inget värde och gör bara rapporten svårare att läsa. En 404
+   * är rätt svar för en sida som aldrig borde ha funnits.
+   *
+   * 👉 Lägg till fler rader här om Search Console visar gamla adresser som
+   *    faktiskt motsvarar en sida på den nya sajten.
+   */
+  async redirects() {
+    return [
+      // Gamla "kommande mässor"-sidan – sajten handlar nu om en mässa.
+      { source: '/kommande-maessor', destination: '/', permanent: true },
+      // Shows/uppträdanden presenteras numera under artisterna.
+      { source: '/shows', destination: '/artister', permanent: true },
+      // Lokal och adress ligger i "Praktiskt"-sektionen på startsidan.
+      { source: '/venue', destination: '/#plats', permanent: true },
+    ]
+  },
 };
 
 export default nextConfig;
