@@ -20,7 +20,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'Var köper jag biljett?',
     answer:
-      'Förköp din biljett online och slipp köa – men vi säljer alltid biljetter i dörren också. Du kan välja biljett för fredag, lördag eller ett 2-dagarspass, i nivåerna Standard och Premium VIP. Se alla priser på biljettsidan.',
+      'Förköp din biljett online och slipp köa. Entrébiljetter går även att köpa på plats vid mässans entré – betalning kan ske med kort eller kontant. Du kan välja biljett för fredag, lördag eller ett 2-dagarspass, i nivåerna Standard och Premium VIP. Se alla priser på biljettsidan.',
   },
   {
     question: 'Finns det en åldersgräns?',

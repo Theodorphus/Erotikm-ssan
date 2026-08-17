@@ -102,4 +102,14 @@ export const TICKET_GROUPS: TicketType['group'][] = ['Fredag', 'Lördag Dax', 'L
 
 /** Informationsrad som visas under biljettkorten. */
 export const TICKETS_NOTE =
-  'Förköp – slipp köa! Vi säljer alltid biljetter i dörren också. Köp och betalning online sker tryggt och säkert.'
+  'Förköp – slipp köa! Köp och betalning online sker tryggt och säkert.'
+
+/**
+ * Biljettförsäljning i entrén. Lyfts i en egen ruta på /biljetter – kunden
+ * vill att det tydligt framgår att man kan köpa på plats, och hur man betalar.
+ */
+export const DOOR_SALES_NOTE =
+  'Entrébiljetter går även att köpa på plats vid mässans entré. Betalning kan ske med kort eller kontant.'
+
+/** Betalsätt som accepteras i entrén – visas som etiketter under rutan. */
+export const DOOR_SALES_METHODS = ['Kort', 'Kontant'] as const

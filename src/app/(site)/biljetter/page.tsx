@@ -1,8 +1,14 @@
 import type { Metadata } from 'next'
-import { Ticket, Check, Building2, Mail } from 'lucide-react'
+import { Ticket, Check, Building2, Mail, DoorOpen, CreditCard, Banknote } from 'lucide-react'
 import { PageHero } from '@/components/layout/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
-import { TICKETS_NOTE, TICKET_GROUPS, type TicketType } from '@/lib/data/tickets'
+import {
+  TICKETS_NOTE,
+  DOOR_SALES_NOTE,
+  DOOR_SALES_METHODS,
+  TICKET_GROUPS,
+  type TicketType,
+} from '@/lib/data/tickets'
 import { getTickets, getEvent } from '@/lib/content'
 
 // ISR: hämta om från Sanity var 60:e sekund.
@@ -11,11 +17,11 @@ export const revalidate = 60
 // Obs: inga hårdkodade priser här – de styrs i Sanity och ändras över tid.
 export const metadata: Metadata = {
   title: 'Köp biljetter',
-  description: 'Biljetter till Erotikmässan – Standard och Premium VIP, per dag eller som 2-dagarspass. Förköp online och slipp köa, eller köp i dörren.',
+  description: 'Biljetter till Erotikmässan – Standard och Premium VIP, per dag eller som 2-dagarspass. Förköp online och slipp köa, eller köp på plats i entrén – kort eller kontant.',
   alternates: { canonical: '/biljetter' },
   openGraph: {
     title: 'Köp biljetter | Erotikmässan',
-    description: 'Biljetter till Erotikmässan – Standard och Premium VIP, per dag eller som 2-dagarspass. Förköp online och slipp köa, eller köp i dörren.',
+    description: 'Biljetter till Erotikmässan – Standard och Premium VIP, per dag eller som 2-dagarspass. Förköp online och slipp köa, eller köp på plats i entrén – kort eller kontant.',
     url: '/biljetter',
   },
 }
@@ -130,6 +136,33 @@ export default async function BiljetterPage() {
         <p className="text-center text-cream/60 text-sm mt-12 max-w-xl mx-auto">
           {TICKETS_NOTE}
         </p>
+
+        {/* Biljetter i entrén – kunden vill att det tydligt framgår att man kan
+            köpa på plats, och vilka betalsätt som gäller. Neutral ram så den
+            rosa företagsrutan nedanför behåller sin tyngd. */}
+        <Reveal>
+          <div className="mt-8 max-w-2xl mx-auto rounded-2xl border border-white/12 bg-surface p-7 sm:p-8 text-center">
+            <div className="inline-flex items-center gap-2 text-brand-pink-light font-semibold uppercase tracking-wider text-sm mb-3">
+              <DoorOpen size={18} /> Köp biljett på plats
+            </div>
+            <p className="text-cream/75">{DOOR_SALES_NOTE}</p>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-2.5">
+              {DOOR_SALES_METHODS.map((method) => (
+                <span
+                  key={method}
+                  className="inline-flex items-center gap-2 text-sm text-cream/80 border border-white/15 bg-white/5 rounded-full px-4 py-1.5"
+                >
+                  {method === 'Kort' ? (
+                    <CreditCard size={16} className="text-brand-pink" />
+                  ) : (
+                    <Banknote size={16} className="text-brand-pink" />
+                  )}
+                  {method}
+                </span>
+              ))}
+            </div>
+          </div>
+        </Reveal>
 
         {/* Företagsbokning / VIP-bordsservice – egen kontaktkanal (Joakim). */}
         <Reveal delay={100}>
