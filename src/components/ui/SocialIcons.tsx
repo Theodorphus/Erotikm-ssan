@@ -29,6 +29,28 @@ export function TikTokIcon({ size = 20, className }: IconProps) {
   )
 }
 
+export function SwishIcon({ size = 20, className }: IconProps) {
+  return (
+    <svg width={size} height={size} className={className} viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="12" fill="#0F0C74" />
+      <path
+        d="M14.9 6.3c-2.9-1-6.2.1-7.8 2.7-1.3 2.1-1.2 4.8.2 6.8.2.3.2.6 0 .9l-1.1 1.9c-.1.2.1.4.3.3l2.2-.8c.3-.1.5-.1.8 0 2.7 1.3 6 .4 7.7-2.1 1.3-2 1.3-4.6.1-6.6"
+        fill="none"
+        stroke="#fff"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+      />
+      <path
+        d="M9 17.6c2.9 1 6.2-.1 7.8-2.7 1.3-2.1 1.2-4.8-.2-6.8-.2-.3-.2-.6 0-.9l1.1-1.9c.1-.2-.1-.4-.3-.3l-2.2.8c-.3.1-.5.1-.8 0-2.7-1.3-6-.4-7.7 2.1-1.3 2-1.3 4.6-.1 6.6"
+        fill="none"
+        stroke="#9FE871"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+      />
+    </svg>
+  )
+}
+
 export function YouTubeIcon({ size = 20, className }: IconProps) {
   return (
     <svg width={size} height={size} className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

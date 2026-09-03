@@ -109,7 +109,7 @@ export const TICKETS_NOTE =
  * vill att det tydligt framgår att man kan köpa på plats, och hur man betalar.
  */
 export const DOOR_SALES_NOTE =
-  'Entrébiljetter går även att köpa på plats vid mässans entré. Betalning kan ske med kort eller kontant.'
+  'Entrébiljetter går även att köpa på plats vid mässans entré. Betalning kan ske med kontant, kort eller Swish.'
 
 /** Betalsätt som accepteras i entrén – visas som etiketter under rutan. */
-export const DOOR_SALES_METHODS = ['Kort', 'Kontant'] as const
+export const DOOR_SALES_METHODS = ['Kontant', 'Kort', 'Swish'] as const

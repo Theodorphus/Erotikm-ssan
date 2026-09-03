@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Ticket, Mic2, Store, MapPin, CalendarDays, Clock, ArrowRight, Sparkles, Flame, Star, Brush, Music2, Eye, Heart, Disc3, ShoppingBag } from 'lucide-react'
-import { FacebookIcon, InstagramIcon, TikTokIcon } from '@/components/ui/SocialIcons'
+import { Ticket, Mic2, Store, MapPin, CalendarDays, Clock, ArrowRight, Sparkles, Flame, Star, Brush, Music2, Eye, Heart, Disc3, ShoppingBag, DoorOpen, CreditCard, Banknote } from 'lucide-react'
+import { FacebookIcon, InstagramIcon, TikTokIcon, SwishIcon } from '@/components/ui/SocialIcons'
 import { Countdown } from '@/components/event/Countdown'
 import { Faq } from '@/components/event/Faq'
 import { AgeBadge } from '@/components/event/AgeBadge'
@@ -9,6 +9,7 @@ import { MapEmbed } from '@/components/event/MapEmbed'
 import { Reveal } from '@/components/ui/Reveal'
 import { FaqStructuredData } from '@/components/seo/StructuredData'
 import { getEvent, getFaq } from '@/lib/content'
+import { DOOR_SALES_NOTE, DOOR_SALES_METHODS } from '@/lib/data/tickets'
 
 // Hämta om innehållet från Sanity var 60:e sekund (ISR), så Johans ändringar
 // i Studion slår igenom live utan ny deploy.
@@ -361,15 +362,15 @@ export default async function HomePage() {
                 <li className="flex items-center gap-3">
                   <Clock size={20} className="text-brand-pink flex-shrink-0" /> {EVENT.openingHours}
                 </li>
-                <li className="flex items-center gap-3">
-                  <MapPin size={20} className="text-brand-pink flex-shrink-0" />
+                <li className="flex items-start gap-3">
+                  <MapPin size={20} className="text-brand-pink flex-shrink-0 mt-0.5" />
                   <a
                     href={EVENT.mapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-brand-pink transition-colors"
                   >
-                    {EVENT.venue}, {EVENT.city}
+                    {EVENT.venue}, {EVENT.venueStreet}, {EVENT.venuePostalCode} Johanneshov
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
@@ -382,6 +383,32 @@ export default async function HomePage() {
                   <AgeBadge />
                 </li>
               </ul>
+
+              {/* Entrébiljetter på plats (Johans önskemål): tydligt på förstasidan
+                  att man kan köpa i dörren, och med vilka betalsätt. */}
+              <div className="mt-6 rounded-xl border border-white/12 bg-ink-mid p-5">
+                <div className="inline-flex items-center gap-2 text-brand-pink-light font-semibold uppercase tracking-wider text-xs mb-2">
+                  <DoorOpen size={16} /> Köp biljett på plats
+                </div>
+                <p className="text-sm text-cream/70 mb-4">{DOOR_SALES_NOTE}</p>
+                <div className="flex flex-wrap items-center gap-2">
+                  {DOOR_SALES_METHODS.map((method) => (
+                    <span
+                      key={method}
+                      className="inline-flex items-center gap-1.5 text-xs text-cream/80 border border-white/15 bg-white/5 rounded-full px-3 py-1"
+                    >
+                      {method === 'Kort' ? (
+                        <CreditCard size={14} className="text-brand-pink" />
+                      ) : method === 'Swish' ? (
+                        <SwishIcon size={14} />
+                      ) : (
+                        <Banknote size={14} className="text-brand-pink" />
+                      )}
+                      {method}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </Reveal>
           <Reveal delay={120}>

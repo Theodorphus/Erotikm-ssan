@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Ticket, Check, Building2, Mail, DoorOpen, CreditCard, Banknote } from 'lucide-react'
+import { SwishIcon } from '@/components/ui/SocialIcons'
 import { PageHero } from '@/components/layout/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
 import {
@@ -154,6 +155,8 @@ export default async function BiljetterPage() {
                 >
                   {method === 'Kort' ? (
                     <CreditCard size={16} className="text-brand-pink" />
+                  ) : method === 'Swish' ? (
+                    <SwishIcon size={16} />
                   ) : (
                     <Banknote size={16} className="text-brand-pink" />
                   )}
