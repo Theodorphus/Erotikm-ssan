@@ -164,6 +164,17 @@ export default async function HomePage() {
               Se artisterna <ArrowRight size={18} />
             </Link>
           </div>
+
+          {/* Dörrförsäljning – Johan ville ha den högre upp/synligare, inte
+              bara nere i Praktiskt-sektionen. Smal rad direkt under CTA:erna. */}
+          <p
+            className="reveal flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-cream/60 mt-6"
+            style={{ animationDelay: '0.95s' }}
+          >
+            <DoorOpen size={14} className="text-brand-pink-light" />
+            Biljett går även att köpa i entrén – Kontant, Kort
+            <SwishIcon size={13} className="inline-block align-[-2px]" /> Swish
+          </p>
         </div>
       </section>
 
