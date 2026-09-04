@@ -56,3 +56,6 @@ logs/
 # Granskningsskript (scripts/audit.mjs) skriver hit
 audit-shots/
 .vercel
+
+# Real-ESRGAN-uppskalningens arbetsmapp (mellansteg, inte källmaterial)
+tmp/

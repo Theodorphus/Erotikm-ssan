@@ -82,4 +82,18 @@ export const EVENT = {
     instagram: 'https://www.instagram.com/fair.erotica',
     tiktok: 'https://www.tiktok.com/@fair.erotica',
   },
+
+  /**
+   * Strippförmedlingen – separat bokningstjänst för privata tillställningar
+   * (svensexor m.m.), fristående från mässans egen artistbokning ovan.
+   * Numret visas medvetet här (till skillnad från EVENT.email-policyn) eftersom
+   * Johan själv bad om att lyfta fram WhatsApp-numret för just den här tjänsten.
+   */
+  stripAgency: {
+    whatsappNumber: '076-0541250',
+    /** Länkformat utan mellanslag/bindestreck, för wa.me-länken. */
+    whatsappLink: 'https://wa.me/46760541250',
+    bookingHoursWeekday: 'Vardagar: fram till kl. 24.00',
+    bookingHoursWeekend: 'Helger: fram till kl. 01.00',
+  },
 } as const
