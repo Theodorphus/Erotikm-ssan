@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { CalendarCheck, ShieldCheck } from 'lucide-react'
 import { InstagramIcon, WhatsAppIcon } from '@/components/ui/SocialIcons'
-import { PageHero } from '@/components/layout/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
 import { getEvent } from '@/lib/content'
 import { EVENT } from '@/lib/data/event'
@@ -60,11 +59,6 @@ export default async function BokaArtistPage() {
   const event = await getEvent()
   return (
     <>
-      <PageHero
-        title="Boka artist av oss"
-        subtitle="Vill du boka en av våra artister till ditt eget event? Kontakta oss via Instagram – eller boka en stripshow till svensexa och privata tillställningar via vår strippförmedling."
-      />
-
       <section className="relative overflow-hidden bg-ink py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
         {/* Atmosfäriska neon-lager bakom kortet – scenljus i diset. */}
         <div className="aurora opacity-70" aria-hidden="true" />
@@ -73,9 +67,9 @@ export default async function BokaArtistPage() {
           <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-brand-pink/30 to-brand-pink/5 border border-brand-pink/30 text-brand-pink flex items-center justify-center mx-auto mb-6 shadow-[0_0_20px_rgba(225,29,116,0.25)]">
             <InstagramIcon size={32} />
           </div>
-          <h2 className="font-display text-2xl font-bold text-cream mb-3">
-            Skicka oss ett meddelande
-          </h2>
+          <h1 className="font-display text-2xl font-bold text-cream mb-3">
+            Boka artist hos oss
+          </h1>
           <p className="text-cream/70 mb-8 max-w-md mx-auto">
             Berätta vilken artist du är intresserad av och när ditt event är, så återkommer vi med
             tillgänglighet och pris.
