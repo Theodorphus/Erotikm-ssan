@@ -1,23 +1,19 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { CalendarCheck, ShieldCheck } from 'lucide-react'
-import { InstagramIcon, WhatsAppIcon } from '@/components/ui/SocialIcons'
+import { WhatsAppIcon } from '@/components/ui/SocialIcons'
 import { Reveal } from '@/components/ui/Reveal'
-import { getEvent } from '@/lib/content'
 import { EVENT } from '@/lib/data/event'
-
-// ISR: hämta om från Sanity var 60:e sekund.
-export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'Boka artist',
   description:
-    'Boka en av Erotikmässans artister till ditt eget event via Instagram, eller boka stripshow till svensexa och privata tillställningar via vår strippförmedling på WhatsApp.',
+    'Boka stripshow till svensexa och privata tillställningar via vår strippförmedling på WhatsApp.',
   alternates: { canonical: '/boka-artist' },
   openGraph: {
-    title: 'Boka artist av oss | Erotikmässan',
+    title: 'Boka artist hos oss | Erotikmässan',
     description:
-      'Boka en av Erotikmässans artister till ditt eget event via Instagram, eller boka stripshow till svensexa och privata tillställningar via vår strippförmedling på WhatsApp.',
+      'Boka stripshow till svensexa och privata tillställningar via vår strippförmedling på WhatsApp.',
     url: '/boka-artist',
   },
 }
@@ -55,36 +51,9 @@ const POLICY_POINTS = [
   'Bokningsavgift och arvode avser show/underhållning – inte sexuella tjänster.',
 ]
 
-export default async function BokaArtistPage() {
-  const event = await getEvent()
+export default function BokaArtistPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-ink py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
-        {/* Atmosfäriska neon-lager bakom kortet – scenljus i diset. */}
-        <div className="aurora opacity-70" aria-hidden="true" />
-        <div className="bokeh" aria-hidden="true" />
-        <div className="relative z-10 max-w-2xl mx-auto text-center card-sheen rounded-2xl border border-white/10 bg-surface/80 backdrop-blur-sm p-10 shadow-2xl shadow-brand-pink/10">
-          <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-brand-pink/30 to-brand-pink/5 border border-brand-pink/30 text-brand-pink flex items-center justify-center mx-auto mb-6 shadow-[0_0_20px_rgba(225,29,116,0.25)]">
-            <InstagramIcon size={32} />
-          </div>
-          <h1 className="font-display text-2xl font-bold text-cream mb-3">
-            Boka artist hos oss
-          </h1>
-          <p className="text-cream/70 mb-8 max-w-md mx-auto">
-            Berätta vilken artist du är intresserad av och när ditt event är, så återkommer vi med
-            tillgänglighet och pris.
-          </p>
-          <a
-            href={event.links.bookArtist}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-brand-pink text-white font-semibold px-8 py-4 rounded-lg hover:bg-brand-pink-dark transition-colors shadow-lg shadow-brand-pink/25"
-          >
-            <InstagramIcon size={20} /> Boka via Instagram
-          </a>
-        </div>
-      </section>
-
       {/* Strippförmedling – separat bokningstjänst för privata tillställningar (svensexor m.m.) */}
       <section className="relative overflow-hidden bg-surface py-16 sm:py-20 px-4 sm:px-6 lg:px-8 sm:min-h-[720px] flex flex-col justify-center">
         {/* Bakgrundsfoto: eget fält i högra delen av sektionen (annars fyller
@@ -104,9 +73,9 @@ export default async function BokaArtistPage() {
 
         <div className="max-w-5xl mx-auto relative z-10">
           <Reveal className="text-center mb-12">
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-cream mb-3">
-              Strippförmedling
-            </h2>
+            <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-cream mb-3">
+              Boka artist hos oss
+            </h1>
             <p className="text-cream/70 max-w-xl mx-auto mb-2">
               Vi förmedlar stripshow till privata tillställningar, svensexor och olika typer av
               event. Du väljer artist och tid – vi hjälper dig att boka en artist som är
