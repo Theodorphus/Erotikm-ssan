@@ -81,6 +81,16 @@ export default function BokaArtistPage() {
               event. Du väljer artist och tid – vi hjälper dig att boka en artist som är
               tillgänglig för ditt evenemang.
             </p>
+            <p className="text-cream/70 max-w-xl mx-auto">
+              För bokningsförfrågningar, maila till{' '}
+              <a
+                href={`mailto:${EVENT.email}`}
+                className="text-brand-pink hover:text-brand-pink-light"
+              >
+                {EVENT.email}
+              </a>
+              . Eller för en akut bokning, ring vårt journummer nedan.
+            </p>
           </Reveal>
 
           {/* Mobilbild: egen ruta ovanför kontaktkortet (bakgrundsvarianten är dold på mobil) */}
