@@ -21,7 +21,7 @@ export default function NotFound() {
           href="/biljetter"
           className="px-5 py-2.5 bg-white/5 text-cream border border-white/15 rounded-lg font-semibold hover:bg-white/10 transition-colors"
         >
-          Köp biljetter
+          Biljetter
         </Link>
       </div>
 

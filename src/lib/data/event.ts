@@ -97,3 +97,26 @@ export const EVENT = {
     bookingHoursWeekend: 'Helger: fram till kl. 01.00',
   },
 } as const
+
+/**
+ * Efter-mässan-läge ("mässan är genomförd").
+ *
+ * Sajten byter automatiskt läge när EVENT.endDate har passerat – nedräknaren
+ * ersätts av en tack-ruta med intresseanmälan, biljettknapparna tonas ned och
+ * strukturdatan till Google slutar påstå att biljetter finns att köpa.
+ *
+ * 👉 Texterna nedan visas i det läget. Datumet för nästa mässa är medvetet
+ *    vagt ("hösten 2027") tills det är spikat – ändra här när det är klart.
+ */
+export const POST_EVENT = {
+  /** Rubrik i heron där nedräknaren annars står. */
+  heading: 'Tack för i år!',
+  /** Kort text under rubriken. */
+  text: 'Erotikmässan 2026 är avslutad – tack till alla besökare, artister och utställare som gjorde helgen till vad den blev. Vi ses igen nästa år.',
+  /** Vad som gäller härnäst. Håll vagt tills nästa datum är spikat. */
+  nextEditionText: 'Nästa mässa: hösten 2027',
+  /** Rubrik och text för intresseanmälan (e-postlistan). */
+  signupHeading: 'Först med biljetterna nästa år',
+  signupText:
+    'Lämna din e-post så hör vi av oss när datum och biljettsläpp för nästa mässa är klart. Inga utskick däremellan.',
+} as const

@@ -22,6 +22,10 @@ function diff(target: number): TimeLeft {
 /**
  * Nedräknare till mässans startdatum.
  * Datumet styrs av EVENT.startDate – ändra där, inte här.
+ *
+ * Obs: när mässan är avslutad renderas den här komponenten inte alls – då
+ * visas PostEventPanel i stället (se startsidan). En nedräknare som står
+ * still på 00:00:00:00 får sajten att se övergiven ut.
  */
 export function Countdown({ target }: { target: string }) {
   const targetMs = new Date(target).getTime()

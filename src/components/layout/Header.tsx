@@ -61,16 +61,26 @@ export function Header({ event: EVENT }: { event: EventData }) {
           })}
         </div>
 
-        {/* CTA - Desktop */}
+        {/* CTA - Desktop. Efter mässan pekar knappen på intresseanmälan i
+            stället för biljettköp (mässan är genomförd). */}
         <div className="hidden lg:block">
-          <a
-            href={EVENT.links.tickets}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cta-shine btn-gradient inline-flex items-center justify-center text-white font-semibold px-6 py-2.5 rounded-full shadow-md shadow-brand-pink/20"
-          >
-            Köp biljetter
-          </a>
+          {EVENT.isPast ? (
+            <Link
+              href="/#intresseanmalan"
+              className="cta-shine btn-gradient inline-flex items-center justify-center text-white font-semibold px-6 py-2.5 rounded-full shadow-md shadow-brand-pink/20"
+            >
+              Nästa mässa
+            </Link>
+          ) : (
+            <a
+              href={EVENT.links.tickets}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-shine btn-gradient inline-flex items-center justify-center text-white font-semibold px-6 py-2.5 rounded-full shadow-md shadow-brand-pink/20"
+            >
+              Köp biljetter
+            </a>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -93,7 +103,14 @@ export function Header({ event: EVENT }: { event: EventData }) {
         </button>
       </nav>
 
-      {isOpen && <MobileMenu isOpen={isOpen} onClose={() => setIsOpen(false)} ticketsUrl={EVENT.links.tickets} />}
+      {isOpen && (
+        <MobileMenu
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          ticketsUrl={EVENT.links.tickets}
+          isPast={EVENT.isPast}
+        />
+      )}
     </header>
   )
 }

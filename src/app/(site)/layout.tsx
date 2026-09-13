@@ -35,7 +35,7 @@ export default async function SiteLayout({
       <Header event={event} />
       <main id="innehall" className="flex-1">{children}</main>
       <Footer event={event} />
-      <MobileTicketBar ticketsUrl={event.links.tickets} />
+      <MobileTicketBar ticketsUrl={event.links.tickets} isPast={event.isPast} />
       <ScrollToTop />
       <Analytics />
       <GoogleAnalytics />

@@ -21,6 +21,13 @@ export function StructuredData({
   event: EventData
   tickets: TicketType[]
 }) {
+  // Efter mässan får schemat inte längre påstå att biljetter går att köpa.
+  // Google kontrollerar detta mot startDate/endDate, och felaktig availability
+  // är en vanlig orsak till varningar i Search Console för passerade event.
+  const availability = event.isPast
+    ? 'https://schema.org/SoldOut'
+    : 'https://schema.org/InStock'
+
   const ticketOffers = tickets
     .filter((t) => t.price !== null)
     .map((t) => ({
@@ -29,7 +36,7 @@ export function StructuredData({
       price: t.price,
       priceCurrency: 'SEK',
       url: event.links.tickets,
-      availability: 'https://schema.org/InStock',
+      availability,
       validFrom: event.ticketsAvailableFrom,
     }))
 
@@ -73,7 +80,7 @@ export function StructuredData({
             '@type': 'Offer',
             url: event.links.tickets,
             priceCurrency: 'SEK',
-            availability: 'https://schema.org/InStock',
+            availability,
             validFrom: event.ticketsAvailableFrom,
           },
   }

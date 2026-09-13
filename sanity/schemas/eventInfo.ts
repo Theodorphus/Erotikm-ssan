@@ -28,6 +28,16 @@ export const eventInfo = defineType({
       type: 'datetime',
     }),
     defineField({
+      name: 'eventOver',
+      title: 'Mässan är genomförd',
+      type: 'boolean',
+      description:
+        'Sätts normalt av sig själv när slutdatumet passerat – du behöver inte röra den. '
+        + 'Kryssa i för att slå på "tack för i år"-läget i förväg (t.ex. slutsålt eller inställt). '
+        + 'Nedräknaren byts mot en tack-ruta med intresseanmälan och biljettknapparna tonas ned.',
+      initialValue: false,
+    }),
+    defineField({
       name: 'openingHours',
       title: 'Öppettider',
       type: 'string',

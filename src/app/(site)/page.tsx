@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Ticket, Mic2, Store, MapPin, CalendarDays, Clock, ArrowRight, Sparkles, Flame, Star, Brush, Music2, Eye, Heart, Disc3, ShoppingBag, DoorOpen, CreditCard, Banknote } from 'lucide-react'
 import { FacebookIcon, InstagramIcon, TikTokIcon, SwishIcon } from '@/components/ui/SocialIcons'
 import { Countdown } from '@/components/event/Countdown'
+import { PostEventPanel } from '@/components/event/PostEventPanel'
 import { Faq } from '@/components/event/Faq'
 import { AgeBadge } from '@/components/event/AgeBadge'
 import { MapEmbed } from '@/components/event/MapEmbed'
@@ -142,39 +143,60 @@ export default async function HomePage() {
             <AgeBadge size="sm" />
           </div>
 
-          <div className="reveal flex justify-center mb-10" style={{ animationDelay: '0.7s' }}>
-            <Countdown target={EVENT.startDate} />
-          </div>
+          {/* Före mässan: nedräknare + biljettknappar.
+              Efter mässan: tack-ruta med intresseanmälan i stället – en
+              nedräknare på 00:00:00:00 och en köpknapp till ett event som
+              varit får sajten att se övergiven ut. Läget styrs av
+              EVENT.isPast (härleds ur slutdatumet, se lib/content.ts). */}
+          {EVENT.isPast ? (
+            <div className="reveal" style={{ animationDelay: '0.7s' }}>
+              <PostEventPanel event={EVENT} />
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                <Link
+                  href="/artister"
+                  className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/15 text-cream font-semibold px-9 py-4 rounded-full hover:bg-white/10 hover:border-white/25 transition-colors"
+                >
+                  Se artisterna från i år <ArrowRight size={18} />
+                </Link>
+              </div>
+            </div>
+          ) : (
+            <>
+              <div className="reveal flex justify-center mb-10" style={{ animationDelay: '0.7s' }}>
+                <Countdown target={EVENT.startDate} />
+              </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={EVENT.links.tickets}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="reveal cta-shine btn-gradient inline-flex items-center justify-center gap-2 text-white font-semibold px-9 py-4 rounded-full shadow-lg shadow-brand-pink/25"
-              style={{ animationDelay: '0.85s' }}
-            >
-              <Ticket size={20} /> Köp biljetter
-            </a>
-            <Link
-              href="/artister"
-              className="reveal inline-flex items-center justify-center gap-2 bg-white/5 border border-white/15 text-cream font-semibold px-9 py-4 rounded-full hover:bg-white/10 hover:border-white/25 transition-colors"
-              style={{ animationDelay: '0.89s' }}
-            >
-              Se artisterna <ArrowRight size={18} />
-            </Link>
-          </div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href={EVENT.links.tickets}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="reveal cta-shine btn-gradient inline-flex items-center justify-center gap-2 text-white font-semibold px-9 py-4 rounded-full shadow-lg shadow-brand-pink/25"
+                  style={{ animationDelay: '0.85s' }}
+                >
+                  <Ticket size={20} /> Köp biljetter
+                </a>
+                <Link
+                  href="/artister"
+                  className="reveal inline-flex items-center justify-center gap-2 bg-white/5 border border-white/15 text-cream font-semibold px-9 py-4 rounded-full hover:bg-white/10 hover:border-white/25 transition-colors"
+                  style={{ animationDelay: '0.89s' }}
+                >
+                  Se artisterna <ArrowRight size={18} />
+                </Link>
+              </div>
 
-          {/* Dörrförsäljning – Johan ville ha den högre upp/synligare, inte
-              bara nere i Praktiskt-sektionen. Smal rad direkt under CTA:erna. */}
-          <p
-            className="reveal flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-cream/60 mt-6"
-            style={{ animationDelay: '0.95s' }}
-          >
-            <DoorOpen size={14} className="text-brand-pink-light" />
-            Biljett går även att köpa i entrén – Kontant, Kort
-            <SwishIcon size={13} className="inline-block align-[-2px]" /> Swish
-          </p>
+              {/* Dörrförsäljning – Johan ville ha den högre upp/synligare, inte
+                  bara nere i Praktiskt-sektionen. Smal rad direkt under CTA:erna. */}
+              <p
+                className="reveal flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-cream/60 mt-6"
+                style={{ animationDelay: '0.95s' }}
+              >
+                <DoorOpen size={14} className="text-brand-pink-light" />
+                Biljett går även att köpa i entrén – Kontant, Kort
+                <SwishIcon size={13} className="inline-block align-[-2px]" /> Swish
+              </p>
+            </>
+          )}
         </div>
       </section>
 
@@ -187,7 +209,7 @@ export default async function HomePage() {
           <Reveal>
             <div className="text-center mb-12">
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-cream mb-3">
-                Vad väntar på mässan?
+                {EVENT.isPast ? 'Så är Erotikmässan' : 'Vad väntar på mässan?'}
               </h2>
               <p className="text-cream/60 max-w-2xl mx-auto">
                 Två kvällar fyllda av lust, spänning och livsnjutning – under ett och samma tak.
@@ -245,7 +267,7 @@ export default async function HomePage() {
           <Reveal>
             <div className="text-center mb-12">
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-cream mb-3">
-                Det här väntar på mässan
+                {EVENT.isPast ? 'Det här bjöd mässan på' : 'Det här väntar på mässan'}
               </h2>
               <p className="text-cream/60 max-w-2xl mx-auto">
                 Ett fullspäckat schema från start till mål – allt under ett och samma tak.
@@ -322,8 +344,12 @@ export default async function HomePage() {
             <LinkCard
               href="/biljetter"
               icon={<Ticket size={26} />}
-              title="Köp biljetter"
-              text="Förköp online och slipp köa – eller köp biljett i dörren."
+              title={EVENT.isPast ? 'Biljetter' : 'Köp biljetter'}
+              text={
+                EVENT.isPast
+                  ? 'Se årets biljettpriser – nästa års släpp annonseras här.'
+                  : 'Förköp online och slipp köa – eller köp biljett i dörren.'
+              }
             />
             <LinkCard
               href="/artister"
@@ -384,19 +410,23 @@ export default async function HomePage() {
                     {EVENT.venue}, {EVENT.venueStreet}, {EVENT.venuePostalCode} Johanneshov
                   </a>
                 </li>
-                <li className="flex items-center gap-3">
-                  <Ticket size={20} className="text-brand-pink flex-shrink-0" />
-                  <a href={EVENT.links.tickets} target="_blank" rel="noopener noreferrer" className="hover:text-brand-pink">
-                    Köp biljetter online
-                  </a>
-                </li>
+                {!EVENT.isPast && (
+                  <li className="flex items-center gap-3">
+                    <Ticket size={20} className="text-brand-pink flex-shrink-0" />
+                    <a href={EVENT.links.tickets} target="_blank" rel="noopener noreferrer" className="hover:text-brand-pink">
+                      Köp biljetter online
+                    </a>
+                  </li>
+                )}
                 <li className="pt-1">
                   <AgeBadge />
                 </li>
               </ul>
 
               {/* Entrébiljetter på plats (Johans önskemål): tydligt på förstasidan
-                  att man kan köpa i dörren, och med vilka betalsätt. */}
+                  att man kan köpa i dörren, och med vilka betalsätt.
+                  Döljs när mässan är genomförd – då finns ingen entré att köpa i. */}
+              {!EVENT.isPast && (
               <div className="mt-6 rounded-xl border border-white/12 bg-ink-mid p-5">
                 <div className="inline-flex items-center gap-2 text-brand-pink-light font-semibold uppercase tracking-wider text-xs mb-2">
                   <DoorOpen size={16} /> Köp biljett på plats
@@ -420,13 +450,16 @@ export default async function HomePage() {
                   ))}
                 </div>
               </div>
+              )}
             </div>
           </Reveal>
           <Reveal delay={120}>
             <div>
               <h3 className="font-display text-2xl font-bold text-cream mb-5">Följ oss</h3>
               <p className="text-cream/60 mb-5">
-                Håll dig uppdaterad om artister, utställare och nyheter inför mässan.
+                {EVENT.isPast
+                  ? 'Följ oss för bilder från årets mässa och nyheter om nästa års upplaga.'
+                  : 'Håll dig uppdaterad om artister, utställare och nyheter inför mässan.'}
               </p>
               <div className="flex gap-3">
                 <SocialButton href={EVENT.links.facebook} label="Facebook">

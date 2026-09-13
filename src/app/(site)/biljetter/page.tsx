@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import { Ticket, Check, Building2, Mail, DoorOpen, CreditCard, Banknote } from 'lucide-react'
+import { Ticket, Check, Building2, Mail, DoorOpen, CreditCard, Banknote, Bell } from 'lucide-react'
 import { SwishIcon } from '@/components/ui/SocialIcons'
+import Link from 'next/link'
 import { PageHero } from '@/components/layout/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
 import {
@@ -27,7 +28,17 @@ export const metadata: Metadata = {
   },
 }
 
-function TicketCard({ ticket, ticketsUrl, delay }: { ticket: TicketType; ticketsUrl: string; delay: number }) {
+function TicketCard({
+  ticket,
+  ticketsUrl,
+  delay,
+  isPast,
+}: {
+  ticket: TicketType
+  ticketsUrl: string
+  delay: number
+  isPast: boolean
+}) {
   return (
     <Reveal delay={delay} className="h-full">
       <div
@@ -73,18 +84,27 @@ function TicketCard({ ticket, ticketsUrl, delay }: { ticket: TicketType; tickets
             </li>
           ))}
         </ul>
-        <a
-          href={ticketsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`inline-flex items-center justify-center gap-2 w-full font-semibold px-6 py-3.5 rounded-full ${
-            ticket.featured
-              ? 'btn-gradient cta-shine text-white'
-              : 'bg-white/5 border border-white/15 text-cream hover:bg-white/10 transition-colors'
-          }`}
-        >
-          <Ticket size={18} /> Köp biljett
-        </a>
+        {/* Efter mässan finns inget att köpa – knappen ersätts av en
+            neutral etikett så priserna kan stå kvar som referens inför
+            nästa år utan att se ut som en aktiv försäljning. */}
+        {isPast ? (
+          <span className="inline-flex items-center justify-center gap-2 w-full font-semibold px-6 py-3.5 rounded-full border border-white/10 bg-white/5 text-cream/50">
+            Biljettsläpp nästa år
+          </span>
+        ) : (
+          <a
+            href={ticketsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex items-center justify-center gap-2 w-full font-semibold px-6 py-3.5 rounded-full ${
+              ticket.featured
+                ? 'btn-gradient cta-shine text-white'
+                : 'bg-white/5 border border-white/15 text-cream hover:bg-white/10 transition-colors'
+            }`}
+          >
+            <Ticket size={18} /> Köp biljett
+          </a>
+        )}
       </div>
     </Reveal>
   )
@@ -104,11 +124,32 @@ export default async function BiljetterPage() {
   return (
     <>
       <PageHero
-        title="Köp biljetter"
-        subtitle={`${event.dateText} · ${event.venue}, ${event.city}. Välj din biljett – köp tryggt online.`}
+        title={event.isPast ? 'Biljetter' : 'Köp biljetter'}
+        subtitle={
+          event.isPast
+            ? `Erotikmässan ${event.dateText} är genomförd. Priserna nedan gällde i år – nästa års biljetter släpps längre fram.`
+            : `${event.dateText} · ${event.venue}, ${event.city}. Välj din biljett – köp tryggt online.`
+        }
       />
 
       <section className="bg-ink py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+        {/* Besökare som landar här från Google efter mässan ska direkt förstå
+            att försäljningen är stängd – och få en väg vidare. */}
+        {event.isPast && (
+          <div className="max-w-2xl mx-auto mb-14 rounded-2xl border border-brand-pink/30 bg-brand-pink/5 p-7 text-center">
+            <p className="text-cream/80 mb-5">
+              Biljettförsäljningen är stängd. Vill du vara först med biljetterna till
+              nästa mässa? Lämna din e-post så hör vi av oss vid släppet.
+            </p>
+            <Link
+              href="/#intresseanmalan"
+              className="btn-gradient cta-shine inline-flex items-center justify-center gap-2 text-white font-semibold px-7 py-3 rounded-full shadow-lg shadow-brand-pink/25"
+            >
+              <Bell size={18} /> Håll mig uppdaterad
+            </Link>
+          </div>
+        )}
+
         <div className="max-w-6xl mx-auto space-y-16">
           {groups.map((group) => {
             const groupTickets = tickets.filter((t) => t.group === group)
@@ -126,6 +167,7 @@ export default async function BiljetterPage() {
                       ticket={ticket}
                       ticketsUrl={event.links.tickets}
                       delay={i * 100}
+                      isPast={event.isPast}
                     />
                   ))}
                 </div>
@@ -134,13 +176,16 @@ export default async function BiljetterPage() {
           })}
         </div>
 
-        <p className="text-center text-cream/60 text-sm mt-12 max-w-xl mx-auto">
-          {TICKETS_NOTE}
-        </p>
+        {!event.isPast && (
+          <p className="text-center text-cream/60 text-sm mt-12 max-w-xl mx-auto">
+            {TICKETS_NOTE}
+          </p>
+        )}
 
         {/* Biljetter i entrén – kunden vill att det tydligt framgår att man kan
             köpa på plats, och vilka betalsätt som gäller. Neutral ram så den
             rosa företagsrutan nedanför behåller sin tyngd. */}
+        {!event.isPast && (
         <Reveal>
           <div className="mt-8 max-w-2xl mx-auto rounded-2xl border border-white/12 bg-surface p-7 sm:p-8 text-center">
             <div className="inline-flex items-center gap-2 text-brand-pink-light font-semibold uppercase tracking-wider text-sm mb-3">
@@ -166,6 +211,7 @@ export default async function BiljetterPage() {
             </div>
           </div>
         </Reveal>
+        )}
 
         {/* Företagsbokning / VIP-bordsservice – egen kontaktkanal (Joakim). */}
         <Reveal delay={100}>

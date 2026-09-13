@@ -1,15 +1,25 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Ticket } from 'lucide-react'
+import Link from 'next/link'
+import { Ticket, Bell } from 'lucide-react'
 
 /**
  * Sticky köpknapp i botten på mobil. Dyker upp först när besökaren scrollat
  * förbi heron (där knappen redan finns) så den inte dubblerar – och följer
  * sedan med hela vägen. Största enskilda konverteringsytan på mobil.
  * Döljs på desktop (lg:hidden) där headerns CTA alltid är synlig.
+ *
+ * Efter mässan säljs inga biljetter – då leder baren till intresseanmälan
+ * i stället, så ytan fortsätter göra nytta i stället för att försvinna.
  */
-export function MobileTicketBar({ ticketsUrl }: { ticketsUrl: string }) {
+export function MobileTicketBar({
+  ticketsUrl,
+  isPast,
+}: {
+  ticketsUrl: string
+  isPast?: boolean
+}) {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -27,15 +37,25 @@ export function MobileTicketBar({ ticketsUrl }: { ticketsUrl: string }) {
       style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}
       aria-hidden={!visible}
     >
-      <a
-        href={ticketsUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        tabIndex={visible ? 0 : -1}
-        className="btn-gradient cta-shine flex items-center justify-center gap-2 w-full text-white font-semibold px-6 py-3.5 rounded-full shadow-lg shadow-brand-pink/30"
-      >
-        <Ticket size={18} /> Köp biljetter
-      </a>
+      {isPast ? (
+        <Link
+          href="/#intresseanmalan"
+          tabIndex={visible ? 0 : -1}
+          className="btn-gradient cta-shine flex items-center justify-center gap-2 w-full text-white font-semibold px-6 py-3.5 rounded-full shadow-lg shadow-brand-pink/30"
+        >
+          <Bell size={18} /> Håll mig uppdaterad om nästa mässa
+        </Link>
+      ) : (
+        <a
+          href={ticketsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          tabIndex={visible ? 0 : -1}
+          className="btn-gradient cta-shine flex items-center justify-center gap-2 w-full text-white font-semibold px-6 py-3.5 rounded-full shadow-lg shadow-brand-pink/30"
+        >
+          <Ticket size={18} /> Köp biljetter
+        </a>
+      )}
     </div>
   )
 }

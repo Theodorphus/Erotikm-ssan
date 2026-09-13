@@ -3,16 +3,18 @@
 import { useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Ticket } from 'lucide-react'
+import { Ticket, Bell } from 'lucide-react'
 import { MAIN_NAV } from '@/lib/data/navigation'
 
 interface MobileMenuProps {
   isOpen: boolean
   onClose: () => void
   ticketsUrl: string
+  /** true = mässan är genomförd; visa intresseanmälan i stället för köpknapp. */
+  isPast?: boolean
 }
 
-export function MobileMenu({ isOpen, onClose, ticketsUrl }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose, ticketsUrl, isPast }: MobileMenuProps) {
   const pathname = usePathname()
 
   // Stäng på Escape + lås bakgrundsscroll medan menyn är öppen.
@@ -55,15 +57,25 @@ export function MobileMenu({ isOpen, onClose, ticketsUrl }: MobileMenuProps) {
         })}
 
         <div className="pt-3">
-          <a
-            href={ticketsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-gradient flex items-center justify-center gap-2 text-center text-white font-semibold px-5 py-3 rounded-full"
-            onClick={onClose}
-          >
-            <Ticket size={18} /> Köp biljetter
-          </a>
+          {isPast ? (
+            <Link
+              href="/#intresseanmalan"
+              className="btn-gradient flex items-center justify-center gap-2 text-center text-white font-semibold px-5 py-3 rounded-full"
+              onClick={onClose}
+            >
+              <Bell size={18} /> Nästa mässa
+            </Link>
+          ) : (
+            <a
+              href={ticketsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gradient flex items-center justify-center gap-2 text-center text-white font-semibold px-5 py-3 rounded-full"
+              onClick={onClose}
+            >
+              <Ticket size={18} /> Köp biljetter
+            </a>
+          )}
         </div>
       </nav>
     </div>
