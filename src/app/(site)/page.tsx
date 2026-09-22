@@ -394,7 +394,7 @@ export default async function HomePage() {
               <h3 className="font-display text-2xl font-bold text-cream mb-5">Praktiskt</h3>
               <ul className="space-y-4 text-cream/75">
                 <li className="flex items-center gap-3">
-                  <CalendarDays size={20} className="text-brand-pink flex-shrink-0" /> {EVENT.dateText}
+                  <CalendarDays size={20} className="text-brand-pink flex-shrink-0" /> {EVENT.dateLabel}
                 </li>
                 <li className="flex items-center gap-3">
                   <Clock size={20} className="text-brand-pink flex-shrink-0" /> {EVENT.openingHours}

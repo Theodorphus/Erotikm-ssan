@@ -56,7 +56,7 @@ export function Footer({ event: EVENT }: { event: EventData }) {
             <div className="space-y-3">
               <div className="flex items-center gap-2.5 text-sm text-cream/70">
                 <CalendarDays size={16} className="text-brand-pink flex-shrink-0" />
-                <span>{EVENT.dateText}</span>
+                <span>{EVENT.dateLabel}</span>
               </div>
               <div className="flex items-center gap-2.5 text-sm text-cream/70">
                 <Clock size={16} className="text-brand-pink flex-shrink-0" />

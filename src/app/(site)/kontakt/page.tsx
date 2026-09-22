@@ -4,6 +4,7 @@ import { PageHero } from '@/components/layout/PageHero'
 import { KontaktForm } from './KontaktForm'
 import { MapEmbed } from '@/components/event/MapEmbed'
 import { EVENT } from '@/lib/data/event'
+import { getEvent } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'Kontakt',
@@ -12,7 +13,9 @@ export const metadata: Metadata = {
   alternates: { canonical: '/kontakt' },
 }
 
-export default function KontaktPage() {
+export default async function KontaktPage() {
+  const event = await getEvent()
+
   return (
     <>
       <PageHero
@@ -34,7 +37,7 @@ export default function KontaktPage() {
             </InfoCard>
 
             <InfoCard icon={<CalendarDays size={20} />} title="När">
-              <p className="text-cream/70">{EVENT.dateText}</p>
+              <p className="text-cream/70">{event.dateLabel}</p>
             </InfoCard>
 
             <InfoCard icon={<MapPin size={20} />} title="Var">

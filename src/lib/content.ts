@@ -185,15 +185,23 @@ export async function getEvent() {
   // NaN → jämförelsen blir false, dvs. sajten stannar i försäljningsläge
   // hellre än att felaktigt visa "tack för i år".
   const ended = Date.parse(endDate) < Date.now()
+  const isPast = info?.eventOver === true || ended
+  const dateText = info?.dateText || EVENT.dateText
 
   return {
     ...EVENT,
-    dateText: info?.dateText || EVENT.dateText,
+    dateText,
+    /**
+     * Datumet så som det ska läsas i löpande UI (footer, praktisk info,
+     * kontaktsidan). Efter mässan får det ett "Genomförd"-prefix – annars
+     * står ett passerat datum kvar som om mässan vore på gång.
+     */
+    dateLabel: isPast ? `${POST_EVENT.datePrefix} ${dateText}` : dateText,
     startDate: info?.startDate || EVENT.startDate,
     endDate,
     openingHours: info?.openingHours || EVENT.openingHours,
     /** true = mässan är genomförd; sajten visar efter-mässan-läget. */
-    isPast: info?.eventOver === true || ended,
+    isPast,
     /** Texterna som visas i efter-mässan-läget. */
     postEvent: POST_EVENT,
     guestArtist: {

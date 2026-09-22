@@ -105,16 +105,22 @@ export const EVENT = {
  * ersätts av en tack-ruta med intresseanmälan, biljettknapparna tonas ned och
  * strukturdatan till Google slutar påstå att biljetter finns att köpa.
  *
- * 👉 Texterna nedan visas i det läget. Datumet för nästa mässa är medvetet
- *    vagt ("hösten 2027") tills det är spikat – ändra här när det är klart.
+ * 👉 Texterna nedan visas i det läget. Datumet för nästa mässa hålls medvetet
+ *    öppet tills det är spikat – skriv in det i nextEditionText när det är klart.
  */
 export const POST_EVENT = {
   /** Rubrik i heron där nedräknaren annars står. */
   heading: 'Tack för i år!',
   /** Kort text under rubriken. */
-  text: 'Erotikmässan 2026 är avslutad – tack till alla besökare, artister och utställare som gjorde helgen till vad den blev. Vi ses igen nästa år.',
+  text: 'Erotikmässan 2026 är avslutad – tack till alla besökare, artister och utställare som gjorde helgen till vad den blev. Vi ses nästa gång!',
   /** Vad som gäller härnäst. Håll vagt tills nästa datum är spikat. */
-  nextEditionText: 'Nästa mässa: hösten 2027',
+  nextEditionText: 'Nästa mässa: datum släpps längre fram',
+  /**
+   * Prefix framför mässans datum när det visas utanför heron (footer, praktisk
+   * info, kontaktsidan). Utan det läser "11–12 september 2026" som om mässan
+   * fortfarande vore på gång.
+   */
+  datePrefix: 'Genomförd',
   /** Rubrik och text för intresseanmälan (e-postlistan). */
   signupHeading: 'Först med biljetterna nästa år',
   signupText:
