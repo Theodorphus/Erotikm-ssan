@@ -7,6 +7,7 @@ import { PostEventPanel } from '@/components/event/PostEventPanel'
 import { Faq } from '@/components/event/Faq'
 import { AgeBadge } from '@/components/event/AgeBadge'
 import { MapEmbed } from '@/components/event/MapEmbed'
+import { WebbdevPromo } from '@/components/layout/WebbdevPromo'
 import { Reveal } from '@/components/ui/Reveal'
 import { FaqStructuredData } from '@/components/seo/StructuredData'
 import { getEvent, getFaq } from '@/lib/content'
@@ -504,6 +505,9 @@ export default async function HomePage() {
           </Reveal>
         </div>
       </section>
+
+      {/* ── REKLAM: WEBBDEV STUDIO ────────────────────────────────── */}
+      <WebbdevPromo />
     </>
   )
 }
