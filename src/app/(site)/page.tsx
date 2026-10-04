@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Ticket, Mic2, Store, MapPin, CalendarDays, Clock, ArrowRight, Sparkles, Flame, Star, Brush, Music2, Eye, Heart, Disc3, ShoppingBag, DoorOpen, CreditCard, Banknote } from 'lucide-react'
@@ -16,6 +17,11 @@ import { DOOR_SALES_NOTE, DOOR_SALES_METHODS } from '@/lib/data/tickets'
 // Hämta om innehållet från Sanity var 60:e sekund (ISR), så Johans ändringar
 // i Studion slår igenom live utan ny deploy.
 export const revalidate = 60
+
+// Ägarskapsverifiering för affiliateprogram – taggen måste ligga på framsidan.
+export const metadata: Metadata = {
+  other: { '912b81b45e46444': 'a0096fb13d0baab99a22186c7c273a9c' },
+}
 
 export default async function HomePage() {
   const [EVENT, faqItems] = await Promise.all([getEvent(), getFaq()])
