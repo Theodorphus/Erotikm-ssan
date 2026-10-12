@@ -56,7 +56,8 @@ export default async function HomePage() {
             läses som en enhet och inte krockar med dansös-siluetten/hjärtat till
             höger. Endast neontext (bilderna borttagna på önskemål), länkade till
             artistsidan. Mobil/surfplatta har en egen variant i textflödet nedan. */}
-        <div className="hidden lg:flex absolute left-[3%] xl:left-[6%] top-1/2 -translate-y-1/2 z-10 flex-col items-center gap-6">
+        <div className="relative z-10 mx-auto max-w-[1600px] xl:grid xl:grid-cols-[250px_minmax(0,1fr)_340px] 2xl:grid-cols-[260px_minmax(0,1fr)_420px] xl:items-center xl:gap-6 xl:px-6">
+        <div className="hidden xl:flex flex-col items-center gap-6">
           <Link
             href="/artister#froken-snusk"
             aria-label="Fröken Snusk – mässans gästartist, läs mer"
@@ -83,7 +84,7 @@ export default async function HomePage() {
           </Link>
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 text-center">
+        <div className="relative z-10 min-w-0 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-0 py-24 sm:py-32 text-center">
           {/* Trust-badge: Sveriges första & största sedan 1996 – premiumsignal. */}
           <p
             className="reveal inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-cream/80 border border-white/15 bg-white/5 backdrop-blur-sm rounded-full px-4 py-1.5 mb-5"
@@ -97,7 +98,7 @@ export default async function HomePage() {
           >
             <CalendarDays size={16} /> {EVENT.dateText}
           </p>
-          <h1 className="wipe-in title-glow font-display text-5xl sm:text-7xl font-extrabold leading-[1.05] mb-5">
+          <h1 className="wipe-in title-glow font-display text-5xl sm:text-7xl xl:text-6xl 2xl:text-7xl font-extrabold leading-[1.05] mb-5">
             {EVENT.name}
           </h1>
           <p
@@ -113,7 +114,7 @@ export default async function HomePage() {
           {/* Fröken Snusk på mobil/surfplatta: neontext i flödet under mottot
               (bilden borttagen på önskemål). Den absoluta vänster-placeringen
               på desktop får bara plats på breda skärmar. */}
-          <div className="reveal lg:hidden flex flex-col items-center gap-4 mb-8" style={{ animationDelay: '0.6s' }}>
+          <div className="reveal xl:hidden flex flex-col items-center gap-4 mb-8" style={{ animationDelay: '0.6s' }}>
             <Link
               href="/artister#froken-snusk"
               aria-label="Fröken Snusk – mässans gästartist, läs mer"
@@ -205,6 +206,8 @@ export default async function HomePage() {
               </p>
             </>
           )}
+        </div>
+        <SinfulPromo hero />
         </div>
       </section>
 
@@ -514,7 +517,6 @@ export default async function HomePage() {
       </section>
 
       {/* ── REKLAM: WEBBDEV STUDIO ────────────────────────────────── */}
-      <SinfulPromo />
       <WebbdevPromo />
     </>
   )
